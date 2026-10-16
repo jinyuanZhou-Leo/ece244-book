@@ -1,0 +1,179 @@
+:root {
+  --mono: Menlo, "DejaVu Sans Mono", Consolas, monospace;
+  --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  /* Pygments "friendly" palette used by the book's code blocks */
+  --c-type: #902000;
+  --c-kw: #007020;
+  --c-fn: #06287e;
+  --c-cls: #0e84b5;
+  --c-num: #40a070;
+  --c-str: #4070a0;
+  --c-op: #666666;
+  --c-com: #60a0b0;
+  --c-pre: #007020;
+
+  --hl: #ffffcc;
+  --caller-grey: #cfcfcf;
+  --err-bg: #ffd6dc;
+  --err: #c0182a;
+  --line: 4px solid #000;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #fff; }
+@page { margin: 0; }
+
+.canvas {
+  position: relative;
+  display: inline-block;
+  padding: 20px 40px 28px;
+  background: #fff;
+  color: #000;
+  font-family: var(--sans);
+  font-size: 20px;
+}
+
+.mono { font-family: var(--mono); }
+.fn { color: var(--c-fn); }
+
+/* ---- title ---- */
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 12px;
+  min-height: 3.2em;
+  margin-bottom: 4px;
+  font-size: 21px;
+  line-height: 1.3;
+}
+.title-text { max-width: 600px; padding-top: 3px; }
+.step {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 2px solid #000;
+  border-radius: 50%;
+  background: #ffffaa;
+  font-size: 22px;
+}
+
+/* ---- layout ---- */
+.columns, .stack { display: flex; }
+.stack { flex-direction: column; }
+.note-block { line-height: 1.3; }
+
+/* ---- memory ---- */
+.memory { position: relative; }
+.memory-label { text-align: center; font-size: 23px; margin-bottom: 6px; }
+.memory-box { border: var(--line); background: #fff; }
+.frame { position: relative; }
+.frame + .frame { border-top: var(--line); }
+.frame.caller { background: var(--caller-grey); }
+.frame-head {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  border-bottom: var(--line);
+  background: inherit;
+  font-size: 20px;
+}
+.frame.caller .frame-head { background: var(--caller-grey); }
+.frame:not(.caller) .frame-head { background: #fff; }
+.lock { position: absolute; right: 6px; top: 1px; }
+.var {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+  padding: 0 4px 0 12px;
+  border-bottom: 1px solid #333;
+  font-size: 20px;
+}
+.decl { white-space: pre; }
+.val {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: pre;
+  min-width: 64px;
+  height: 30px;
+  padding: 0 6px;
+  border: 1.5px solid #222;
+  background: #fff;
+  font-size: 19px;
+}
+.val.hl { background: var(--hl); }
+.frame.erased > .frame-head,
+.frame.erased > .var,
+.frame.erased > .frame-pad { opacity: 0.22; }
+.frame-note {
+  position: absolute;
+  right: calc(100% + 16px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: var(--note-w);
+  text-align: right;
+  font-size: 19px;
+  line-height: 1.3;
+}
+
+/* ---- code ---- */
+.code {
+  position: relative;
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 21px;
+  line-height: 1.24;
+  white-space: pre;
+}
+.code.align-memory { margin-top: 36px; }
+.line { min-height: 1.24em; padding: 0 6px; }
+.line.hl { background: var(--hl); }
+.line.dim { opacity: 0.3; }
+.ln { display: inline-block; width: 2.2em; margin-right: 0.6em; text-align: right; color: #999; }
+.mark.box { outline: 2px solid #000; background: var(--hl); border-radius: 2px; }
+.mark.err { background: var(--err-bg); text-decoration: line-through; text-decoration-color: var(--err); text-decoration-thickness: 2px; }
+.mark.strike { text-decoration: line-through; text-decoration-thickness: 2px; }
+.hide-box {
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #555;
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 19px;
+  white-space: normal;
+}
+
+.kw { color: var(--c-kw); font-weight: bold; }
+.type { color: var(--c-type); }
+.cls, .ns { color: var(--c-cls); font-weight: bold; }
+.code .fn, .decl .fn { color: var(--c-fn); }
+.num { color: var(--c-num); }
+.str { color: var(--c-str); }
+.op { color: var(--c-op); }
+.com { color: var(--c-com); font-style: italic; }
+.pre { color: var(--c-pre); }
+.prefile { color: var(--c-str); font-style: italic; }
+
+.strike { text-decoration: line-through; text-decoration-thickness: 1.5px; }
+
+/* ---- arrows ---- */
+svg.arrows {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}

@@ -1,0 +1,12 @@
+{
+  "name": "ece244-diagrams",
+  "private": true,
+  "type": "module",
+  "description": "HTML/SVG figure sources for the ECE244 textbook, rendered to PNG + PDF with Playwright.",
+  "scripts": {
+    "render": "node render.mjs"
+  },
+  "dependencies": {
+    "playwright-core": "^1.58.0"
+  }
+}
