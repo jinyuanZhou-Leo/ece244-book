@@ -29,6 +29,9 @@ embeddings = [
     "sentence-transformers",
     "beautifulsoup4",
 ]
+i18n = [
+    "sphinx-intl>=2.4.0",
+]
 
 [tool.uv]
 managed = true

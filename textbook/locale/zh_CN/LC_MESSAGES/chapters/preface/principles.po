@@ -1,0 +1,73 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-16 14:33-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+msgid "Principles of using this textbook"
+msgstr ""
+
+msgid "Embedded Code 💻"
+msgstr ""
+
+#, python-brace-format
+msgid "You can also download the `.c` file of the program by clicking on file name in text. For example, download {download}`hello-world.cpp <../../code/chapter01/hello-world/hello-world.cpp>` if you want to edit the code yourself. If it opens a new window with contents of the file, right-click on the page and select Save As. You can choose where you want to save the file. Please make sure it is saved as `.cpp` file not `.txt` file."
+msgstr ""
+
+msgid "Example or potential output to the code will be shown as in the following example."
+msgstr ""
+
+msgid "Exercises 🏋"
+msgstr ""
+
+msgid "Every chapter will have an exercises section. This section will include past exams questions related to the concepts discussed in the chapter (or previous chapters). Some may be marked as **[Easy]**, **[Intermediate]** or **[Challenging]**. The difficulty level is subjective and may vary from person to person. I expect you to solve these exercises after we cover the chapter in the lectures."
+msgstr ""
+
+msgid "These exercises will have solutions that will be hidden and you need to click to show the answer. For example,"
+msgstr ""
+
+msgid "Answer"
+msgstr ""
+
+msgid "An answer will appear here."
+msgstr ""
+
+msgid "Debugging 🐞"
+msgstr ""
+
+msgid "In some chapters, there will be a section on debugging. It will discuss the most common mistakes programmers make related to the chapter. It may or may not include a YouTube video where I debug a code using concepts discussed in the chapter."
+msgstr ""
+
+msgid "Downloading 📥"
+msgstr ""
+
+msgid "You can download a copy of each section by clicking on the top right most icon with an arrow. PDF should be your to-go option."
+msgstr ""
+
+msgid "Search 🔍"
+msgstr ""
+
+msgid "You have a search box in the middle left of the page. You can search for a keyword or a phrase. It will search through the entire textbook."
+msgstr ""
+
+msgid "Suggestions and Feedback 📝"
+msgstr ""
+
+msgid "This website/online e-book is still under development. If you have any suggestions or feedback, please email me at <span style=\"color:blue\"><u>salma<i>@</i>ece<i>.</i>utoronto<i>.</i>ca</u></span> . You can also hover over the cat icon in the top right of this page, and click on open issue. This will take you to GitHub where you can easily describe what's the issue. This requires that you sign-up for a GitHub account."
+msgstr ""
+

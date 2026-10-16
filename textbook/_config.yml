@@ -17,6 +17,28 @@ sphinx:
     # and translators
     language: en
     templates_path: ["_templates"] # for overiding semantic-field.html
+    # i18n: translations live in textbook/locale/<lang>/LC_MESSAGES/*.po
+    # Workflow: see docs/local-development.md (scripts/i18n.py extract | build)
+    locale_dirs: ["locale/"]
+    gettext_compact: false
+    gettext_uuid: false
+    # Sphinx 4.5 crashes writing "#: file:line" for MyST nodes without a source
+    gettext_location: false
+    # Widget UI strings (_static/i18n/*.js, which Jupyter Book auto-includes)
+    html_js_files:
+      - "https://cdn.jsdelivr.net/npm/i18next@23.16.8/i18next.min.js"
+    # myst-nb has no default output priority for the gettext builder
+    nb_render_priority:
+      gettext:
+        - application/vnd.jupyter.widget-view+json
+        - application/javascript
+        - text/html
+        - image/svg+xml
+        - image/png
+        - image/jpeg
+        - text/markdown
+        - text/latex
+        - text/plain
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html

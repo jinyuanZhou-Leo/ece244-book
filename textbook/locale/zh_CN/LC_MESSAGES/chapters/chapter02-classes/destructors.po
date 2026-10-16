@@ -1,0 +1,115 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-16 14:33-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+msgid "Lifecycle of an Object"
+msgstr ""
+
+msgid "As we have seen in the previous section, a constructor is called when an object is created. Likewise, a special function called the **destructor** is called when an object goes out of scope  or when it is destroyed/erased/freed from the memory."
+msgstr ""
+
+msgid "**What is a destructor?**"
+msgstr ""
+
+msgid "The complement (opposite) function of the constructor."
+msgstr ""
+
+msgid "**When is it called?**"
+msgstr ""
+
+msgid "A destructor is called automatically when an object is destroyed/freed/erased or goes out of scope."
+msgstr ""
+
+msgid "**How is it defined?**"
+msgstr ""
+
+msgid "It's defined with the same name as the class, but with a tilde (`~`) before the name, e.g. `~ClassName()` It has the following characteristics:"
+msgstr ""
+
+msgid "no return type, not even `void`"
+msgstr ""
+
+msgid "no input parameters"
+msgstr ""
+
+msgid "given to each class by default"
+msgstr ""
+
+msgid "empty if it is not defined"
+msgstr ""
+
+msgid "Object Goes Out of Scope"
+msgstr ""
+
+msgid "For example, in the following code, we"
+msgstr ""
+
+msgid "define a class named `Student` with a constructor `Student();` and a destructor `~Student()`"
+msgstr ""
+
+msgid "implement the constructor and destructor to print a message (no return type is specified for either and the destructor MUST not have an input parameter), and"
+msgstr ""
+
+msgid "in the main function, we create two objects of the class `Student` in different scopes."
+msgstr ""
+
+msgid "note"
+msgstr ""
+
+msgid "We didn't define them into `Student.h`, `Student.cpp` and `main.cpp` files. We put all the code into the `main.cpp` file for simplicity."
+msgstr ""
+
+msgid "**Code in `main.cpp`**"
+msgstr ""
+
+msgid "Two objects created in different places in a program, and they go out of scope at different times."
+msgstr ""
+
+msgid "**Output**"
+msgstr ""
+
+msgid "In line 19, the constructor of `Student` is called when object `x` is created, and the message `Constructor called` is printed."
+msgstr ""
+
+#, python-brace-format
+msgid "In line 22, the object `y`is created. Note that object `y` is created inside an `{}` block, so it goes out of scope when the block ends."
+msgstr ""
+
+msgid "In line 24, object `y` goes out of scope, and the destructor is called automatically, printing `Destructor called`."
+msgstr ""
+
+msgid "In line 27, the destructor for object `x` is called when the program ends, printing `Destructor called`."
+msgstr ""
+
+msgid "In summary, the lifecycle of an object is as follows:"
+msgstr ""
+
+msgid "Memory is allocated for the object."
+msgstr ""
+
+msgid "The constructor is called to initialize the object."
+msgstr ""
+
+msgid "The object is used in the program."
+msgstr ""
+
+msgid "When the object goes out of scope, the destructor is called."
+msgstr ""
+

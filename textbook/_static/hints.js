@@ -94,7 +94,7 @@ async function generate_hints(questionID, form, originalCode, outputArray, actua
         // another hint button
         anotherHint = document.createElement("button");
         anotherHint.type = "button";
-        anotherHint.textContent = "Get Hint";
+        anotherHint.textContent = bookI18n.t("hints.getHint");
         anotherHint.classList.add("another-hint");
         hintContainer.appendChild(anotherHint);
 
@@ -130,21 +130,21 @@ async function generate_hints(questionID, form, originalCode, outputArray, actua
             debug_mode: true
         });
 
-        if (anotherHint.textContent === "Get Hint") {
-            anotherHint.textContent = "Get New Hint";
+        if (anotherHint.textContent === bookI18n.t("hints.getHint")) {
+            anotherHint.textContent = bookI18n.t("hints.getNewHint");
         }
 
         // disable button and start countdown
         const cooldown = 5;
         let remaining = cooldown;
         anotherHint.disabled = true;
-        const originalText = "Get New Hint";
-        anotherHint.textContent = `Wait ${remaining}s`;
+        const originalText = bookI18n.t("hints.getNewHint");
+        anotherHint.textContent = bookI18n.t("hints.wait", { seconds: remaining });
 
         const intervalId = setInterval(() => {
             
             remaining--;
-            anotherHint.textContent = `Wait ${remaining}s`;
+            anotherHint.textContent = bookI18n.t("hints.wait", { seconds: remaining });
             
             if (remaining <= 0) {
                 clearInterval(intervalId);
@@ -164,7 +164,7 @@ async function generate_hints(questionID, form, originalCode, outputArray, actua
         loaderAnimation.classList.add("loader");
 
         const loadingText = document.createElement("span");
-        loadingText.textContent = "Generating hint...";
+        loadingText.textContent = bookI18n.t("hints.generatingHint");
         loadingText.style.fontWeight = "bold";
 
         const loadingContainer = document.createElement("div");
@@ -253,13 +253,13 @@ async function generate_hints(questionID, form, originalCode, outputArray, actua
 
         }
 
-        const hintsText = await getChatCompletion(prompt);
+        const hintsText = await getChatCompletion(prompt + "\n" + bookI18n.t("hints.responseLanguage"));
 
         hintDiv.innerHTML = "";
 
         // parser hint
         const match = hintsText.match(/Hint\s*:\s*(.+)/i);
-        let hint = match ? match[1].trim() : "No hint available. Please try again!";
+        let hint = match ? match[1].trim() : bookI18n.t("hints.noHint");
         hintDiv.innerText = hint;
         previousHints.push(hint);
 
@@ -296,7 +296,7 @@ async function get_feedback(questionID, form, messageElement, exercise, studentR
         // another feedback button
         anotherFeedback = document.createElement("button");
         anotherFeedback.type = "button";
-        anotherFeedback.textContent = "Get Feedback";
+        anotherFeedback.textContent = bookI18n.t("hints.getFeedback");
         anotherFeedback.classList.add("another-hint");
         feedbackContainer.appendChild(anotherFeedback);
         
@@ -330,21 +330,21 @@ async function get_feedback(questionID, form, messageElement, exercise, studentR
             debug_mode: true
         });
 
-        if (anotherFeedback.textContent === "Get Feedback") {
-            anotherFeedback.textContent = "Get More Feedback";
+        if (anotherFeedback.textContent === bookI18n.t("hints.getFeedback")) {
+            anotherFeedback.textContent = bookI18n.t("hints.getMoreFeedback");
         }
 
         // disable button and start countdown
         const cooldown = 5;
         let remaining = cooldown;
         anotherFeedback.disabled = true;
-        const originalText = "Get More Feedback";
-        anotherFeedback.textContent = `Wait ${remaining}s`;
+        const originalText = bookI18n.t("hints.getMoreFeedback");
+        anotherFeedback.textContent = bookI18n.t("hints.wait", { seconds: remaining });
 
         const intervalId = setInterval(() => {
             
             remaining--;
-            anotherFeedback.textContent = `Wait ${remaining}s`;
+            anotherFeedback.textContent = bookI18n.t("hints.wait", { seconds: remaining });
             
             if (remaining <= 0) {
                 clearInterval(intervalId);
@@ -364,7 +364,7 @@ async function get_feedback(questionID, form, messageElement, exercise, studentR
         loaderAnimation.classList.add("loader");
 
         const loadingText = document.createElement("span");
-        loadingText.textContent = "Getting feedback...";
+        loadingText.textContent = bookI18n.t("hints.gettingFeedback");
         loadingText.style.fontWeight = "bold";
 
         const loadingContainer = document.createElement("div");
@@ -484,14 +484,14 @@ async function get_feedback(questionID, form, messageElement, exercise, studentR
 
         }
 
-        const feedbackText = await getChatCompletion(prompt);
+        const feedbackText = await getChatCompletion(prompt + "\n" + bookI18n.t("hints.responseLanguage"));
 
         feedbackDiv.innerHTML = "";
 
         const feedbackMatch = feedbackText.match(/Feedback\s*:\s*(.+)/i);
         const isCorrectMatch = feedbackText.match(/isCorrect\s*:\s*(true|false)/i);
 
-        const feedback = feedbackMatch ? feedbackMatch[1].trim() : "No feedback available. Please try again!";
+        const feedback = feedbackMatch ? feedbackMatch[1].trim() : bookI18n.t("hints.noFeedback");
 
         let isCorrect;
 

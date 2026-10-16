@@ -484,6 +484,9 @@ embeddings = [
     { name = "beautifulsoup4" },
     { name = "sentence-transformers" },
 ]
+i18n = [
+    { name = "sphinx-intl" },
+]
 
 [package.metadata]
 requires-dist = [
@@ -507,6 +510,7 @@ embeddings = [
     { name = "beautifulsoup4" },
     { name = "sentence-transformers" },
 ]
+i18n = [{ name = "sphinx-intl", specifier = ">=2.4.0" }]
 
 [[package]]
 name = "entrypoints"
@@ -2385,6 +2389,20 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/2c/24/b5ed90c6dc67e3a117e8d32df64baa65e1a66f696f8fa131d1db59dccb27/sphinx_external_toc-0.2.4.tar.gz", hash = "sha256:f073c482d959a166f844ca8caadd13e24fa43153750cc120646ded37ff622018", size = 29897, upload-time = "2022-02-10T12:18:09.179Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/3c/95/d926f77915ec7435603e465e0a6f43cc37bbe2bc58cf267f38e0d65dd0e1/sphinx_external_toc-0.2.4-py3-none-any.whl", hash = "sha256:f7906620e74fbef50f0c3b8adf943da03000ab955ffe957ae4760d6cd5a09717", size = 25273, upload-time = "2022-02-10T12:18:07.631Z" },
+]
+
+[[package]]
+name = "sphinx-intl"
+version = "2.4.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "babel" },
+    { name = "click" },
+    { name = "sphinx" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/62/ba/f4d6a9573c81a9248cf2f354c09158cbca7b3f40eae296b6f69850c26f8e/sphinx_intl-2.4.0.tar.gz", hash = "sha256:f13173bfc4a131f74ea082a5820386e2bcdc020b3003378b029d438f404edbde", size = 28825, upload-time = "2026-08-30T03:38:50.489Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/77/2a/d8f012d47588ec63409d172ccf2c3afc035d14e2b2a52a88339f86bbc058/sphinx_intl-2.4.0-py3-none-any.whl", hash = "sha256:704567d1b22f7e8ed1cfc8aa2306e6617a1d17782c9a5891898b20267b15b041", size = 13000, upload-time = "2026-08-30T03:38:49.206Z" },
 ]
 
 [[package]]

@@ -5,7 +5,7 @@
 <form class="bd-search d-flex align-items-center hide-search-bar" action="{{ pathto('search') }}" method="get"
     id="keyword-search-form">
     <i class="icon fas fa-search"></i>
-    <input type="search" class="form-control" name="q" id="search-input" placeholder="pointer"
+    <input type="search" class="form-control" name="q" id="search-input" placeholder="{{ _('pointer') }}"
         aria-label="{{ theme_search_bar_text }}" autocomplete="off">
 </form>
 
@@ -13,14 +13,14 @@
 <form class="bd-search d-flex align-items-center" action="{{ pathto('semantic-search') }}" method="get"
     id="semantic-search-form">
     <i class="icon fas fa-search"></i>
-    <input type="search" class="form-control" name="q" id="semantic-search-input" placeholder="what is a pointer"
-        aria-label="Semantically Search this book..." autocomplete="off">
+    <input type="search" class="form-control" name="q" id="semantic-search-input" placeholder="{{ _('what is a pointer') }}"
+        aria-label="{{ _('Semantically Search this book...') }}" autocomplete="off">
 </form>
 
 <!-- Tab Bar -->
 <div class="tab-bar">
-    <button id="keyword-search-tab" class="tab-button">Keyword</button>
-    <button id="semantic-search-tab" class="tab-button active">Semantic</button>
+    <button id="keyword-search-tab" class="tab-button">{{ _('Keyword') }}</button>
+    <button id="semantic-search-tab" class="tab-button active">{{ _('Semantic') }}</button>
 </div>
 
 <style>

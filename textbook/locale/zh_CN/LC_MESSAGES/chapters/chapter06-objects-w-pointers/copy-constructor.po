@@ -1,0 +1,157 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-16 14:33-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+msgid "What is a copy constructor?"
+msgstr ""
+
+msgid "In the previous chapter, we overloaded the assignment operator `operator=` to copy one **existing** object into another **existing** object, *e.g.* `z = x;`. But what if the object is being created at the same time as it is copied, *e.g.* `Student b = a;`? In this case, there is no existing `b` to assign to. Instead, `b` is constructed from `a` using a special constructor called the copy constructor."
+msgstr ""
+
+msgid "A **copy constructor** is a special constructor that initializes a new object as a copy of an existing object of the same class."
+msgstr ""
+
+msgid "When is the copy constructor called?"
+msgstr ""
+
+msgid "Given that `a` is an object of the `Student` class, the copy constructor is called when:"
+msgstr ""
+
+msgid "**An object is created from an existing object using parentheses**, *e.g.* `Student b(a);`"
+msgstr ""
+
+msgid "`a` is an existing object, and `b` is being created as a copy of `a`. We are passing `a` to the constructor of `b`."
+msgstr ""
+
+msgid "**An object is created from an existing object using `=`**, *e.g.* `Student b = a;`"
+msgstr ""
+
+msgid "Although the `=` syntax is used, `b` is being created in this same line, so this calls the copy constructor. **`operator=` is not called here.**"
+msgstr ""
+
+msgid "**An object is passed by value to a function.**"
+msgstr ""
+
+msgid "For example, if the function prototype is `void printStudent(Student s);` and the function call is `printStudent(a);`, a new object `s` is created in the function's scope. The copy constructor is called to initialize `s` with the value of `a`."
+msgstr ""
+
+msgid "**An object is returned by value from a function.**"
+msgstr ""
+
+msgid "For example, if the function prototype is `Student getCopy(Student& s);` and the function returns `s` using `return s;`, a new object is created to hold the returned value. The copy constructor is called to initialize this new object with the value of `s`."
+msgstr ""
+
+msgid "**Try out this!** In the following code, we define our own copy constructor that prints a message every time it is called. We then trigger each of the four cases in `main`."
+msgstr ""
+
+msgid "**Code** {{code_runner_header}}"
+msgstr ""
+
+msgid "**[Line 15 to 19]** We define the copy constructor. Like any constructor, it has the same name as the class and no return type. Its only parameter is a reference to an existing `Student` object, which we name `other`. We copy `other.name` and `other.ID` into the data members of the object being created."
+msgstr ""
+
+msgid "**[Line 34]** `a` is created using the regular constructor `Student(string n, int id)`, which prints `Constructor called for Kenya`."
+msgstr ""
+
+msgid "**[Line 35 and 36]** `b` and `c` are created as copies of `a`. Each line calls the copy constructor once."
+msgstr ""
+
+msgid "**[Line 37]** `a` is passed by value to `printStudent`. The copy constructor creates the parameter `s` as a copy of `a`, then `s.print()` prints the name and ID."
+msgstr ""
+
+msgid "**[Line 38]** `getCopy` returns `s` by value. The copy constructor creates the returned object as a copy of `s`, and this object becomes `d`."
+msgstr ""
+
+msgid "**Output**"
+msgstr ""
+
+msgid "**Watch it step by step.** Step through the same code and watch the stack. Every time a copy is made, a new frame for the copy constructor `Student::Student(Student const&)` appears on top of the stack. Count them: there are four."
+msgstr ""
+
+#, python-brace-format
+msgid "class Student {     private:       string name;       int ID;     public:       Student(string n, int id) {         name = n;         ID = id;         cout &lt;&lt; \"Constructor called for \" &lt;&lt; name &lt;&lt; endl;       }       Student(const Student&amp; other) {         name = other.name;         ID = other.ID;         cout &lt;&lt; \"Copy constructor called for \" &lt;&lt; name &lt;&lt; endl;       }       void print() {         cout &lt;&lt; \"Name: \" &lt;&lt; name &lt;&lt; \", ID: \" &lt;&lt; ID &lt;&lt; endl;       }   };"
+msgstr ""
+
+#, python-brace-format
+msgid "void printStudent(Student s) {     s.print();   }"
+msgstr ""
+
+#, python-brace-format
+msgid "Student getCopy(Student&amp; s) {     return s;   }"
+msgstr ""
+
+#, python-brace-format
+msgid "int main(void) {     Student a(\"Kenya\", 8012);     Student b(a);           // Case 1     Student c = a;          // Case 2     printStudent(a);        // Case 3     Student d = getCopy(a); // Case 4     return 0;   } </c-visualizer>"
+msgstr ""
+
+msgid "Copies the compiler can skip"
+msgstr ""
+
+msgid "The compiler is allowed to skip some copies to make the program faster. This is called **copy elision**. For example, if `getCopy` returned a local object instead of its parameter, the compiler would usually build the returned object directly in `d`, and the copy constructor would not be called at all:"
+msgstr ""
+
+msgid "This is why `getCopy` returns its reference parameter `s` in our example: `s` is not local to `getCopy`, so a copy must be made. Do not rely on a copy being skipped or not; your copy constructor should be correct either way."
+msgstr ""
+
+msgid "The default copy constructor"
+msgstr ""
+
+msgid "**What if we do not define a copy constructor?** Just like the default `operator=` we discussed in the previous chapter, C++ provides a **default copy constructor** for every class that does not define its own. The default copy constructor performs a **member-wise copy**: it copies every data member of the existing object into the corresponding data member of the new object."
+msgstr ""
+
+msgid "For the `Student` class, the default copy constructor behaves as if we wrote:"
+msgstr ""
+
+msgid "This is exactly what we need for `Student`, so we did not have to write our own copy constructor, except to print a message. In the next section, we will see a class where the member-wise copy is **not** what we want."
+msgstr ""
+
+msgid "Why is the parameter a `const` reference?"
+msgstr ""
+
+msgid "The copy constructor takes its parameter as `const Student&`. Both the `&` and the `const` are important."
+msgstr ""
+
+msgid "**<span style=\"color:red\">Problem!</span>** What if we pass the existing object by value, *i.e.* `Student(Student other)`? Passing an object by value creates a copy of it (case 3 above). To create this copy, the copy constructor is called. This call passes its argument by value again, which calls the copy constructor again, and so on forever. The compiler does not allow this. For example, `clang++` reports:"
+msgstr ""
+
+msgid "**<span style=\"color:green\">Solution.</span>** We pass the existing object by reference, `Student& other`, so no copy is needed to call the copy constructor."
+msgstr ""
+
+msgid "We also make the reference `const` for two reasons:"
+msgstr ""
+
+msgid "The copy constructor should not modify the object it copies from. `const` makes the compiler enforce this."
+msgstr ""
+
+msgid "It allows us to copy from `const` objects, *e.g.* `const Student a(\"Kenya\", 8012); Student b = a;`. A non-`const` reference cannot refer to a `const` object, so without `const` this line would not compile."
+msgstr ""
+
+msgid "Copy constructor or operator=?"
+msgstr ""
+
+msgid "Whether `=` calls the copy constructor or `operator=` depends on whether the object on the left-hand side is being created."
+msgstr ""
+
+msgid "**Check your understanding.** For each line below, decide whether it calls the copy constructor, `operator=`, or neither."
+msgstr ""
+
+msgid "In the next section, we will see why the default copy constructor causes serious problems when a class has a pointer to dynamically allocated memory."
+msgstr ""
+

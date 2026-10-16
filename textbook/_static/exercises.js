@@ -3,7 +3,7 @@
 
 function createTitle(form, ex) {
 	const title = document.createElement('h5');
-	title.textContent = `${ex.title} [${ex.difficulty}]`;
+	title.textContent = `${ex.title} [${bookI18n.t(`difficulty.${ex.difficulty}`, { defaultValue: ex.difficulty })}]`;
 	title.style.fontWeight = "bold";
 	title.style.color = "#4f4f4f";  
 	form.appendChild(title);
@@ -275,7 +275,7 @@ function generate_exercises(filename) {
 			const traceTextarea = document.createElement("textarea");
 			traceTextarea.classList.add("trace-textarea");
 			traceTextarea.rows = 6;
-			traceTextarea.placeholder = "Write your expected output here...";
+			traceTextarea.placeholder = bookI18n.t("exercises.tracePlaceholder");
 
 			// saved answer
 			traceTextarea.value = localStorage.getItem(`${storageKey}-trace`) || "";
@@ -293,7 +293,7 @@ function generate_exercises(filename) {
 			const textbox = document.createElement("textarea");
 			textbox.classList.add("explaination-textarea");
 			textbox.rows = 3;
-			textbox.placeholder = "Type your answer here...";
+			textbox.placeholder = bookI18n.t("exercises.answerPlaceholder");
 
 			// saved answer
 			textbox.value = localStorage.getItem(`${storageKey}-explaination`) || "";
@@ -310,12 +310,12 @@ function generate_exercises(filename) {
 
 		const submitButton = document.createElement("button");
 		// submitButton.type = "button";
-		submitButton.innerHTML = "Evaluate Answer";
+		submitButton.textContent = bookI18n.t("exercises.evaluate");
 		submitButton.classList.add("submit-exercises-button");
 
 		const resetButton = document.createElement("button");
 		// resetButton.type = "button";
-		resetButton.textContent = "Start Fresh";
+		resetButton.textContent = bookI18n.t("exercises.reset");
 		resetButton.classList.add("reset-exercises-button");
 
 		const resultMessage = document.createElement("div");
@@ -408,7 +408,7 @@ function generate_exercises(filename) {
 				const selectedIndices = Array.from(selectedChoices).map(input => parseInt(input.value));
 
 				if (selectedIndices.length === 0) {
-					resultMessage.innerHTML = `<span style="color: red;">Please select an option before submitting.</span>`;
+					resultMessage.innerHTML = `<span style="color: red;">${bookI18n.t("exercises.selectOption")}</span>`;
 					return;
 				}
 
@@ -427,7 +427,7 @@ function generate_exercises(filename) {
 					explanationDetails.style.marginTop = "10px";
 
 					const explanationSummary = document.createElement("summary");
-					explanationSummary.textContent = "Show Explanation";
+					explanationSummary.textContent = bookI18n.t("exercises.showExplanation");
 					explanationSummary.style.cursor = "pointer";
 
 					const explanationContent = document.createElement("div");
@@ -439,8 +439,8 @@ function generate_exercises(filename) {
 					explanationDetails.appendChild(explanationContent);
 
 					resultMessage.innerHTML = isCorrect
-						? `<span style="color: green;">Correct!</span>`
-						: `<span style="color: red;">Incorrect.</span>`;
+						? `<span style="color: green;">${bookI18n.t("exercises.correct")}</span>`
+						: `<span style="color: red;">${bookI18n.t("exercises.incorrect")}</span>`;
 
 					resultMessage.appendChild(explanationDetails);
 
@@ -448,8 +448,8 @@ function generate_exercises(filename) {
 			
 				} else {
 					resultMessage.innerHTML = isCorrect
-						? `<span style="color: green;">Correct!</span>`
-						: `<span style="color: red;">Incorrect.</span>`;
+						? `<span style="color: green;">${bookI18n.t("exercises.correct")}</span>`
+						: `<span style="color: red;">${bookI18n.t("exercises.incorrect")}</span>`;
 				}
 
 				return; 
@@ -520,7 +520,7 @@ function generate_exercises(filename) {
 
 				if (actualOutput.includes("Please try again")) {
 
-                    resultMessage.innerHTML = "Please try submitting again";
+                    resultMessage.textContent = bookI18n.t("exercises.retrySubmit");
                     resultMessage.style.color = "red";
                     resultMessage.style.fontWeight = "bold";
 
@@ -609,7 +609,7 @@ async function handle_output_submission(form, messageElement, questionType, corr
 	const userAnswer = traceInput ? traceInput.value.trim() : "";
 
 	if (!userAnswer) {
-		updateResultMessage(messageElement, false, questionType, correctAnswer, "Please enter your answer before submitting.");
+		updateResultMessage(messageElement, false, questionType, correctAnswer, bookI18n.t("exercises.enterAnswer"));
 		return;
 	}
 
@@ -680,7 +680,7 @@ function updateResultMessage(messageElement, isCorrect, questionType, correctAns
     if (questionType === "programming" || questionType === "function programming") {
         const summary = document.createElement("div");
         summary.innerHTML = `<span style="color: ${isCorrect ? "green" : "red"}; font-weight: bold;">
-            ${numPassed}/${total} testcases passed.
+            ${bookI18n.t("exercises.testcasesPassed", { passed: numPassed, total })}
         </span>`;
         messageElement.appendChild(summary);
 
@@ -688,7 +688,7 @@ function updateResultMessage(messageElement, isCorrect, questionType, correctAns
             const mainInfoTitle = document.createElement("div");
             mainInfoTitle.style.marginTop = "10px";
             mainInfoTitle.style.fontWeight = "bold";
-            mainInfoTitle.innerText = "Appended function(s) to student code:";
+            mainInfoTitle.innerText = bookI18n.t("exercises.appendedFunctions");
 
 			// bold comments
 			const highlightedCode = studentCode
@@ -713,7 +713,7 @@ function updateResultMessage(messageElement, isCorrect, questionType, correctAns
 
             const testcaseSummary = document.createElement("summary");
             testcaseSummary.style.cursor = "pointer";
-            testcaseSummary.textContent = "Show Testcases";
+            testcaseSummary.textContent = bookI18n.t("exercises.showTestcases");
 
             testcaseDetails.appendChild(testcaseSummary);
             testcaseDetails.appendChild(testcaseContainer);
@@ -725,7 +725,7 @@ function updateResultMessage(messageElement, isCorrect, questionType, correctAns
             hintDetails.style.marginTop = '10px';
 
             const hintSummary = document.createElement('summary');
-            hintSummary.textContent = 'Show Hint';
+            hintSummary.textContent = bookI18n.t("exercises.showHint");
             hintSummary.style.cursor = 'pointer';
 
             hintDetails.appendChild(hintSummary);
@@ -739,7 +739,7 @@ function updateResultMessage(messageElement, isCorrect, questionType, correctAns
 
         const solutionSummary = document.createElement("summary");
         solutionSummary.style.cursor = "pointer";
-        solutionSummary.textContent = "Show Suggested Solution";
+        solutionSummary.textContent = bookI18n.t("exercises.showSolution");
 
         const solutionContent = document.createElement("div");
         solutionContent.innerHTML = `<pre>${escapeHtml(correctAnswer)}</pre>`;
@@ -750,11 +750,11 @@ function updateResultMessage(messageElement, isCorrect, questionType, correctAns
 
     } else if (questionType === "tracing") {
         messageElement.innerHTML = isCorrect
-            ? `<span style="color: green;"> Output matches! Well done.</span>`
+            ? `<span style="color: green;"> ${bookI18n.t("exercises.outputMatches")}</span>`
             : `
-                <span style="color: red;"> Output does not match.</span>
+                <span style="color: red;"> ${bookI18n.t("exercises.outputMismatch")}</span>
                 <details style="margin-top: 10px;">
-                    <summary style="cursor: pointer;">Show Expected Output</summary>
+                    <summary style="cursor: pointer;">${bookI18n.t("exercises.showExpectedOutput")}</summary>
                     <div style="margin-top: 5px;">
                         <pre>${escapeHtml(correctAnswer)}</pre>
                     </div>
@@ -766,7 +766,7 @@ function updateResultMessage(messageElement, isCorrect, questionType, correctAns
 			explanationDetails.style.marginTop = "10px";
 
 			const explanationSummary = document.createElement("summary");
-			explanationSummary.textContent = "Show Explanation";
+			explanationSummary.textContent = bookI18n.t("exercises.showExplanation");
 			explanationSummary.style.cursor = "pointer";
 
 			// solution-box only wraps the content, not the summary
@@ -788,7 +788,7 @@ function updateResultMessage(messageElement, isCorrect, questionType, correctAns
 			hintDetails.style.marginTop = "10px";
 
 			const hintSummary = document.createElement("summary");
-			hintSummary.textContent = "Get Feedback";
+			hintSummary.textContent = bookI18n.t("exercises.getFeedback");
 			hintSummary.style.cursor = "pointer";
 
 			hintDetails.appendChild(hintSummary);
@@ -802,7 +802,7 @@ function updateResultMessage(messageElement, isCorrect, questionType, correctAns
 
 		const summaryText = `
 			<span style="color: #edb313;">
-				Compare your answer with the suggested solution below
+				${bookI18n.t("exercises.compareSolution")}
 			</span>
 		`;
 
@@ -811,7 +811,7 @@ function updateResultMessage(messageElement, isCorrect, questionType, correctAns
 
 		const solutionSummary = document.createElement("summary");
 		solutionSummary.style.cursor = "pointer";
-		solutionSummary.textContent = "Show Suggested Solution";
+		solutionSummary.textContent = bookI18n.t("exercises.showSolution");
 
 		const solutionContent = document.createElement("div");
 		solutionContent.classList.add("solution-box");
@@ -835,7 +835,7 @@ function updateResultMessage(messageElement, isCorrect, questionType, correctAns
 			hintDetails.style.marginTop = "10px";
 
 			const hintSummary = document.createElement("summary");
-			hintSummary.textContent = "Get Feedback";
+			hintSummary.textContent = bookI18n.t("exercises.getFeedback");
 			hintSummary.style.cursor = "pointer";
 
 			hintDetails.appendChild(hintSummary);
@@ -875,7 +875,7 @@ function getTestcasesContainer(form, inputArray, outputArray, actualOutput, part
 		const testcaseButton = document.createElement("button");
 		testcaseButton.type = "button";
 		testcaseButton.id = "testcase" + (i+1);
-		testcaseButton.innerHTML = `Case ${i + 1}`;
+		testcaseButton.textContent = bookI18n.t("exercises.testcase", { n: i + 1 });
 		testcaseButton.classList.add("testcase-button");
 		testcaseButtonContainer.appendChild(testcaseButton);
 
@@ -890,7 +890,7 @@ function getTestcasesContainer(form, inputArray, outputArray, actualOutput, part
 
 		if (inputArray[i] != ""){
 			const inputPara = document.createElement("p");
-			inputPara.innerHTML = `<strong>Input:</strong>`;
+			inputPara.innerHTML = `<strong>${bookI18n.t("exercises.input")}</strong>`;
 			testcaseDiv.appendChild(inputPara);
 
 			const preInput = document.createElement("pre");
@@ -901,8 +901,8 @@ function getTestcasesContainer(form, inputArray, outputArray, actualOutput, part
 		const diff = diffCheckExercises(expected, actual);
 
 		const outputPara = document.createElement("p");
-		if (outputArray[i].length > 1) outputPara.innerHTML = `<strong>Expected Outputs:</strong>`;
-		else outputPara.innerHTML = `<strong>Expected Output:</strong>`;
+		if (outputArray[i].length > 1) outputPara.innerHTML = `<strong>${bookI18n.t("exercises.expectedOutputs")}</strong>`;
+		else outputPara.innerHTML = `<strong>${bookI18n.t("exercises.expectedOutput")}</strong>`;
 		testcaseDiv.appendChild(outputPara);
 
 		outputArray[i].forEach((i) => {
@@ -912,7 +912,7 @@ function getTestcasesContainer(form, inputArray, outputArray, actualOutput, part
 		});
 
 		const actualPara = document.createElement("p");
-		actualPara.innerHTML = `<strong>Actual Output:</strong>`;
+		actualPara.innerHTML = `<strong>${bookI18n.t("exercises.actualOutput")}</strong>`;
 		testcaseDiv.appendChild(actualPara);
 
 		const preActual = document.createElement("pre");
@@ -920,10 +920,10 @@ function getTestcasesContainer(form, inputArray, outputArray, actualOutput, part
 		testcaseDiv.appendChild(preActual);
 
 		const resultPara = document.createElement("p");
-		const resultText = passed ? "Passed" : "Failed";
+		const resultText = bookI18n.t(passed ? "exercises.passed" : "exercises.failed");
 		const resultColor = passed ? "green" : "red";
 		resultPara.innerHTML = `
-			<strong>Result:</strong> 
+			<strong>${bookI18n.t("exercises.result")}</strong> 
 			<span style="color: ${resultColor};">
 				${resultText}
 			</span>

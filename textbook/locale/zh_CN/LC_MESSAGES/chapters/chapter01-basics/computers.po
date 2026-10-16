@@ -1,0 +1,48 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-16 14:33-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+msgid "Basic Computer Structure"
+msgstr ""
+
+msgid "As you already know a program is a sequence of instructions to be executed by a computer. Several components in the computer help execute a program."
+msgstr ""
+
+msgid "The basic structure of a computer"
+msgstr ""
+
+msgid "The basic structure of a computer [^1]."
+msgstr ""
+
+msgid "The **main memory** stores the data and instructions that are currently being executed."
+msgstr ""
+
+msgid "The **central processing unit (CPU)** executes instructions of a program. The CPU fetches instructions from the main memory, decodes them and execute them. Some instructions may require writing and reading data to and from the main memory. The CPU has two main components: arithmetic logic unit (ALU) and control unit (CU). The ALU is responsible for executing arithmetic operations such as addition and subtraction and logical operations such as comparisons $<$, $>$, etc., while the control unit is responsible for controlling the execution of instructions."
+msgstr ""
+
+msgid "Some instructions executed require accessing **input and output (I/O) devices.** These devices are used to communicate with the outside world, for example, to take input from a user from a keyboard, or to provide output to a user on a monitor."
+msgstr ""
+
+msgid "Next, let's get started on how to write a program in C++."
+msgstr ""
+
+msgid "Image taken from [Snefru: Learning Programming with C](https://learningc.org/chapters/chapter01-computers/basic-structure)."
+msgstr ""
+

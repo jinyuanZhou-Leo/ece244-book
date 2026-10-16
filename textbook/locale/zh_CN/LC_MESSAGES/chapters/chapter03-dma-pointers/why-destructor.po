@@ -1,0 +1,47 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-16 14:33-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+msgid "Why do we need destructors?"
+msgstr ""
+
+msgid "We understand that constructors are needed to initialize data members of an object at the time of instantiation. But why do we need destructors? The destructor is called when an object goes out of scope or is explicitly deleted, and it is used to clean up resources that the object may have acquired during its lifetime, such as dynamically allocated memory."
+msgstr ""
+
+#, python-brace-format
+msgid "For example, in {numref}`memory-leak-student-grades`, we will dynamically allocate an array of integers in the constructor. As we instantiate an object using `Student x(3)`, the constructor will dynamically allocate an array of 3 integers. However, as the object `x` goes out of scope, a memory leak occurs as the dynamically allocated array is not freed."
+msgstr ""
+
+msgid "Memory leak in Student class"
+msgstr ""
+
+msgid "Dynamically allocating memory in a `Student` object. Once it goes out of scope, a memory leak happens as we didn't free that dynamically allocated space."
+msgstr ""
+
+#, python-brace-format
+msgid "The solution to that issue is to write a destructor that takes cares of freeing the dynamically allocated memory. In {numref}`destructor-free-grades`, we define a destructor `~Student()` that frees the dynamically allocated array of integers. Now, when the object `x` goes out of scope, the destructor is automatically called, and the memory allocated for the array is freed, preventing a memory leak."
+msgstr ""
+
+msgid "No leaks"
+msgstr ""
+
+msgid "Dynamically allocating memory in a `Student` object gets freed in the destructor. This avoid memory leaks when object `x` goes out of scope."
+msgstr ""
+

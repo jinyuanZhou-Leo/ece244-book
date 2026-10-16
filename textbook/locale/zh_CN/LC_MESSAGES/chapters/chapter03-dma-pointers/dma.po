@@ -1,0 +1,156 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-16 14:33-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+msgid "Freeing an Object from Memory Explicitly"
+msgstr ""
+
+msgid "In the previous chapter, we discuss that when an object is created, the constructor is called, and when it goes out of scope, the destructor is called **automatically**. However, in another case, if the object was dynamically allocated, the destructor is **explicitly** called when an object is freed. We need to recap dynamic memory allocation before we look at an example of this case."
+msgstr ""
+
+msgid "Recap: Dynamic Memory Allocation"
+msgstr ""
+
+msgid "**What happens when a program runs?** A computer allocates memory in Random Access Memory (RAM) (or another named is main memory) for the program's variables and objects. There are four segments in this memory:"
+msgstr ""
+
+msgid "**Stack:** Stores the local variables and objects of a function"
+msgstr ""
+
+msgid "**Heap:** Stores the dynamically allocated memory,"
+msgstr ""
+
+msgid "**Globals + Const variables:** Stores the constants and global variables of your program"
+msgstr ""
+
+msgid "**Code:** Stores the instructions of the program"
+msgstr ""
+
+msgid "In the following example, we will see the stack get used to store local variables and the heap to store dynamically allocated memory."
+msgstr ""
+
+msgid "**Step 1: Stack Only**"
+msgstr ""
+
+#, python-brace-format
+msgid "In {numref}`step1-stack-only`, in the first two lines, we declare and initialize `x` to 10 and declare and initialize pointer `p` of type `int*` to `NULL`. Both `x` and `p` are stored in the stack as they are local variables."
+msgstr ""
+
+msgid "In `p = &x`, we use the **reference operator `&`** before `x` to get the address of `x` and we store it in `p`. Using `p`, we can now gain access to `x`."
+msgstr ""
+
+msgid "In `*p = 5`, we use the **deference operator `*`** before `p` to dereference it, which means we access the value stored at the address that `p` points to. We can say \"we dereference the reference to `x`,\" which is `x`. This changes the line `*p = 5` $\\rightarrow$ `*(&x) = 5` $\\rightarrow$ `x = 5`, allowing allows us to change the value of `x` to 5."
+msgstr ""
+
+msgid "**Code in `main.cpp`**"
+msgstr ""
+
+msgid "Step 1"
+msgstr ""
+
+msgid "The stack stores local variables: `int x` and `int* p`, where `p` stores the address of `x` in the stack, and then through `p` we change the value of `x` from 10 to 5."
+msgstr ""
+
+msgid "**Step 2: Dynamic Memory Allocation**"
+msgstr ""
+
+#, python-brace-format
+msgid "In {numref}`step2-allocate`, we dynamically allocate memory for an integer using the `new` operator. The `new` operator allocates memory on the heap, and it returns the address to that memory. Hence, in `p = new int`, `p` now points to the heap memory where the integer is stored. We can access the value stored in that memory using `*p`."
+msgstr ""
+
+msgid "In `*p = 20`, we again dereference `p` to change the value stored in the heap memory to 20."
+msgstr ""
+
+msgid "Step 2"
+msgstr ""
+
+msgid "Dynamically allocating memory using `new` operator. The pointer `p` now points to the heap memory where the integer is stored, and we can access it using `*p`."
+msgstr ""
+
+msgid "**Step 3: Freeing Memory**"
+msgstr ""
+
+#, python-brace-format
+msgid "In {numref}`step3-delete`, we free the dynamically allocated memory using the `delete` operator. The `delete` keyword requires we put the address that we want to free. In our case, this is the variable that stores the address on the heap, *i.e.* `p`. After this line, `p` still points to the same address, but that memory is no longer valid for use, and accessing it will lead to undefined behavior. `p` is now called a dangling pointer. This memory location is \"freed\" as shown in the image."
+msgstr ""
+
+msgid "Step 3"
+msgstr ""
+
+msgid "We free the dynamically allocated memory using the `delete` operator. This frees the memory back to the heap."
+msgstr ""
+
+msgid "**Step 4: Resolve Dangling Pointer**"
+msgstr ""
+
+msgid "To resolve the dangling pointer issue, we set `p` to `NULL` after freeing the memory. This way, we can check if `p` is `NULL` before dereferencing it in the future, preventing undefined behavior."
+msgstr ""
+
+msgid "Step 4"
+msgstr ""
+
+msgid "It's a good practice to always set the pointer to `NULL` after freeing the memory to avoid dangling pointer issues."
+msgstr ""
+
+msgid "**Try out this!**"
+msgstr ""
+
+msgid "Please try out the following interactive visualization to see how the stack and heap memory change along with annotations as we dynamically allocate and free memory."
+msgstr ""
+
+msgid "#include &lt;iostream&gt;     using namespace std;"
+msgstr ""
+
+msgid "Dynamic Memory Allocation of Arrays"
+msgstr ""
+
+msgid "To dynamically allocate an integer, we use"
+msgstr ""
+
+msgid ", but to dynamically allocate an array of integers, we use"
+msgstr ""
+
+msgid ", where `size` is the number of elements in the array. The `new` operator allocates memory for the array on the heap and returns a pointer to the first element of the array."
+msgstr ""
+
+msgid "For freeing, to free the dynamically allocated integer that was allocated using `int* p = new int`, we use"
+msgstr ""
+
+msgid "To free the dynamically allocated array that was allocated using `int* p = new int[size]`, we use"
+msgstr ""
+
+msgid "Notice the `[]` after `delete`, which indicates that we are freeing an array. This is important to ensures that entire array is freed."
+msgstr ""
+
+msgid "Explicitly Calling Destructor"
+msgstr ""
+
+msgid "Objects can also be dynamically allocated using the `new` operator. When an object is created dynamically, its constructor is called. For example, if we have a class named `Student`, we can dynamically allocate an object and store its address in a pointer `p` using"
+msgstr ""
+
+msgid "However, to free the memory of the object, the destructor is explicitly called when the `delete` operator is used. The destructor is called on the object before the memory gets released. For example, the following line will call the destructor of the `Student` class:"
+msgstr ""
+
+msgid "You can try out the following code to see how the constructor and destructor are called when an object is dynamically allocated and freed."
+msgstr ""
+
+msgid "**Code in `main.cpp`** {{code_runner_header}}"
+msgstr ""
+

@@ -1,0 +1,156 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-16 14:33-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+msgid "When do we need to implement a copy constructor?"
+msgstr ""
+
+msgid "In the previous section, we discussed that C++ provides a default copy constructor that copies every data member of an existing object into the new object. This member-wise copy works well for a `Student` with a `name` and an `ID`. In this section, we will see that it causes serious problems when a data member is a pointer to dynamically allocated memory, and we will implement our own copy constructor to fix them."
+msgstr ""
+
+msgid "Recap: `Student` with dynamically allocated grades"
+msgstr ""
+
+msgid "Recall from the Dynamic Memory Allocation chapter that a `Student` can store its grades in an array that is dynamically allocated in the constructor. The size of the array is only known when the object is created. The destructor frees the array when the object goes out of scope, so there is no memory leak."
+msgstr ""
+
+msgid "In the following code, we create a `Student x` with 3 grades, then create `y` as a copy of `x`. We did **not** define a copy constructor, so the default copy constructor is called."
+msgstr ""
+
+msgid "**Code** {{code_runner_header}}"
+msgstr ""
+
+msgid "**[Line 9 to 15]** The constructor sets `numGrades`, dynamically allocates an array of `numGrades` integers, and sets every grade to `0`."
+msgstr ""
+
+msgid "**[Line 16 to 18]** The destructor frees the dynamically allocated array."
+msgstr ""
+
+msgid "**[Line 33]** `y` is created as a copy of `x` using the default copy constructor."
+msgstr ""
+
+msgid "**[Line 34]** We change the first grade of `y` to `70`. We never changed the grades of `x` after setting its first grade to `90`."
+msgstr ""
+
+msgid "**Output**"
+msgstr ""
+
+msgid "The problem with the default copy constructor"
+msgstr ""
+
+msgid "**<span style=\"color:red\">Problem 1: the grades are shared!</span>** The output shows that the first grade of `x` is `70`, although we only changed the grades of `y`."
+msgstr ""
+
+#, python-brace-format
+msgid "The default copy constructor copies each data member of `x` into `y`. The data member `grades` is a pointer, so the default copy constructor copies the **address** stored in `x.grades` into `y.grades`. It does not copy the array that `x.grades` points to. As we show in {numref}`shallow-copy-a`, `x.grades` and `y.grades` now point to the same array on the heap."
+msgstr ""
+
+msgid "x.grades and y.grades point to the same array"
+msgstr ""
+
+msgid "The default copy constructor copies the address stored in `x.grades` into `y.grades`. Both pointers point to the same array on the heap."
+msgstr ""
+
+#, python-brace-format
+msgid "When we change a grade of `y` in line 34, we change the only array there is. In {numref}`shallow-copy-b`, we see that this change also appears when we print the grades of `x`."
+msgstr ""
+
+msgid "Changing y also changes x"
+msgstr ""
+
+msgid "`y.setGrade(0, 70)` changes the first element of the shared array, so the first grade of `x` also becomes `70`."
+msgstr ""
+
+#, python-brace-format
+msgid "**<span style=\"color:red\">Problem 2: the array is freed twice!</span>** When `main` returns, `x` and `y` go out of scope, and the destructor of each object is called. Objects on the stack are destroyed in the reverse order of their creation, so `y` is destroyed first. As we show in {numref}`shallow-copy-c`, the destructor of `y` frees the array. `x.grades` still stores the address of the freed array."
+msgstr ""
+
+msgid "y frees the shared array"
+msgstr ""
+
+msgid "`y` goes out of scope first, and its destructor frees the shared array. `x.grades` now points to memory that has been freed."
+msgstr ""
+
+msgid "Next, the destructor of `x` is called, and it executes `delete[] grades;` on the same address again. **Freeing the same memory twice is undefined behavior.** In practice, the program usually crashes after printing its output. If you run the code above, you may see an error such as `free(): double free detected in tcache 2` after the output."
+msgstr ""
+
+msgid "**Try out this!** Step through the code below. After line 33, the arrows from `x.grades` and `y.grades` point to the same array on the heap. When `main` returns, the destructor of `y` frees this array, and the destructor of `x` tries to free it again. The visualizer stops at that line with the error `Invalid free() / delete / delete[]`."
+msgstr ""
+
+#, python-brace-format
+msgid "class Student {     private:       int* grades;       int numGrades;     public:       Student(int n) {         numGrades = n;         grades = new int[numGrades];         for (int i = 0; i &lt; numGrades; i++) {           grades[i] = 0;         }       }       ~Student() {         delete[] grades;       }       void setGrade(int index, int grade) {         grades[index] = grade;       }       void print() {         for (int i = 0; i &lt; numGrades; i++) {           cout &lt;&lt; grades[i] &lt;&lt; \" \";         }         cout &lt;&lt; endl;       }   };"
+msgstr ""
+
+#, python-brace-format
+msgid "int main(void) {     Student x(3);     x.setGrade(0, 90);     Student y = x; // Default copy constructor     y.setGrade(0, 70);     cout &lt;&lt; \"x: \";     x.print();     cout &lt;&lt; \"y: \";     y.print();     return 0;   } </c-visualizer>"
+msgstr ""
+
+msgid "Shallow copy"
+msgstr ""
+
+msgid "A copy that only copies the pointers, and not the memory they point to, is called a **shallow copy**. The default copy constructor makes a shallow copy. After a shallow copy, two objects share the same dynamically allocated memory:"
+msgstr ""
+
+msgid "changing the memory through one object changes it for the other object, and"
+msgstr ""
+
+msgid "both destructors free the same memory."
+msgstr ""
+
+msgid "Deep copy"
+msgstr ""
+
+msgid "**<span style=\"color:green\">Solution.</span>** We implement our own copy constructor that makes a **deep copy**: instead of copying the address, it allocates a **new** array for the new object and copies every element of the existing array into it."
+msgstr ""
+
+msgid "**Code in `Student` class**"
+msgstr ""
+
+msgid "**Line 2.** We copy the number of grades. `numGrades` is an `int`, so copying its value is all we need."
+msgstr ""
+
+msgid "**Line 3.** We dynamically allocate a new array for the object being created. `grades` now points to this new array, not to the array of `other`."
+msgstr ""
+
+msgid "**Line 4 to 6.** We copy every grade from the array of `other` into the new array."
+msgstr ""
+
+msgid "We add the copy constructor to the `Student` class and run the same `main` function again."
+msgstr ""
+
+#, python-brace-format
+msgid "In line 40, our copy constructor is called to create `y`. As we show in {numref}`deep-copy`, `x` and `y` now have their own arrays. Changing a grade of `y` does not change the grades of `x`, and when `x` and `y` go out of scope, each destructor frees a different array. The program ends without errors."
+msgstr ""
+
+msgid "x and y have their own arrays"
+msgstr ""
+
+msgid "Our copy constructor allocates a new array for `y` and copies the grades of `x` into it. `x.grades` and `y.grades` point to different arrays."
+msgstr ""
+
+msgid "**Compare the two.** Step through `main` below with the default copy constructor and with ours. You can switch between them at any step to see how the memory differs."
+msgstr ""
+
+msgid "**In short, if a class has a pointer to dynamically allocated memory, we need to implement a copy constructor that makes a deep copy.** Otherwise, the default copy constructor makes a shallow copy, and the copies share the same memory."
+msgstr ""
+
+msgid "In the next section, we will see that the default `operator=` has the same problem, and we will implement our own."
+msgstr ""
+

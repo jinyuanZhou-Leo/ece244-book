@@ -1,6 +1,8 @@
 .DS_Store
 Untitled.rtf
 textbook/_build
+# Compiled translations (Sphinx builds them from the .po files)
+textbook/locale/**/*.mo
 .vscode/
 textbook/code/*/*/build/
 *.mp4

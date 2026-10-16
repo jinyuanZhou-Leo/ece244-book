@@ -1,0 +1,197 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-16 14:33-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+msgid "Implementing the Assignment Operator"
+msgstr ""
+
+msgid "In the previous section, we implemented a copy constructor that makes a deep copy of a `Student` with dynamically allocated grades. However, the copy constructor is only called when a **new** object is created. When we assign one **existing** object to another, *e.g.* `y = x;`, `operator=` is called instead. In this section, we will see that the default `operator=` makes a shallow copy too, and we will implement our own."
+msgstr ""
+
+msgid "The problem with the default `operator=`"
+msgstr ""
+
+msgid "Recall from the Operator Overloading chapter that C++ provides a default `operator=` that assigns every data member of the right-hand side object to the corresponding data member of the left-hand side object. In the following code, `Student` has the copy constructor from the previous section, but no `operator=`."
+msgstr ""
+
+msgid "**Code** {{code_runner_header}}"
+msgstr ""
+
+msgid "**[Line 40]** `y` is created using the constructor `Student(int n)`, so it has its own array of 2 grades."
+msgstr ""
+
+msgid "**[Line 41]** `y` already exists, so `y = x;` calls `operator=`, not the copy constructor. We did not implement `operator=`, so the default `operator=` is called."
+msgstr ""
+
+msgid "**Output**"
+msgstr ""
+
+msgid "The default `operator=` copies the address stored in `x.grades` into `y.grades`, just like the default copy constructor. As a result, we get the same two problems we saw in the previous section: `x` and `y` share the same array, and both destructors free it when `main` returns, which usually crashes the program after the output is printed."
+msgstr ""
+
+#, python-brace-format
+msgid "**<span style=\"color:red\">Problem 3: memory leak!</span>** There is one more problem. Before line 41, `y.grades` pointed to the array of 2 grades that the constructor of `y` allocated. The default `operator=` overwrote `y.grades` with the address of the array of `x`, so no pointer stores the address of the old array of `y` anymore. As we show in {numref}`assignment-leak`, this array can never be freed."
+msgstr ""
+
+msgid "Memory leak after the default operator="
+msgstr ""
+
+msgid "After `y = x;` with the default `operator=`, `x.grades` and `y.grades` point to the same array, and the old array of `y` is leaked."
+msgstr ""
+
+msgid "Implementing `operator=` with a deep copy"
+msgstr ""
+
+msgid "**<span style=\"color:green\">Solution.</span>** We implement our own `operator=`. Compared to the copy constructor, `operator=` has one extra job: the left-hand side object already exists, so it already owns an array that we must free before we allocate a new one."
+msgstr ""
+
+msgid "**Step 1: Write the function header**"
+msgstr ""
+
+msgid "As we discussed in the Operator Overloading chapter, `y = x` is interpreted as `y.operator=(x)`. `operator=` is a member function that takes the right-hand side object as a `const` reference and returns a reference to the left-hand side object to allow chained assignments, *e.g.* `z = y = x;`."
+msgstr ""
+
+msgid "**Step 2: Free the old array**"
+msgstr ""
+
+#, python-brace-format
+msgid "The left-hand side object, `y`, will receive a copy of the grades of `rhs`, so it no longer needs its old array. We free it using `delete[] grades;`, as we show in {numref}`deep-assignment-a`."
+msgstr ""
+
+msgid "Free the old array of y"
+msgstr ""
+
+msgid "`delete[] grades;` frees the old array of `y`, so it is not leaked. `y.grades` still stores the address of the freed array until we change it in the next step."
+msgstr ""
+
+msgid "**Step 3: Allocate a new array and copy the grades**"
+msgstr ""
+
+#, python-brace-format
+msgid "Like the copy constructor, we copy `numGrades`, allocate a new array, and copy every grade from `rhs`, as we show in {numref}`deep-assignment-b`."
+msgstr ""
+
+msgid "Allocate a new array for y and copy the grades"
+msgstr ""
+
+msgid "`y.grades` now points to a new array that holds a copy of the grades of `x`. `x` and `y` have their own arrays."
+msgstr ""
+
+msgid "**Step 4: Return the left-hand side object**"
+msgstr ""
+
+msgid "Finally, we return the left-hand side object using `return *this;`, as we did for `Complex` in the Operator Overloading chapter."
+msgstr ""
+
+msgid "Putting it all together:"
+msgstr ""
+
+msgid "**Code in `Student` class**"
+msgstr ""
+
+msgid "**Line 5.** We free the old array of the left-hand side object (Step 2)."
+msgstr ""
+
+msgid "**Line 6 to 10.** We make a deep copy of `rhs`, exactly as in the copy constructor (Step 3)."
+msgstr ""
+
+msgid "**Line 11.** We return the left-hand side object (Step 4)."
+msgstr ""
+
+msgid "Self-assignment"
+msgstr ""
+
+msgid "**What are lines 2 to 4 for?** They handle **self-assignment**, where an object is assigned to itself, *e.g.* `x = x;`. You will rarely write `x = x;` directly, but it can happen indirectly, *e.g.* `arr[i] = arr[j];` when `i` and `j` are equal."
+msgstr ""
+
+msgid "**<span style=\"color:red\">Problem!</span>** Without lines 2 to 4, `x = x;` would execute `delete[] grades;` and free the array of `x`. Since `rhs` is `x` itself, `rhs.grades` and `grades` are the same data member. After line 7 allocates a new array, both refer to this new array, which holds garbage values. Lines 8 to 10 then copy the garbage values into themselves, and the original grades of `x` are lost."
+msgstr ""
+
+msgid "**<span style=\"color:green\">Solution.</span>** In line 2, we compare the address of the left-hand side object, `this`, with the address of the right-hand side object, `&rhs`. If they are equal, the object is assigned to itself, and there is nothing to copy. We return immediately in line 3."
+msgstr ""
+
+msgid "**Try both.** Step through `x = x;` for a `Student x` with the grades `90 85 70`, with and without lines 2 to 4."
+msgstr ""
+
+msgid "We add `operator=` to the `Student` class and run the same `main` function again."
+msgstr ""
+
+msgid "In line 53, our `operator=` is called. `x` and `y` have their own arrays, the old array of `y` is freed, and each destructor frees a different array when `main` returns. The program ends without errors or memory leaks."
+msgstr ""
+
+msgid "**Try out this!** Step through the code below and follow Steps 2 to 4 of our `operator=` on the heap. The old array of `y` is freed, a new array of 3 grades is allocated, and the grades of `x` are copied into it. At the end, `x.grades` and `y.grades` point to different arrays."
+msgstr ""
+
+#, python-brace-format
+msgid "class Student {     private:       int* grades;       int numGrades;     public:       Student(int n) {         numGrades = n;         grades = new int[numGrades];         for (int i = 0; i &lt; numGrades; i++) {           grades[i] = 0;         }       }       Student(const Student&amp; other) {         numGrades = other.numGrades;         grades = new int[numGrades];         for (int i = 0; i &lt; numGrades; i++) {           grades[i] = other.grades[i];         }       }       Student&amp; operator=(const Student&amp; rhs) {         if (this == &amp;rhs) {           return *this;         }         delete[] grades;         numGrades = rhs.numGrades;         grades = new int[numGrades];         for (int i = 0; i &lt; numGrades; i++) {           grades[i] = rhs.grades[i];         }         return *this;       }       ~Student() {         delete[] grades;       }       void setGrade(int index, int grade) {         grades[index] = grade;       }       void print() {         for (int i = 0; i &lt; numGrades; i++) {           cout &lt;&lt; grades[i] &lt;&lt; \" \";         }         cout &lt;&lt; endl;       }   };"
+msgstr ""
+
+#, python-brace-format
+msgid "int main(void) {     Student x(3);     x.setGrade(0, 90);     Student y(2);     y = x; // Our operator=     y.setGrade(0, 70);     cout &lt;&lt; \"x: \";     x.print();     cout &lt;&lt; \"y: \";     y.print();     return 0;   } </c-visualizer>"
+msgstr ""
+
+msgid "The Rule of Three"
+msgstr ""
+
+msgid "Look at the three member functions we implemented for `Student`:"
+msgstr ""
+
+msgid "The **destructor** frees the dynamically allocated memory that the object owns."
+msgstr ""
+
+msgid "The **copy constructor** makes a deep copy when a new object is created from an existing object."
+msgstr ""
+
+msgid "**`operator=`** frees the old memory of an existing object, then makes a deep copy into it."
+msgstr ""
+
+msgid "All three are needed for the same reason: the object owns dynamically allocated memory, and the default versions provided by C++ do not manage it correctly. This leads to a well-known guideline."
+msgstr ""
+
+msgid "If a class needs a user-defined destructor, copy constructor, or `operator=`, it almost certainly needs **all three**."
+msgstr ""
+
+msgid "In practice, if your class has a pointer to memory that it dynamically allocates, start by writing the destructor, the copy constructor, and `operator=` together."
+msgstr ""
+
+msgid "Summary"
+msgstr ""
+
+msgid "In this chapter, we have learned:"
+msgstr ""
+
+msgid "the copy constructor is called when a new object is created from an existing object, including when an object is passed or returned by value,"
+msgstr ""
+
+msgid "the default copy constructor and the default `operator=` copy each data member, which makes a shallow copy of pointers,"
+msgstr ""
+
+msgid "how to implement a copy constructor that makes a deep copy,"
+msgstr ""
+
+msgid "how to implement `operator=` that frees the old memory, handles self-assignment, and makes a deep copy, and"
+msgstr ""
+
+msgid "the Rule of Three."
+msgstr ""
+
+msgid "In the next chapter, we will use these ideas to build linked lists, where objects point to other dynamically allocated objects."
+msgstr ""
+

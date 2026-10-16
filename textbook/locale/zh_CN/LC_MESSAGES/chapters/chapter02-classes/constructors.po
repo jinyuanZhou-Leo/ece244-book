@@ -1,0 +1,138 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-16 14:33-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+msgid "Constructors"
+msgstr ""
+
+msgid "In the previous section, we learned about classes and how to define them. We discussed access modifiers: private and public, and the need for getter and setter functions to access and modify private members. In this section, we will learn about constructors, which are special member functions of a class that are called when an object of the class is instantiated. Constructors are used to initialize the members of a class when an object is created."
+msgstr ""
+
+msgid "Default Constructor"
+msgstr ""
+
+msgid "Recall the example of the `Student` class, we used in the previous section."
+msgstr ""
+
+msgid "**Code in `Student.h`**"
+msgstr ""
+
+msgid "**Code in `Student.cpp`**"
+msgstr ""
+
+msgid "**Code in `main.cpp`**"
+msgstr ""
+
+msgid "**<span style=\"color:red\">Problem:</span>** When we run this program, we get unpredictable output like:"
+msgstr ""
+
+msgid "**<span style=\"color:blue\">Alternative Approach</span>** We could add a `setID()` function and call it after creating the object:"
+msgstr ""
+
+msgid "**<span style=\"color:green\">Solution:</span>** 🎊 What if there was a way to guarantee that every `Student` object starts with initialized data member, automatically? Let's use the constructor - a special function that is called every time you create an object, ensuring it's always in a good state."
+msgstr ""
+
+msgid "The constructor"
+msgstr ""
+
+msgid "is a special function called when an object is created,"
+msgstr ""
+
+msgid "is never called explicitly"
+msgstr ""
+
+msgid "by default is empty and hence does nothing"
+msgstr ""
+
+msgid "has the same name as the class"
+msgstr ""
+
+msgid "has no return type (not even `void`)"
+msgstr ""
+
+msgid "should be a public member if you want to create objects from the class"
+msgstr ""
+
+msgid "Let's define a constructor for the `Student` class to initialize the `name` and `ID` members. Below in `Student.h` file, in line 10, we add the constructor declaration to the `Student` class. The constructor is a function with the **same name as the class and no return type**."
+msgstr ""
+
+msgid "In `Student.cpp` file, we add the constructor implementation for the `Student` class. No return type is specified for the constructor. We are setting the value of `ID` to `0` and `name` to `\"no name\"` in the default constructor."
+msgstr ""
+
+msgid "In `main.cpp` file, we create an object `x` of the `Student` class. The constructor is called automatically when the object is created. The value of `name` and `ID` are initialized to `\"no name\"` and `0`, respectively. The output of the program is now defined."
+msgstr ""
+
+msgid "**Output**"
+msgstr ""
+
+msgid "Note"
+msgstr ""
+
+msgid "`Student y[10];` creates an array of **10** `Student` objects. The constructor is called for each object in the array, *i.e.*, the constructor is called 10 times."
+msgstr ""
+
+msgid "Warning"
+msgstr ""
+
+msgid "`Student *z;` declares a pointer variable but creates no Student object. Since no object is created, no constructor is called. **Constructors run when objects are created, not when pointers are declared.**"
+msgstr ""
+
+msgid "Other Constructors"
+msgstr ""
+
+msgid "As we have seen, the default constructor takes **no parameters**, and hence we could only set `ID` and `name` to pre-known values hardcoded in the constructor implementation. *What if we want to initialize the members of a class with particular values when an object is created?* We can define our own constructor that takes in parameters. These are called **parameterized constructors**."
+msgstr ""
+
+msgid "Below in `Student.h` file, we add two more constructors to the `Student` class. The first constructor in line 7 takes an integer parameter `id` and initializes the `ID` member with the value of `id`, and sets the `name` member to `\"no name\"`."
+msgstr ""
+
+msgid "The second constructor in line 8 takes an integer parameter `id` and a string parameter `n` and initializes the `ID` and `name` members with the values of `id` and `n`, respectively."
+msgstr ""
+
+msgid "In `Student.cpp` file, we add the implementation for the two new constructors. The first constructor in lines 10-13 initializes the `ID` member with the value of `id` and sets the `name` member to `\"no name\"`."
+msgstr ""
+
+msgid "The second constructor in lines 15-18 initializes the `ID` and `name` members with the values of `id` and `n`, respectively."
+msgstr ""
+
+msgid "In the main function, we create three objects `x`, `y`, and `z` of the `Student` class. The default constructor is called for object `x`, the first constructor is called for object `y`, and the second constructor is called for object `z`. The value of `name` and `ID` members are initialized accordingly as shown in the output."
+msgstr ""
+
+msgid "How is it possible to have multiple constructors with the same name but different numbers of parameters?"
+msgstr ""
+
+msgid "The constructors are distinguished by the number of parameters passed to them. The compiler determines which constructor to call based on the number of parameters passed to it. Defining multiple constructors with the same name but different number of parameters is called **function overloading**. This is used for other functions as well, not just constructors. For example, you could have `print(int x)` and `print(string s)` in the same class."
+msgstr ""
+
+msgid "Important!"
+msgstr ""
+
+msgid "If the default constructor is not defined, the compiler will provide one."
+msgstr ""
+
+msgid "However, if any constructor is defined, for example, the first constructor in the example above, the compiler will not provide the default constructor. In that case, for example, `Student x;` will result in a compilation error as the default constructor `Student::Student()` is not defined."
+msgstr ""
+
+msgid "Summary"
+msgstr ""
+
+msgid "We discuss a way to initialize class data members when creating objects to avoid calling multiple setters. We can have multiple constructors with different parameters (overloading). If you define any constructor, you must also define a default one if you want to use it."
+msgstr ""
+

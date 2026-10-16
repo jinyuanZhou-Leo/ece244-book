@@ -1,0 +1,57 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-16 14:33-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+msgid "Preface"
+msgstr "前言"
+
+msgid "Book Chapters"
+msgstr "章节"
+
+msgid "Hidden Pages"
+msgstr "隐藏页面"
+
+msgid "Khufu: Object-Oriented Programming using C++"
+msgstr "Khufu：使用 C++ 进行面向对象编程"
+
+msgid "Welcome to the first edition of *Khufu: Object-Oriented Programming using C++* book. This textbook is a successor of [*Snefru: Learning Programming with C*](https://www.learningc.org)."
+msgstr "欢迎阅读 *Khufu：使用 C++ 进行面向对象编程* 第一版。本书是 [*Snefru：用 C 语言学习编程*](https://www.learningc.org) 的续作。"
+
+msgid "This textbook only has exercise questions. It is tailored for students taking ECE 244: Programming Fundamentals at the University of Toronto, where the foundations of Object-Oriented Programming (OOP) using C++ programming language are discussed."
+msgstr "本书目前只包含练习题，面向多伦多大学 ECE 244：程序设计基础（Programming Fundamentals）课程的学生。该课程讲授使用 C++ 语言进行面向对象编程（OOP）的基础知识。"
+
+msgid "**Authors:** The exercises in this book are either taken from past exams in ECE 244 or designed by Salma Emara. The exercises at the end of each chapter were made interactive by Nora Liu, a third-year student at the University of Toronto. This resource is maintained by Salma Emara."
+msgstr "**作者：** 本书的练习题来自 ECE 244 往年考试，或由 Salma Emara 设计。每章末尾的交互式练习由多伦多大学三年级学生 Nora Liu 制作。本资源由 Salma Emara 维护。"
+
+msgid "Why **Snefru** and **Khufu**?"
+msgstr "为什么叫 **Snefru** 和 **Khufu**？"
+
+msgid "Snefru was a Pharaoh who ruled ancient Egypt during the Fourth Dynasty of the Old Kingdom, around 2600 BCE. Before his time, Egyptians primarily built step pyramids. Snefru led the construction of a transitional form, the Bent Pyramid, which starts at a 54-degree inclination but changes to a 43-degree angle halfway up, giving it a \"bent\" appearance. This alteration is believed to have been made during construction to prevent collapse, showcasing an iterative, learning-by-doing approach."
+msgstr "斯尼夫鲁（Snefru）是古埃及古王国第四王朝的法老，约公元前 2600 年在位。在他之前，埃及人主要建造阶梯金字塔。斯尼夫鲁主持修建了一种过渡形态——弯曲金字塔：塔身起初以 54 度倾斜，到一半高度时改为 43 度，因此看起来是“弯”的。人们认为这一改动是在施工过程中为防止坍塌而做出的，体现了一种迭代式、边做边学的方法。"
+
+msgid "Gaining from this experience, Snefru then led the construction of the Red Pyramid, Egypt's first successful \"true pyramid\" with smooth, straight sides. Each of these pyramids represented evolutionary steps in pyramid design, which were foundational for his son, Khufu, who went on to lead the construction of the Great Pyramid of Giza, the oldest of the Seven Wonders of the World."
+msgstr "吸取这些经验后，斯尼夫鲁又主持修建了红色金字塔——埃及第一座成功的、侧面平直光滑的“真正金字塔”。这些金字塔代表了金字塔设计的一步步演进，也为他的儿子胡夫（Khufu）打下了基础。胡夫后来主持修建了吉萨大金字塔，它是世界七大奇迹中最古老的一个。"
+
+msgid "Just as pyramid design in Snefru's and Khufu's eras was an iterative process marked by trial and error, learning programming follows a similar path. Without iteratively learning from your mistakes and experiences, progress cannot be made. This is the core message these books aim to impart to beginners in programming. Enjoy your journey of learning!"
+msgstr "正如斯尼夫鲁和胡夫时代的金字塔设计是一个不断试错、反复迭代的过程，学习编程也是如此。不从错误和经验中反复学习，就无法进步。这正是这两本书想要传达给编程初学者的核心理念。祝你学习愉快！"
+
+msgid "**Copyright 2023 Salma Emara.** Released under the <a rel=\"license\" href=\"https://creativecommons.org/licenses/by-nc-sa/4.0/\">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>."
+msgstr "**版权所有 2023 Salma Emara。** 本作品采用 <a rel=\"license\" href=\"https://creativecommons.org/licenses/by-nc-sa/4.0/\">知识共享 署名-非商业性使用-相同方式共享 4.0 国际许可协议</a> 发布。"
+

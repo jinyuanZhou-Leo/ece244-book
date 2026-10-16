@@ -1,0 +1,4 @@
+/* Header language switcher (i18n.js); reuses the theme's .menu-dropdown. */
+.menu-dropdown-language-buttons a[aria-current="true"] {
+  font-weight: bold;
+}

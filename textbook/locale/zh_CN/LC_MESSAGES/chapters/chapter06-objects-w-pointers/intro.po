@@ -1,0 +1,22 @@
+
+msgid ""
+msgstr ""
+"Project-Id-Version: Python \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-16 14:33-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+msgid "Objects with Pointers"
+msgstr ""
+
+msgid "In this chapter, we discuss the copy constructor, a special constructor that is called when we create an object from an existing object, including when an object is passed or returned by value. C++ gives every class a default copy constructor and a default `operator=`, unless we define our own. However, we will soon realize that in classes that have pointers to dynamically allocated memory, these defaults make shallow copies, and we need to define the class' own copy constructor, `operator=` and destructor. This guideline is known as the Rule of Three."
+msgstr ""
+

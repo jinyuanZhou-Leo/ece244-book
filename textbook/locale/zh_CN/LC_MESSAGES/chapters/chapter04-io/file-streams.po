@@ -1,0 +1,114 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Python \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-16 14:33-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+msgid "Input/Output Streams"
+msgstr ""
+
+msgid "A stream is a sequence of characters that flow from a source to a destination. The source or destination can be a *file*, the *keyboard*, the *console/terminal*, or a *string* in memory."
+msgstr ""
+
+msgid "Standard Input and Output Streams"
+msgstr ""
+
+msgid "The **standard input and output** streams for reading (taking input) from the keyboard and writing (producing output) to the console/terminal. The standard input stream is represented by the `cin` **object**, while the standard output stream is represented by the `cout` **object**. `cin` is an object of `istream` class, or input stream, and `cout` is part of the `ostream` class, or output stream. The `istream` and `ostream` are part of the `iostream` library, which is included in C++ programs using `#include <iostream>` directive."
+msgstr ""
+
+msgid "File Input and Output Streams"
+msgstr ""
+
+msgid "We can also read from and write to files using file input and output streams. The file input stream is represented by the `ifstream` class, while the file output stream is represented by the `ofstream` class. Both `ifstream` and `ofstream` are part of the `fstream` library, which is included in C++ programs using `#include <fstream>` directive."
+msgstr ""
+
+msgid "Writing/Outputting to a File"
+msgstr ""
+
+msgid "To write output to a file, we use an `ofstream` object. In the following code snippet, we create an `ofstream` object named **`outFile`** and open a file named `File.txt` for writing."
+msgstr ""
+
+msgid "We can open a file in two ways: by passing the file name as a parameter to the constructor of `ofstream` class as we do in the above example, or by calling the `open` method of the `ofstream` object on `outFile` after creating the object as shown below."
+msgstr ""
+
+msgid "**Where is the file created?**"
+msgstr ""
+
+msgid "If a file does not exist, it will be created when we open it for writing using `ofstream`. The file `File.txt` will be created in the current working directory of your program. The current working directory is usually the directory where your source code file is located or the directory from which you run your program."
+msgstr ""
+
+msgid "If you want to specify a different location for the file, you can provide an absolute or relative path in the file name when opening the file. For example, to create the file in a folder named `data` located in the current working directory, you can use:"
+msgstr ""
+
+msgid "If you want to create the file in a specific directory, you can provide the absolute path to that directory. For example, on a Unix-like system, you can use:"
+msgstr ""
+
+msgid "We can then use `outFile` object as we use `cout` to write the string `\"Hello, World!\"` to the file using the `<<` operator. For example, the following line writes the string to the file followed by a newline character."
+msgstr ""
+
+msgid "File Exists?"
+msgstr ""
+
+msgid "If the file already exists, opening it for writing will overwrite the existing content of the file. If we want to append data to an existing file instead of overwriting it, we can open the file in append mode by passing an additional parameter `ios::app` to the `open` method or the constructor of `ofstream` class."
+msgstr ""
+
+msgid "**Opening a file in append mode using `open` method**"
+msgstr ""
+
+msgid "Finally, we close the file using the `close` method of the `ofstream` object. Writing `outFile.close();` is important because it ensures that all data is properly written to the file. If we do not close the file, some data may remain in the **\"buffer\"** and not be written to the file."
+msgstr ""
+
+msgid "**Code Example**"
+msgstr ""
+
+msgid "In this example, we create an `ofstream` object named `outFile`, open a file named `File.txt` for writing, write the string `\"Hello, World!\"` to the file, and then close the file."
+msgstr ""
+
+msgid "**What is a buffer?**"
+msgstr ""
+
+msgid "When we write data to a file using an `ofstream` object or to the terminal using `cout`, the data is first stored in a buffer in memory. The buffer is a temporary storage area that holds the data before it is written to the file. The data in the buffer is written to the file or terminal when:"
+msgstr ""
+
+msgid "(i) the output has a newline character (`\\n`) or an end-of-line manipulator like `endl`, (ii) we explicitly call the `flush` method of the `ofstream` object using `outFile.flush()` or `cout.flush()`, or  (iii) we close the file using the `close` method."
+msgstr ""
+
+msgid "For example, `outFile << \"Hello, World!\";` writes the string to the buffer first. Then, when we write `outFile << endl;`, the buffer is flushed and the data is written to the file. This is done **for efficiency reasons, as writing data to a file or terminal can be slow, and buffering allows us to write larger chunks of data at once**."
+msgstr ""
+
+msgid "Reading/Inputting from a File"
+msgstr ""
+
+msgid "To read data from a file, we use an `ifstream` object. The following code snippet demonstrates how to open a file named `File.txt` for reading, read data from the file, and then close the file."
+msgstr ""
+
+msgid "In the above code snippet, we create an `ifstream` object named `inFile` and open the file `File.txt` for reading using the `open` method. We can also open the file by passing the file name to the constructor of `ifstream` class as shown in the comment."
+msgstr ""
+
+msgid "In line 8, we read two integers from the file using the `>>` operator (as we do with `cin`) and store them in the variables `num1` and `num2`. The `>>` operator reads data from the file and automatically skips any whitespace characters (spaces, tabs, or newlines) between the numbers. If the file `File.txt` contains the following two integers separated by a space or newline, then `num1` will be assigned the value `1` and `num2` will be assigned the value `2`."
+msgstr ""
+
+msgid "`File.txt`"
+msgstr ""
+
+msgid "In line 9, we print the values of `num1` and `num2` to the console using `cout`. Finally, we close the file using the `close` method of the `ifstream` object."
+msgstr ""
+
+msgid "Things can go wrong when reading from a file. For example, the file may not exist, or the data in the file may not be in the expected format. We will discuss error detection and handling in the next section."
+msgstr ""
+

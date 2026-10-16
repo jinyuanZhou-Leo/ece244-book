@@ -1,5 +1,5 @@
 [build]
-  command = "npm install && curl -LsSf https://astral.sh/uv/install.sh | sh && export PATH=\"$HOME/.local/bin:$PATH\" && uv sync --frozen && uv run jupyter-book build --all textbook && cp -r textbook/exercises/ textbook/_build/html/exercises && cp -r embeddings/outputs textbook/_build/html && cp -r textbook/semantic-search.html textbook/_build/html && cp -r textbook/trace/ textbook/_build/html"
+  command = "npm install && curl -LsSf https://astral.sh/uv/install.sh | sh && export PATH=\"$HOME/.local/bin:$PATH\" && uv sync --frozen && uv run jupyter-book build --all textbook && cp -r textbook/exercises/ textbook/_build/html/exercises && cp -r embeddings/outputs textbook/_build/html && cp -r textbook/semantic-search.html textbook/_build/html && cp -r textbook/trace/ textbook/_build/html && uv run python scripts/i18n.py build --all"
   publish = "textbook/_build/html"
   functions = "netlify/functions"
 

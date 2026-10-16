@@ -14,6 +14,10 @@
   const TYPES = new Set(["int", "void", "double", "char", "bool", "string"]);
   const TOKEN = /(\/\/.*$)|("(?:[^"\\]|\\.)*")|(\b\d+\b)|([A-Za-z_]\w*)|([^\w\s"]+|\s+)/g;
 
+  function t(key, options) {
+    return window.bookI18n ? bookI18n.t(key, options) : key;
+  }
+
   function esc(s) {
     return String(s)
       .replace(/&/g, "&amp;")
@@ -37,7 +41,7 @@
     try {
       return JSON.parse(script.textContent);
     } catch (e) {
-      el.innerHTML = '<p class="iw-error">Widget JSON is invalid: ' + esc(e.message) + "</p>";
+      el.innerHTML = '<p class="iw-error">' + esc(t("interactive.invalidJson", { message: e.message })) + "</p>";
       console.error("[interactive]", e, el);
       return null;
     }
@@ -136,7 +140,7 @@
       this.codeCol = make("div", "iw-codecol");
       this.codeCol.append(
         this.codeBox,
-        make("div", "iw-legend", '<span class="iw-swatch"></span>line that just ran'),
+        make("div", "iw-legend", '<span class="iw-swatch"></span>' + esc(t("interactive.lineRan"))),
       );
       body.append(this.codeCol, this.memory);
       this.append(body);
@@ -150,8 +154,8 @@
       this.append(this.note, this.msgs);
 
       const nav = make("div", "iw-nav");
-      this.prev = make("button", "iw-btn", "&lt; Prev");
-      this.next = make("button", "iw-btn", "Next &gt;");
+      this.prev = make("button", "iw-btn", esc(t("interactive.prev")));
+      this.next = make("button", "iw-btn", esc(t("interactive.next")));
       this.prev.type = this.next.type = "button";
       this.counter = make("span", "iw-counter");
       this.prev.addEventListener("click", () => this.go(-1));
@@ -190,9 +194,9 @@
         })
         .join("");
 
-      this.stackCol.innerHTML = '<div class="iw-seglabel">Stack</div>';
+      this.stackCol.innerHTML = '<div class="iw-seglabel">' + esc(t("interactive.stack")) + "</div>";
       (s.stack || []).forEach((item) => this.stackCol.append(this.stackItem(item)));
-      this.heapCol.innerHTML = '<div class="iw-seglabel">Heap</div>';
+      this.heapCol.innerHTML = '<div class="iw-seglabel">' + esc(t("interactive.heap")) + "</div>";
       (s.heap || []).forEach((b) => this.heapCol.append(this.heapBlock(b)));
 
       this.note.innerHTML = s.note ? inline(s.note) : "";
@@ -202,7 +206,7 @@
       this.error.hidden = !s.error;
 
       const n = mode.steps.length;
-      this.counter.textContent = "Step " + (this.step + 1) + " of " + n;
+      this.counter.textContent = t("interactive.step", { step: this.step + 1, total: n });
       this.prev.disabled = this.step === 0;
       this.next.disabled = this.step === n - 1;
       if (!this.locking) {
@@ -237,7 +241,7 @@
         fields.append(row);
       });
       box.append(fields);
-      if (item.state === "erased") box.append(make("div", "iw-tag", "destroyed"));
+      if (item.state === "erased") box.append(make("div", "iw-tag", esc(t("interactive.destroyed"))));
       return box;
     }
 
@@ -250,7 +254,8 @@
         cells.append(make("span", "iw-cell" + (hl.has(i) ? " iw-hl" : ""), esc(v)));
       });
       block.append(cells);
-      const label = b.label || { freed: "freed", leak: "leaked", garbage: "garbage values" }[b.state];
+      const tag = { freed: "freed", leak: "leaked", garbage: "garbage" }[b.state];
+      const label = b.label || (tag && t("interactive." + tag));
       if (label) block.append(make("div", "iw-tag", esc(label)));
       return block;
     }
@@ -304,7 +309,7 @@
       this.classList.add("iw");
       if (spec.title) this.append(make("div", "iw-title", esc(spec.title)));
       if (spec.setup) {
-        this.append(make("div", "iw-given", "Given:"));
+        this.append(make("div", "iw-given", esc(t("interactive.given"))));
         this.append(make("pre", "iw-code iw-setup", spec.setup.split("\n").map(highlight).join("\n")));
       }
       this.score = make("div", "iw-score");
@@ -312,7 +317,7 @@
       this.right = 0;
       this.total = spec.items.length;
       spec.items.forEach((item) => this.append(this.row(item, spec.options)));
-      const reset = make("button", "iw-btn", "Try again");
+      const reset = make("button", "iw-btn", esc(t("interactive.tryAgain")));
       reset.type = "button";
       reset.addEventListener("click", () => this.init(spec));
       const foot = make("div", "iw-foot");
@@ -328,7 +333,7 @@
       // The explanation's space is reserved (invisible) from the start, so
       // answering doesn't push the rest of the page down.
       const why = make("div", "iw-why iw-pending");
-      why.innerHTML = "<strong>Not quite.</strong> " + inline(item.why || "");
+      why.innerHTML = "<strong>" + esc(t("interactive.notQuite")) + "</strong> " + inline(item.why || "");
       const buttons = options.map((opt, i) => {
         const b = make("button", "iw-choice", inline(opt));
         b.type = "button";
@@ -340,7 +345,7 @@
           buttons[item.answer].classList.add("iw-right");
           buttons.forEach((x) => (x.disabled = true));
           why.style.minHeight = why.offsetHeight + "px";
-          why.innerHTML = "<strong>" + (ok ? "Correct." : "Not quite.") + "</strong> " + inline(item.why || "");
+          why.innerHTML = "<strong>" + esc(t(ok ? "interactive.correct" : "interactive.notQuite")) + "</strong> " + inline(item.why || "");
           why.className = "iw-why " + (ok ? "iw-why-right" : "iw-why-wrong");
           this.answered += 1;
           if (ok) this.right += 1;
@@ -356,8 +361,8 @@
     updateScore() {
       this.score.textContent =
         this.answered === this.total
-          ? "You got " + this.right + " of " + this.total + " right."
-          : this.answered + " of " + this.total + " answered";
+          ? t("interactive.score", { right: this.right, total: this.total })
+          : t("interactive.answered", { answered: this.answered, total: this.total });
     }
   }
 

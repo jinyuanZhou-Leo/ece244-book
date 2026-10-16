@@ -103,6 +103,60 @@ cd ..
 cp -r textbook/trace textbook/_build/html
 ```
 
+## 多语言（i18n）
+
+英文版仍构建在站点根目录，每种译文构建到 `textbook/_build/html/<语言代码>/`（目前只有 `zh_CN`），页眉右侧的语言菜单可在同一页面的不同语言版本之间切换。翻译分两部分，都用现成工具：
+
+| 内容 | 工具 | 译文位置 |
+|------|------|----------|
+| 正文、目录、`_templates/` 中的 `{{ _('...') }}` 字符串 | Sphinx gettext + [sphinx-intl](https://sphinx-intl.readthedocs.io/) | `textbook/locale/zh_CN/LC_MESSAGES/**/*.po` |
+| 主题自带的界面文字（上一页、下一页等） | sphinx-book-theme 内置翻译 | 无需维护 |
+| 自定义 JS 组件文字（练习、提示、memory-stepper 等） | [i18next](https://www.i18next.com/) | `textbook/_static/i18n/locales.js` |
+
+### 更新与翻译 `.po`
+
+修改英文正文后，重新抽取待翻译文本并合并进已有 `.po`（已翻译的条目会保留，原文有变化的条目会标记为 `fuzzy`）：
+
+```bash
+uv sync --group i18n
+uv run --group i18n python scripts/i18n.py extract
+```
+
+然后用任意 PO 编辑器（如 [Poedit](https://poedit.net/)）或直接编辑 `.po` 文件，填写 `msgstr`。注意：
+
+- `msgid` 是 MyST 源码片段，译文需保留其中的 Markdown 语法、链接和行内代码。
+- 中文引号直接写 `“ ”`，不要写 ASCII `"`，否则会被 smartquotes 转成错误方向的弯引号。
+- 留空或标记为 `fuzzy` 的条目会显示英文原文。
+- 代码块不会被抽取，保持原样。
+
+查看翻译进度：
+
+```bash
+uv run --group i18n sphinx-intl stat -d textbook/locale
+```
+
+### 构建译文
+
+先完成英文构建（见上文），再运行：
+
+```bash
+uv run python scripts/i18n.py build --all     # 输出到 textbook/_build/html/zh_CN/
+```
+
+`.mo` 文件由 Sphinx 在构建时自动从 `.po` 编译，不需要提交。
+
+### 新增语言
+
+1. 在 `scripts/i18n.py` 的 `LANGUAGES` 和 `textbook/_static/i18n/i18n.js` 的 `LANGUAGES` 中加入该语言；
+2. 在 `textbook/_static/i18n/locales.js` 中加入对应的组件文字；
+3. 运行 `scripts/i18n.py extract` 生成 `.po` 并翻译。
+
+### 目前未覆盖
+
+- `textbook/exercises/**/*.toml` 中的题目内容（题干、答案、解析）仍为英文；
+- 语义搜索的索引数据只有英文，`zh_CN` 版本的语义搜索不可用；
+- 第三方组件（code-runner、Python Tutor 可视化）自身的按钮文字。
+
 ## 本地预览（启动）
 
 **推荐**：用 HTTP 服务打开构建结果，搜索与语义搜索才能正常工作。

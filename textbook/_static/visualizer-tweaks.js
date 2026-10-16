@@ -34,7 +34,7 @@
     const cell = viz.querySelector("td.cod.executed-highlight");
     const num = cell && cell.previousElementSibling;
     const text = cell
-      ? "Next line to run: " + num.textContent.trim() + "  " + cell.textContent.replace(/\u00a0/g, " ").trim()
+      ? bookI18n.t("visualizer.nextLine") + " " + num.textContent.trim() + "  " + cell.textContent.replace(/\u00a0/g, " ").trim()
       : "";
     if (box.textContent !== text) box.textContent = text;
   }
