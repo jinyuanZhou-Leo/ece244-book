@@ -1,6 +1,6 @@
 ---
 name: ece244-chapter-writing
-description: Writes and edits ECE244 textbook chapter pages (Jupyter Book / MyST markdown under textbook/chapters/) in the house style established by Chapters 1-5 — voice, page structure, code-runner and code-block markup, admonitions, problem/solution callouts, output blocks, _toc.yml registration, spell check and build steps. Use when creating or revising a chapter, section page, or intro.md in this repo, or when the user asks to write content "in the same style" as the existing book.
+description: Writes and edits ECE244 textbook chapter pages (Jupyter Book / MyST markdown under textbook/chapters/) in the house style established by Chapters 1-5 — voice, page structure, code-runner and code-block markup, interactive examples (code-runner, c-visualizer memory stepper and its traces), admonitions, problem/solution callouts, output blocks, _toc.yml registration, spell check and build steps. Use when creating or revising a chapter, section page, or intro.md in this repo, or when the user asks to write content "in the same style" as the existing book.
 ---
 
 # ECE244 Chapter Writing
@@ -55,6 +55,7 @@ Pick the format by purpose:
 | Purpose | Format |
 |---|---|
 | Complete runnable program whose output matters | `<code-runner>` (interactive) |
+| Short program whose point is how memory changes step by step | `<c-visualizer>` (interactive, see [Interactive examples](#interactive-examples)) |
 | Multi-file listing (`.h`/`.cpp`), evolving class, snippet | `` ```{code-block} cpp `` with `:linenos:` and `:emphasize-lines:` |
 | Shell commands | `` ```bash `` |
 | Tiny fragment | plain `` ```cpp `` |
@@ -90,6 +91,19 @@ The value entered is 7
 </pre>
 ```
 
+## Interactive examples
+
+Use interactive examples where they help, not on every page. The book has two:
+
+- **`<code-runner>`**: the reader edits and runs the code. Use it for any complete program whose output is the point. Invite the reader to change something ("Try changing `3` to `5` and run it again").
+- **`<c-visualizer>`**: a Python Tutor style memory view that steps through the code line by line, showing stack frames, heap blocks and pointer arrows, with your note for each line. Use it when the lesson is how memory changes over time and a static figure would need many steps: pointers, `new`/`delete`, dangling pointers, double pointers, copy constructor vs. assignment, linked list insertion and deletion, recursion stack frames. The model pages are `chapter03-dma-pointers/dma.md` and `array-of-pointers.md`.
+
+Rules for `<c-visualizer>`:
+- It is an **extra**, not a replacement. Keep the static figure sequence (the PDF and print readers need it) and add the visualizer after it under `**Try out this!**`, with one sentence on what to watch, *e.g.* "Step through the code and watch `y.grades` get its own array in the heap." It can also replace a `<code-runner>` when only the memory matters.
+- Keep the program small: under about 30 lines, no `cin` (stdin is empty), and well under 10,000 executed steps (no big loops). Use `int` arrays, not `string` or STL containers, because the view shows their internals.
+- Don't visualize programs that crash or have undefined behavior (double free, use after free). The trace is wrong or stops early. Show those with figures and a `<code-runner>`.
+- The trace is generated ahead of time from the code in the page. **Every time you change the code, regenerate the trace** (see [templates.md](templates.md)).
+
 ## Admonitions
 
 - Default to a plain `{admonition}` with a custom title (`Important!`, `Note`, `Order of deletion!`, `Equivalent in C`, `Pointers Recap`).
@@ -102,12 +116,21 @@ The value entered is 7
 - [ ] Page registered in textbook/_toc.yml (testing-exercises.md still last)
 - [ ] Every `In line N` matches the rendered numbering (count <br> lines)
 - [ ] Every {numref} label exists as a figure :name:
+- [ ] Each <c-visualizer> has a regenerated trace in textbook/trace/<chapter>/<page>/exampleN/
+      whose last event is "return", and its annotation keys match its code lines
 - [ ] Spell check: cd spell-check && pyspelling -c spell-check.yml
       (add new technical terms to spell-check/dictionary.txt, one per line, case variants separately)
 - [ ] Build: jupyter-book build textbook  (use --all after toc/config changes)
 - [ ] Preview: cd textbook/_build/html && python -m http.server 8000
 - [ ] If content changed for search: python embeddings/generate.py && cp -r embeddings/outputs textbook/_build/html
 ```
+
+Verifying code and building locally:
+- Compile and run every example (`g++ -std=c++17 -Wall`) before you write its `output=`, `**Output**` or any claim about its behavior. Put scratch files in `.scratch/`, which is gitignored.
+- To check `In line N` references, extract each `<code-runner>` body: turn `<br>` lines into blank lines, unescape `&#35;`/`&lt;`/`&gt;`, number the lines, then compile the result.
+- Check behavioral claims (undefined behavior, double free, use after free) with `-fsanitize=address` instead of reasoning alone.
+- If the book toolchain is missing, use `uv venv --python 3.8 .scratch/venv && VIRTUAL_ENV=.scratch/venv uv pip install -r requirements.txt pyspelling` (needs `full_network`), then `.scratch/venv/bin/jupyter-book build --all textbook` (needs `all`). `pyspelling` also needs the system `aspell`. If it is missing, ask the user before installing it.
+- After building, grep the log for warnings in the chapter you changed. Warnings from `cover.md` and Chapters 3–4 were there before this work.
 
 Known defects in the existing text that you should not copy:
 - "its not"

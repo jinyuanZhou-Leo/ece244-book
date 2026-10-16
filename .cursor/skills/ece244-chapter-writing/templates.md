@@ -135,27 +135,57 @@ int* ptr = &a;
 ````
 `````
 
-## C++ memory visualizer (Chapter 3 style, optional)
-
-Inside the body, escape `<` as `&lt;` and `&` as `&amp;`. Annotation keys are line numbers.
+## C++ memory visualizer (`<c-visualizer>`)
 
 ```markdown
-{{cpp_visualizer}}
- <c-visualizer example="1" lang="cpp">
-    <script type="application/json" data-kind="annotation">
-      {
-      "annotation": {
-        "5": "Define integer variable x = 10",
-        "6": "Define pointer p and initialize to nullptr"
-      },
-      "folds": [{ "start": 13, "end": 16 }]
-    }
-    </script>
+**Try out this!**
 
-   #include &lt;iostream&gt;
-    using namespace std;
+Step through the code below and watch how the stack and the heap change.
+
+{{cpp_visualizer}}
+<c-visualizer example="1" lang="cpp">
+  <script type="application/json" data-kind="annotation">
+    {
+    "annotation": {
+      "5": "Define integer variable x = 10",
+      "6": "Define pointer p and initialize to nullptr"
+    },
+    "folds": [{ "start": 13, "end": 16 }]
+  }
+  </script>
+  #include &lt;iostream&gt;
+  using namespace std;
+
+  int main(void) {
+    int x = 10;
+    int* p = nullptr;
     ...
-  </c-visualizer>
+  }
+</c-visualizer>
 ```
 
-Generating the traces needs extra steps: `jupyter-book build --all textbook`, then `cd textbook && python viztrace_cpp_folder.py chapters`, then `cp -r textbook/trace textbook/_build/html`.
+How it works: the component **ignores the code in the page**. It fetches the trace `/trace/<chapter-folder>/<page-stem>/example<N>/trace.json`, which was generated ahead of time from that code by pythontutor.com (g++ 9.3). Netlify copies `textbook/trace/` into the site (see `netlify.toml`).
+
+Body rules:
+- `example="N"`: number the visualizers on a page 1, 2, 3 … with no duplicates. The number picks the trace folder.
+- Put `{{cpp_visualizer}}` once before each `<c-visualizer>` (that's how Chapter 3 does it).
+- Escape `<` as `&lt;`, `>` as `&gt;` and `&` as `&amp;`. The generator unescapes them, and a raw `&p` or `<iostream>` may be parsed as markup.
+- Don't put a blank line between `<c-visualizer>` and `</script>`. MyST ends the HTML block at the first blank line, and the JSON must stay inside the element. Blank lines in the code itself are fine.
+- Annotation keys are 1-based line numbers of the code, counting from the first non-blank line (`#include`) and including blank lines. Every key must point at a statement that executes. The note is shown when that line is reached.
+- `folds` (optional) collapses lines `start`–`end` in the code view.
+
+Generate the trace for **one page only**. The script's normal entry point re-runs every page in the book and rewrites the traces of finished chapters. Run from `textbook/`, needs `full_network`; `requests` and `bs4` are in the book venv:
+
+```bash
+cd textbook && ../.scratch/venv/bin/python -c "
+from pathlib import Path; import viztrace_cpp_folder as v
+v.handle_file(Path('chapters/<chapter-folder>/<page>.md').resolve(),
+              Path('trace').resolve(), Path('chapters').resolve())"
+```
+
+Check the result:
+- `python3 -c "import json;t=json.load(open('trace/<chapter-folder>/<page>/example1/trace.json'))['trace'];print(len(t), t[-1]['event'])"` should end in `return`. `instruction_limit_reached`, an exception, or an empty trace means the program is too long or not supported.
+- Commit `code.cpp` and `trace.json` together with the page.
+- If you remove a visualizer or renumber them, delete the stale `exampleN/` folders.
+
+Local preview: build, then `cp -r textbook/trace textbook/_build/html/`, and serve from `textbook/_build/html`. The trace URL starts at the site root `/trace/…`, so a server started in a subfolder won't find it.

@@ -82,7 +82,15 @@ Copy these conventions so new diagrams match the existing ones:
 - **Consistency within a sequence:** every step has the same canvas size and layout, with the code on one side and memory on the other. Only the changed elements differ.
 - **Small concept figures** (Chapters 4–5 style): large monospace text, thick strokes, pastel highlights (pink, yellow, blue) tying parts of an expression together (`x + y ↔ x.operator+(y)`), and curved arrows. Keep them minimal.
 
-The `diagrams/lib` components already implement the code panel, stack-frame memory box, value states, step titles, notes, arrows, error and box marks, and the reveal box. Segment (stack/heap) columns, object boxes, pointer-dot arrows and scope bands are **not built yet**. When a figure needs one, add it to `lib/components.mjs` and `lib/style.css` following the rules above, then reuse it everywhere.
+The `diagrams/lib` components already implement:
+- the code panel
+- the stack-frame memory box (Chapter 1 style) and the stack/heap segment column (Chapter 3 style), with objects, pointer dots, heap arrays (allocated, leaked, freed) and elbow pointer arrows
+- value states, step titles and notes
+- arrows, error and box marks, and the reveal box
+
+Object boxes (Chapter 3 `Student*` arrays) and scope bands are **not built yet**. When a figure needs one, add it to `lib/components.mjs` and `lib/style.css` following the rules above, then reuse it everywhere. `figures/chapter06-objects-w-pointers/` is the reference for segment diagrams. It also shows how to share code between specs through a helper module that has no default export.
+
+You can pair a step sequence with an interactive `<c-visualizer>` that lets readers step through the same program themselves (see the `ece244-chapter-writing` skill, "Interactive examples"). The static figures stay, because they are the only version in the PDF.
 
 ## Workflow
 
@@ -100,3 +108,6 @@ Setup and gotchas:
 - First run: `cd diagrams && npm install`. This installs only `playwright-core`; the renderer drives the system Google Chrome (`channel: 'chrome'`), so no browser download is needed.
 - **Chrome is killed inside the agent sandbox.** Run `render.mjs` with `required_permissions: ["all"]`, and read `out/` with the same permission.
 - Never render over an existing OmniGraffle-era PNG unless the user asked for that redraw. Pick a new stem, or use `--out out` to compare.
+- Don't count line numbers by hand for `highlight`/`dim`/`marks`. Use `lineOf(src, 'text', nth)`.
+- Keep figures of different heights in **separate spec files**. Every figure in one spec shares the largest canvas, so a tall figure leaves empty space in the others.
+- Use `elbow` arrows for pointers from the stack to the heap. Give the upper stack object the larger `elbow` (outer channel) so the lines don't cross.
