@@ -40,6 +40,18 @@ def extract_code_exact(tag):
     return "\n".join(lines) + "\n"
 
 
+def normalize_trace(value):
+    # The pinned visualizer predates the backend's CPP_STD_STRING encoding and
+    # asserts when it meets one inside an object, so encode strings as C_DATA.
+    if isinstance(value, list):
+        if len(value) >= 3 and value[0] == "CPP_STD_STRING":
+            return ["C_DATA", value[1], "string", value[2]]
+        return [normalize_trace(v) for v in value]
+    if isinstance(value, dict):
+        return {k: normalize_trace(v) for k, v in value.items()}
+    return value
+
+
 def handle_file(md_or_html_path: Path, out_root: Path, book_root: Path):
     if md_or_html_path.suffix.lower() not in {".md", ".html"}:
         return
@@ -117,7 +129,7 @@ def handle_file(md_or_html_path: Path, out_root: Path, book_root: Path):
         try:
             resp = requests.post(url, data=params, timeout=30)
             resp.raise_for_status()
-            result = resp.json()
+            result = normalize_trace(resp.json())
             trace_path.write_text(json.dumps(result, indent=2), encoding="utf-8")
             print(f"   ✅ OK")
         except Exception as e:

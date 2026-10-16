@@ -21,12 +21,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "<UNINITIALIZED>",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "<UNINITIALIZED>"
                 ]
               ],
               [
@@ -52,12 +50,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "<UNINITIALIZED>",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "<UNINITIALIZED>"
                 ]
               ],
               [
@@ -83,12 +79,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "<UNINITIALIZED>",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "<UNINITIALIZED>"
                 ]
               ],
               [
@@ -114,12 +108,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "<UNINITIALIZED>",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "<UNINITIALIZED>"
                 ]
               ],
               [
@@ -174,12 +166,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "<UNINITIALIZED>",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "<UNINITIALIZED>"
                 ]
               ],
               [
@@ -205,12 +195,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "<UNINITIALIZED>",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "<UNINITIALIZED>"
                 ]
               ],
               [
@@ -236,12 +224,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "<UNINITIALIZED>",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "<UNINITIALIZED>"
                 ]
               ],
               [
@@ -267,12 +253,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "<UNINITIALIZED>",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "<UNINITIALIZED>"
                 ]
               ],
               [
@@ -327,12 +311,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "<UNINITIALIZED>",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "<UNINITIALIZED>"
                 ]
               ],
               [
@@ -358,12 +340,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "<UNINITIALIZED>",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "<UNINITIALIZED>"
                 ]
               ],
               [
@@ -389,12 +369,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "<UNINITIALIZED>",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "<UNINITIALIZED>"
                 ]
               ],
               [
@@ -420,12 +398,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -492,12 +468,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -523,12 +497,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "<UNINITIALIZED>",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "<UNINITIALIZED>"
                 ]
               ],
               [
@@ -554,12 +526,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "<UNINITIALIZED>",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "<UNINITIALIZED>"
                 ]
               ],
               [
@@ -585,12 +555,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -657,12 +625,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -688,12 +654,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "<UNINITIALIZED>",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "<UNINITIALIZED>"
                 ]
               ],
               [
@@ -719,12 +683,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "<UNINITIALIZED>",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "<UNINITIALIZED>"
                 ]
               ],
               [
@@ -750,12 +712,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -822,12 +782,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -854,12 +812,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "<UNINITIALIZED>",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "<UNINITIALIZED>"
                 ]
               ],
               [
@@ -885,12 +841,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "<UNINITIALIZED>",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "<UNINITIALIZED>"
                 ]
               ],
               [
@@ -916,12 +870,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -988,12 +940,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -1020,12 +970,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "<UNINITIALIZED>",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "<UNINITIALIZED>"
                 ]
               ],
               [
@@ -1051,12 +999,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "<UNINITIALIZED>",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "<UNINITIALIZED>"
                 ]
               ],
               [
@@ -1082,12 +1028,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -1154,12 +1098,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -1186,12 +1128,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "<UNINITIALIZED>",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "<UNINITIALIZED>"
                 ]
               ],
               [
@@ -1217,12 +1157,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "<UNINITIALIZED>",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "<UNINITIALIZED>"
                 ]
               ],
               [
@@ -1248,12 +1186,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -1320,12 +1256,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -1352,12 +1286,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "<UNINITIALIZED>",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "<UNINITIALIZED>"
                 ]
               ],
               [
@@ -1383,12 +1315,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "<UNINITIALIZED>",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "<UNINITIALIZED>"
                 ]
               ],
               [
@@ -1414,12 +1344,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -1474,12 +1402,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -1506,12 +1432,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "<UNINITIALIZED>",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "<UNINITIALIZED>"
                 ]
               ],
               [
@@ -1537,12 +1461,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "<UNINITIALIZED>",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "<UNINITIALIZED>"
                 ]
               ],
               [
@@ -1568,12 +1490,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -1640,12 +1560,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -1672,12 +1590,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -1703,12 +1619,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "<UNINITIALIZED>",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "<UNINITIALIZED>"
                 ]
               ],
               [
@@ -1734,12 +1648,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -1806,12 +1718,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -1838,12 +1748,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -1869,12 +1777,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "<UNINITIALIZED>",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "<UNINITIALIZED>"
                 ]
               ],
               [
@@ -1900,12 +1806,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -1972,12 +1876,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -2004,12 +1906,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -2036,12 +1936,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "<UNINITIALIZED>",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "<UNINITIALIZED>"
                 ]
               ],
               [
@@ -2067,12 +1965,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -2139,12 +2035,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -2171,12 +2065,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -2203,12 +2095,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "<UNINITIALIZED>",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "<UNINITIALIZED>"
                 ]
               ],
               [
@@ -2234,12 +2124,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -2306,12 +2194,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -2338,12 +2224,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -2370,12 +2254,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "<UNINITIALIZED>",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "<UNINITIALIZED>"
                 ]
               ],
               [
@@ -2401,12 +2283,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -2473,12 +2353,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -2505,12 +2383,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -2537,12 +2413,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "<UNINITIALIZED>",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "<UNINITIALIZED>"
                 ]
               ],
               [
@@ -2568,12 +2442,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -2628,12 +2500,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -2660,12 +2530,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -2692,12 +2560,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "<UNINITIALIZED>",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "<UNINITIALIZED>"
                 ]
               ],
               [
@@ -2723,12 +2589,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -2795,12 +2659,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -2827,12 +2689,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -2859,12 +2719,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -2890,12 +2748,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -2962,12 +2818,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -2994,12 +2848,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -3026,12 +2878,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -3057,12 +2907,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -3129,12 +2977,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -3161,12 +3007,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -3193,12 +3037,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -3225,12 +3067,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -3297,12 +3137,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -3329,12 +3167,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -3361,12 +3197,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -3393,12 +3227,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -3465,12 +3297,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -3497,12 +3327,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -3529,12 +3357,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -3561,12 +3387,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -3633,12 +3457,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -3665,12 +3487,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -3697,12 +3517,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -3729,12 +3547,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -3789,12 +3605,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -3821,12 +3635,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -3853,12 +3665,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -3885,12 +3695,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -3957,12 +3765,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -3989,12 +3795,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -4021,12 +3825,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -4053,12 +3855,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -4125,12 +3925,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -4157,12 +3955,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -4189,12 +3985,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -4221,12 +4015,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -4293,12 +4085,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -4325,12 +4115,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -4357,12 +4145,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -4389,12 +4175,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -4462,12 +4246,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -4494,12 +4276,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -4526,12 +4306,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -4558,12 +4336,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -4631,12 +4407,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -4663,12 +4437,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -4695,12 +4467,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -4727,12 +4497,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -4800,12 +4568,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -4832,12 +4598,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -4864,12 +4628,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -4896,12 +4658,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -4957,12 +4717,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -4989,12 +4747,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -5021,12 +4777,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -5053,12 +4807,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -5126,12 +4878,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -5158,12 +4908,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -5190,12 +4938,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -5222,12 +4968,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -5295,12 +5039,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -5327,12 +5069,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -5359,12 +5099,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -5391,12 +5129,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -5489,12 +5225,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -5521,12 +5255,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -5553,12 +5285,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -5585,12 +5315,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -5685,12 +5413,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -5717,12 +5443,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -5749,12 +5473,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -5781,12 +5503,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -5881,12 +5601,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -5913,12 +5631,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -5945,12 +5661,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -5977,12 +5691,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -6077,12 +5789,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -6109,12 +5819,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -6141,12 +5849,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -6173,12 +5879,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -6246,12 +5950,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -6278,12 +5980,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -6310,12 +6010,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -6342,12 +6040,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -6415,12 +6111,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -6447,12 +6141,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -6479,12 +6171,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -6511,12 +6201,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -6572,12 +6260,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -6604,12 +6290,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -6636,12 +6320,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -6668,12 +6350,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -6741,12 +6421,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -6773,12 +6451,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -6805,12 +6481,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -6837,12 +6511,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -6910,12 +6582,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -6942,12 +6612,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -6974,12 +6642,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -7006,12 +6672,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -7067,12 +6731,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -7099,12 +6761,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -7131,12 +6791,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -7163,12 +6821,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -7249,12 +6905,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -7281,12 +6935,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -7313,12 +6965,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -7345,12 +6995,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -7433,12 +7081,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -7465,12 +7111,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -7497,12 +7141,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -7529,12 +7171,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -7629,12 +7269,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -7661,12 +7299,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -7693,12 +7329,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -7725,12 +7359,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -7825,12 +7457,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -7857,12 +7487,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -7889,12 +7517,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -7921,12 +7547,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -8021,12 +7645,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -8053,12 +7675,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -8085,12 +7705,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -8117,12 +7735,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -8217,12 +7833,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -8249,12 +7863,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -8281,12 +7893,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -8313,12 +7923,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -8413,12 +8021,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -8445,12 +8051,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -8477,12 +8081,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -8509,12 +8111,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -8609,12 +8209,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -8641,12 +8239,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -8673,12 +8269,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -8705,12 +8299,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -8793,12 +8385,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -8825,12 +8415,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -8857,12 +8445,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -8889,12 +8475,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -8977,12 +8561,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -9009,12 +8591,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -9041,12 +8621,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -9073,12 +8651,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -9134,12 +8710,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -9166,12 +8740,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -9198,12 +8770,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -9230,12 +8800,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -9291,12 +8859,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -9323,12 +8889,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -9355,12 +8919,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -9387,12 +8949,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -9460,12 +9020,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -9492,12 +9050,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -9524,12 +9080,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -9556,12 +9110,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -9629,12 +9181,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -9661,12 +9211,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -9693,12 +9241,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -9725,12 +9271,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -9786,12 +9330,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -9818,12 +9360,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -9850,12 +9390,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -9882,12 +9420,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -9955,12 +9491,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -9987,12 +9521,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -10019,12 +9551,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -10051,12 +9581,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -10124,12 +9652,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -10156,12 +9682,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -10188,12 +9712,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -10220,12 +9742,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -10281,12 +9801,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -10313,12 +9831,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -10345,12 +9861,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -10377,12 +9891,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -10450,12 +9962,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -10482,12 +9992,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -10514,12 +10022,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -10546,12 +10052,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -10619,12 +10123,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -10651,12 +10153,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -10683,12 +10183,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -10715,12 +10213,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -10776,12 +10272,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "Kenya",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  "Kenya"
                 ]
               ],
               [
@@ -10808,12 +10302,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -10840,12 +10332,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -10872,12 +10362,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -10945,12 +10433,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -10977,12 +10463,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -11009,12 +10493,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -11041,12 +10523,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -11114,12 +10594,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -11146,12 +10624,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -11178,12 +10654,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -11210,12 +10684,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -11271,12 +10743,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000B90",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -11303,12 +10773,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BA0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -11335,12 +10803,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BB0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
@@ -11367,12 +10833,10 @@
               [
                 "name",
                 [
-                  "CPP_STD_STRING",
+                  "C_DATA",
                   "0xFFF000BC0",
-                  "",
-                  {
-                    "bytes": 8
-                  }
+                  "string",
+                  ""
                 ]
               ],
               [
