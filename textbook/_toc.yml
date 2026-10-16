@@ -48,6 +48,7 @@ parts:
         sections:
           - file: chapters/chapter06-objects-w-pointers/copy-constructor.md
           - file: chapters/chapter06-objects-w-pointers/why-implement-copy-constructor.md
+          - file: chapters/chapter06-objects-w-pointers/assignment-operator.md
           - file: chapters/chapter06-objects-w-pointers/testing-exercises.md
       - file: chapters/chapter07-linked-lists/intro.md
         sections:

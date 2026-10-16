@@ -55,7 +55,7 @@ function layout(arrows) {
 
   const svg = canvas.querySelector('svg.arrows');
   const NS = 'http://www.w3.org/2000/svg';
-  const normals = { top: [0, -1], bottom: [0, 1], left: [-1, 0], right: [1, 0] };
+  const normals = { top: [0, -1], bottom: [0, 1], left: [-1, 0], right: [1, 0], center: [0, 0] };
   const rectOf = (id) => {
     const el = document.getElementById(id);
     if (!el) throw new Error(`arrow endpoint #${id} not found`);
@@ -68,7 +68,21 @@ function layout(arrows) {
     bottom: [r.x + r.w / 2, r.y + r.h],
     left: [r.x, r.y + r.h / 2],
     right: [r.x + r.w, r.y + r.h / 2],
+    center: [r.x + r.w / 2, r.y + r.h / 2],
   })[side];
+  // Orthogonal path that leaves `from` to the left, runs down/up outside the
+  // memory column, and enters `to` from the left (Chapter 3 pointer style).
+  const elbowPath = (a, r1, r2) => {
+    const col = document.getElementById(a.from).closest('.seg-col, .memory-box');
+    const base = col ? col.getBoundingClientRect().left - cr.left : Math.min(r1.x, r2.x);
+    const x = base - (a.elbow ?? 24);
+    const [sx, sy] = [r1.x + r1.w / 2, r1.y + r1.h / 2];
+    const ex = r2.x - (a.gap ?? 3);
+    const ey = r2.y + r2.h / 2 + (a.toOffset?.[1] ?? 0);
+    const rad = Math.min(10, Math.abs(ey - sy) / 2);
+    const dir = ey > sy ? 1 : -1;
+    return `M${sx},${sy} H${x + rad} Q${x},${sy} ${x},${sy + dir * rad} V${ey - dir * rad} Q${x},${ey} ${x + rad},${ey} H${ex}`;
+  };
   const autoSide = (from, to) => {
     const [dx, dy] = [center(to)[0] - center(from)[0], center(to)[1] - center(from)[1]];
     if (Math.abs(dy) * 2 >= Math.abs(dx)) return dy > 0 ? ['bottom', 'top'] : ['top', 'bottom'];
@@ -105,7 +119,7 @@ function layout(arrows) {
     defs.appendChild(marker);
 
     const path = document.createElementNS(NS, 'path');
-    path.setAttribute('d', `M${p1} C${c1} ${c2} ${p2}`);
+    path.setAttribute('d', a.route === 'elbow' ? elbowPath(a, r1, r2) : `M${p1} C${c1} ${c2} ${p2}`);
     path.setAttribute('fill', 'none');
     path.setAttribute('stroke', a.color);
     path.setAttribute('stroke-width', a.width);

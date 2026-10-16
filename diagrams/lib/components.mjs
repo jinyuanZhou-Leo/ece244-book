@@ -125,7 +125,98 @@ export function variable(type, name, value, { hl = false, id, classes } = {}) {
   );
 }
 
+// ---------- memory diagrams (stack/heap segments, Chapter 3 style) ----------
+
+/**
+ * Vertical memory column: Stack header, stack items, growth gap, heap items,
+ * then the Heap / Const + Global / Code bands.
+ *   stack  : array of stackFrame(...) / stackObject(...) / stackVar(...)
+ *   heap   : array of heapArray(...), listed top to bottom
+ *   gap    : height of the free space between stack and heap (px)
+ *   gutter : width reserved on the left for object names, notes and arrows
+ */
+export function segments({ stack = [], heap = [], gap = 140, label = 'Main memory', width = 210, gutter = 200 } = {}) {
+  return raw(
+    `<div class="segments" style="padding-left:${gutter}px;--seg-gutter:${gutter}px">` +
+      (label ? `<div class="memory-label">${render(label)}</div>` : '') +
+      `<div class="seg-col" style="width:${width}px">` +
+      '<div class="seg-band seg-stack">Stack</div>' +
+      stack.map(render).join('') +
+      `<div class="seg-gap" style="height:${gap}px"><span class="grow grow-down"></span><span class="grow-dash"></span><span class="grow grow-up"></span></div>` +
+      heap.map(render).join('') +
+      '<div class="seg-band seg-heap">Heap</div>' +
+      '<div class="seg-band seg-global">Const + Global</div>' +
+      '<div class="seg-band seg-code">Code</div>' +
+      '</div></div>',
+  );
+}
+
+/** Function label band inside the stack, e.g. stackFrame('main'). */
+export const stackFrame = (name) => raw(`<div class="seg-frame"><span class="mono fn">${escapeHtml(name)}</span></div>`);
+
+/** Pointer member: box with a dot. The arrow should start at `id` (the dot). */
+export const ptr = (name, { id, nullptr: isNull = false } = {}) =>
+  raw(
+    `<div class="seg-row"><span class="ptr-box">${isNull ? '<span class="ptr-null">/</span>' : `<span class="ptr-dot"${id ? ` id="${id}"` : ''}></span>`}</span>` +
+      `<span class="mono">${escapeHtml(name)}</span></div>`,
+  );
+
+/** Plain member with a value, e.g. field('numGrades', '3'). */
+export const field = (name, value, { hl = false } = {}) =>
+  raw(`<div class="seg-row"><span class="seg-val${hl ? ' hl' : ''}"><span>${valueHtml(value)}</span></span><span class="mono">${escapeHtml(name)}</span></div>`);
+
+/**
+ * Object on the stack: its name is drawn left of the column, its members as rows.
+ *   state : '' | 'erased' (faded, after it goes out of scope)
+ */
+export function stackObject(name, members, { state = '', note: noteContent, id } = {}) {
+  return raw(
+    `<div class="seg-obj ${state}"${id ? ` id="${id}"` : ''}>` +
+      `<div class="seg-name mono">${escapeHtml(name)}</div>` +
+      members.map(render).join('') +
+      (noteContent ? `<div class="seg-note">${render(noteContent)}</div>` : '') +
+      '</div>',
+  );
+}
+
+/** Single variable on the stack: stackVar('x', '5') or stackVar('p', ptr) */
+export const stackVar = (name, value, opts = {}) =>
+  stackObject(name, [raw(`<div class="seg-row seg-center"><span>${valueHtml(value)}</span></div>`)], opts);
+
+/**
+ * Dynamically allocated array (or single value) on the heap.
+ *   values : one string per element ('?' for garbage)
+ *   state  : 'alloc' (reserved), 'leak' (pink), 'freed' (white, dotted)
+ *   id     : arrow target; set on the first element (where a pointer points).
+ *            The whole block gets `${id}-block`.
+ *   note   : text left of the column, e.g. 'Freed', 'memory leak'
+ */
+export function heapArray(values, { state = 'alloc', id, note: noteContent, hl = [] } = {}) {
+  const hlSet = new Set(hl);
+  return raw(
+    `<div class="heap-block ${state}"${id ? ` id="${id}-block"` : ''}>` +
+      values
+        .map((v, i) => `<div class="heap-cell${hlSet.has(i) ? ' hl' : ''}"${id && i === 0 ? ` id="${id}"` : ''}><span>${valueHtml(v)}</span></div>`)
+        .join('') +
+      (noteContent ? `<div class="seg-note">${render(noteContent)}</div>` : '') +
+      '</div>',
+  );
+}
+
 // ---------- code panels ----------
+
+/**
+ * 1-based line number of the nth line containing `text` in a code() source,
+ * e.g. highlight: [lineOf(src, 'Student y = x;')]. Throws if not found.
+ */
+export function lineOf(src, text, nth = 1) {
+  const lines = src.replace(/^\n/, '').split('\n');
+  let seen = 0;
+  for (let i = 0; i < lines.length; i++) {
+    if (lines[i].includes(text) && ++seen === nth) return i + 1;
+  }
+  throw new Error(`lineOf: "${text}" (#${nth}) not found`);
+}
 
 function expandLines(spec = []) {
   const out = new Set();
@@ -193,9 +284,12 @@ export function code(src, {
  *   curve            : control-point distance in px (0 = straight line)
  *   heads            : 'end' | 'both' | 'none'
  *   color, width, dashed
+ *   route            : 'curve' (default) | 'elbow' (leave left, run outside the
+ *                      memory column, enter `to` from the left; `elbow` = px
+ *                      left of the column, use different values for parallel arrows)
  */
 export function arrow(from, to, opts = {}) {
-  return { from, to, fromSide: 'auto', toSide: 'auto', heads: 'end', color: '#000', width: 2.5, ...opts };
+  return { from, to, fromSide: 'auto', toSide: 'auto', heads: 'end', color: '#000', width: 2.5, route: 'curve', ...opts };
 }
 
 // ---------- figure ----------

@@ -18,6 +18,14 @@
   --err-bg: #ffd6dc;
   --err: #c0182a;
   --line: 4px solid #000;
+
+  /* Chapter 3 memory segments */
+  --seg-stack: #e1e7fa;
+  --seg-heap: #c3c5f7;
+  --seg-global: #9da0f3;
+  --seg-code: #6b66b5;
+  --seg-leak: #f3c4c8;
+  --seg-note: #1a2a8a;
 }
 
 * { box-sizing: border-box; }
@@ -123,6 +131,108 @@ html, body { margin: 0; padding: 0; background: #fff; }
   font-size: 19px;
   line-height: 1.3;
 }
+
+/* ---- memory segments (stack / heap) ---- */
+.segments { position: relative; }
+.seg-col { border: var(--line); background: #fff; font-size: 19px; }
+.seg-col > * + * { border-top: 3px solid #000; }
+.seg-band {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+  font-weight: bold;
+  font-size: 18px;
+}
+.seg-stack { background: var(--seg-stack); height: 62px; }
+.seg-heap { background: var(--seg-heap); height: 38px; }
+.seg-global { background: var(--seg-global); height: 58px; }
+.seg-code { background: var(--seg-code); height: 62px; font-size: 20px; }
+.seg-frame { display: flex; justify-content: center; align-items: center; height: 28px; background: var(--seg-stack); font-size: 18px; }
+.seg-obj { position: relative; background: var(--seg-stack); }
+.seg-obj > .seg-row + .seg-row { border-top: 1.5px solid #000; }
+.seg-obj.erased > .seg-row { opacity: 0.25; }
+.seg-obj.erased > .seg-name { opacity: 0.35; }
+.seg-row { display: flex; align-items: center; gap: 12px; height: 38px; padding: 0 10px; }
+.seg-center { justify-content: center; }
+.seg-name {
+  position: absolute;
+  right: calc(100% + 52px);
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 22px;
+}
+.seg-note {
+  position: absolute;
+  right: calc(100% + 52px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: calc(var(--seg-gutter) - 60px);
+  text-align: right;
+  font-size: 17px;
+  font-weight: bold;
+  line-height: 1.25;
+}
+.seg-obj .seg-note { right: calc(100% + 84px); }
+.ptr-box {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: 2px solid #000;
+  background: #fff;
+}
+.ptr-dot { width: 8px; height: 8px; border-radius: 50%; background: #000; }
+.ptr-null { font-family: var(--mono); font-weight: bold; }
+.seg-val {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  height: 26px;
+  padding: 0 6px;
+  white-space: pre;
+  border: 1.5px solid #222;
+  background: #fff;
+  font-size: 17px;
+}
+.seg-val.hl { background: var(--hl); }
+.seg-gap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0 0;
+}
+.grow { position: relative; width: 4px; height: 34px; background: #000; }
+.grow-down::after, .grow-up::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+}
+.grow-down::after { bottom: -12px; border-top: 14px solid #000; }
+.grow-up::before { top: -12px; border-bottom: 14px solid #000; }
+.grow-dash { width: 0; height: 30px; border-left: 2px dashed #000; }
+.heap-block { position: relative; }
+.heap-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  background: var(--seg-heap);
+  font-size: 18px;
+  white-space: pre;
+}
+.heap-cell + .heap-cell { border-top: 1.5px solid #000; }
+.heap-block.leak .heap-cell { background: var(--seg-leak); }
+.heap-block.freed .heap-cell { background: #fff; }
+.heap-block.freed .heap-cell + .heap-cell { border-top: 1.5px dotted #000; }
+.heap-cell.hl { background: var(--hl) !important; }
 
 /* ---- code ---- */
 .code {
