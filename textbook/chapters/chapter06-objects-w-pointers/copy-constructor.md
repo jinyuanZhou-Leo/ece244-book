@@ -98,6 +98,66 @@ Name: Kenya, ID: 8012
 Copy constructor called for Kenya
 </pre>
 
+**Watch it step by step.** Step through the same code and watch the stack. Every time a copy is made, a new frame for the copy constructor `Student::Student(Student const&)` appears on top of the stack. Count them: there are four.
+
+{{cpp_visualizer}}
+<c-visualizer example="1" lang="cpp">
+  <script type="application/json" data-kind="annotation">
+    {
+    "annotation": {
+      "34": "Create a with the regular constructor",
+      "35": "Case 1: create b as a copy of a",
+      "36": "Case 2: create c as a copy of a",
+      "37": "Case 3: pass a by value, so the parameter s is created as a copy of a",
+      "38": "Case 4: getCopy returns s by value, so the returned object is created as a copy of s",
+      "16": "Inside the copy constructor: copy the data members of other into the new object",
+      "26": "s is a copy of a in the frame of printStudent",
+      "30": "Return s by value: the copy constructor creates the returned object"
+    }
+  }
+  </script>
+  #include &lt;iostream&gt;
+  #include &lt;string&gt;
+  using namespace std;
+
+  class Student {
+    private:
+      string name;
+      int ID;
+    public:
+      Student(string n, int id) {
+        name = n;
+        ID = id;
+        cout &lt;&lt; "Constructor called for " &lt;&lt; name &lt;&lt; endl;
+      }
+      Student(const Student&amp; other) {
+        name = other.name;
+        ID = other.ID;
+        cout &lt;&lt; "Copy constructor called for " &lt;&lt; name &lt;&lt; endl;
+      }
+      void print() {
+        cout &lt;&lt; "Name: " &lt;&lt; name &lt;&lt; ", ID: " &lt;&lt; ID &lt;&lt; endl;
+      }
+  };
+
+  void printStudent(Student s) {
+    s.print();
+  }
+
+  Student getCopy(Student&amp; s) {
+    return s;
+  }
+
+  int main(void) {
+    Student a("Kenya", 8012);
+    Student b(a);           // Case 1
+    Student c = a;          // Case 2
+    printStudent(a);        // Case 3
+    Student d = getCopy(a); // Case 4
+    return 0;
+  }
+</c-visualizer>
+
 ````{admonition} Copies the compiler can skip
 The compiler is allowed to skip some copies to make the program faster. This is called **copy elision**. For example, if `getCopy` returned a local object instead of its parameter, the compiler would usually build the returned object directly in `d`, and the copy constructor would not be called at all:
 
@@ -156,5 +216,62 @@ Student c("Cindy", 2023);
 c = a;         // c already exists: operator=
 ```
 ````
+
+**Check your understanding.** For each line below, decide whether it calls the copy constructor, `operator=`, or neither.
+
+<choice-quiz>
+<script type="application/json">
+{
+  "options": [
+    "Copy constructor",
+    "`operator=`",
+    "Neither"
+  ],
+  "setup": "Student a(\"Kenya\", 8012);\nStudent c(\"Cindy\", 2023);\nvoid printStudent(Student s);\nvoid printRef(Student& s);\nStudent getCopy(Student& s);",
+  "items": [
+    {
+      "code": "Student b(a);",
+      "answer": 0,
+      "why": "`b` is being created from `a` using parentheses (case 1)."
+    },
+    {
+      "code": "c = a;",
+      "answer": 1,
+      "why": "`c` already exists, so this is an assignment: `c.operator=(a)`."
+    },
+    {
+      "code": "Student b = a;",
+      "answer": 0,
+      "why": "Although `=` is used, `b` is being created in this line (case 2)."
+    },
+    {
+      "code": "printStudent(a);",
+      "answer": 0,
+      "why": "`a` is passed by value, so the parameter `s` is created as a copy of `a` (case 3)."
+    },
+    {
+      "code": "printRef(a);",
+      "answer": 2,
+      "why": "`a` is passed by reference, so `s` refers to `a` itself. No new object is created."
+    },
+    {
+      "code": "Student d = getCopy(a);",
+      "answer": 0,
+      "why": "`getCopy` returns by value, so the returned object is created as a copy of `s` (case 4)."
+    },
+    {
+      "code": "Student* p = &a;",
+      "answer": 2,
+      "why": "Only the address of `a` is stored in the pointer `p`. No `Student` object is created."
+    },
+    {
+      "code": "Student e(\"Ana\", 1234);",
+      "answer": 2,
+      "why": "`e` is created from a name and an ID, so the regular constructor `Student(string n, int id)` is called."
+    }
+  ]
+}
+</script>
+</choice-quiz>
 
 In the next section, we will see why the default copy constructor causes serious problems when a class has a pointer to dynamically allocated memory.

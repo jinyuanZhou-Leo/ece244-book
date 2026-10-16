@@ -1,0 +1,278 @@
+/* Widgets from interactive.js. Colours follow the book's figures
+   (diagrams/lib/style.css) and the Pygments "friendly" code palette. */
+
+/* ---- <c-visualizer>: make the line that has just executed stand out ---- */
+c-visualizer td.cod.executed-highlight {
+  background: #ffe873 !important;
+  box-shadow: inset 4px 0 0 #d99a00;
+}
+c-visualizer tr:has(> td.executed-highlight) > td.lineNo {
+  background: #ffe873;
+  color: #000;
+  font-weight: 700;
+}
+c-visualizer .viz-curline {
+  margin-top: 0.3rem;
+  padding: 0.25rem 0.6rem;
+  background: #fff6c2;
+  border-left: 4px solid #d99a00;
+  font: 0.82rem Menlo, "DejaVu Sans Mono", Consolas, monospace;
+  white-space: pre;
+  min-height: 1.3em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+}
+
+.iw {
+  --iw-stack: #e1e7fa;
+  --iw-heap: #c3c5f7;
+  --iw-leak: #f3c4c8;
+  --iw-hl: #ffffcc;
+  --iw-err: #c0182a;
+  --iw-err-bg: #ffd6dc;
+  --iw-ok: #1e7b34;
+  --iw-ok-bg: #dcf3e1;
+  --iw-border: #c9ccd6;
+  --iw-mono: Menlo, "DejaVu Sans Mono", Consolas, monospace;
+  display: block;
+  margin: 1.2rem 0 1.6rem;
+  padding: 0.9rem 1rem 0.8rem;
+  border: 1px solid var(--iw-border);
+  border-radius: 6px;
+  background: #fff;
+  font-size: 0.95rem;
+}
+.iw code { font-size: 0.9em; }
+.iw-title { font-weight: 600; margin-bottom: 0.6rem; }
+.iw-error { color: var(--iw-err); }
+
+/* ---- code listing ---- */
+.iw-code {
+  margin: 0;
+  padding: 0.5rem 0;
+  background: #f8f8f8;
+  border: 1px solid #e3e3e3;
+  border-radius: 4px;
+  font: 0.82rem/1.55 var(--iw-mono);
+  overflow-x: auto;
+  white-space: pre;
+}
+.iw-line { display: block; padding-right: 0.8rem; }
+.iw-ln {
+  display: inline-block;
+  width: 2.4em;
+  margin-right: 0.8em;
+  padding-right: 0.4em;
+  text-align: right;
+  color: #999;
+  user-select: none;
+}
+.iw-cur { background: #ffe873; box-shadow: inset 4px 0 0 #d99a00; }
+.iw-dim { opacity: 0.35; text-decoration: line-through; }
+.iw-legend { margin-top: 0.3rem; font-size: 0.75rem; color: #555; }
+.iw-swatch {
+  display: inline-block;
+  width: 0.9em;
+  height: 0.9em;
+  margin-right: 0.35em;
+  vertical-align: -0.1em;
+  background: #ffe873;
+  box-shadow: inset 3px 0 0 #d99a00;
+}
+.iw-setup { padding: 0.5rem 0.8rem; margin-bottom: 0.6rem; }
+.iw-kw { color: #007020; font-weight: 600; }
+.iw-type { color: #902000; }
+.iw-num { color: #40a070; }
+.iw-str { color: #4070a0; }
+.iw-com { color: #60a0b0; font-style: italic; }
+
+/* ---- mode tabs ---- */
+.iw-tabs { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.7rem; }
+.iw-tab {
+  padding: 0.3rem 0.8rem;
+  border: 1px solid var(--iw-border);
+  border-radius: 999px;
+  background: #fff;
+  color: #333;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.iw-tab:hover { background: #f1f3f8; }
+.iw-tab.iw-on { background: #2c3e8f; border-color: #2c3e8f; color: #fff; }
+
+/* ---- stepper body: code | memory ---- */
+.iw-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+  gap: 0.9rem;
+  align-items: start;
+}
+@media (max-width: 760px) {
+  .iw-body { grid-template-columns: minmax(0, 1fr); }
+}
+.iw-memory {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 2.4rem;
+  min-height: 9rem;
+}
+.iw-seg { padding: 0.4rem 0.5rem 0.6rem; border-radius: 4px; }
+.iw-stack { background: var(--iw-stack); }
+.iw-heap { background: var(--iw-heap); }
+.iw-seglabel {
+  margin-bottom: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #3a4170;
+}
+.iw-arrows {
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+  pointer-events: none;
+  color: #1a2a8a;
+}
+.iw-arrow { fill: none; stroke: currentColor; stroke-width: 2; }
+.iw-dangling { stroke: var(--iw-err); stroke-dasharray: 5 4; color: var(--iw-err); }
+
+/* stack items */
+.iw-frame {
+  margin: 0.45rem 0 0.25rem;
+  font: 600 0.78rem var(--iw-mono);
+  color: #3a4170;
+}
+.iw-frame:first-of-type { margin-top: 0; }
+.iw-obj {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.4rem;
+  flex-wrap: wrap;
+}
+.iw-objname { min-width: 1.6rem; font: 600 0.85rem var(--iw-mono); text-align: right; }
+.iw-fields { display: flex; flex-direction: column; gap: 2px; }
+.iw-field { display: flex; align-items: center; gap: 0.35rem; }
+.iw-fname { min-width: 5.4rem; font: 0.75rem var(--iw-mono); color: #444; text-align: right; }
+.iw-val {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.6rem;
+  height: 1.6rem;
+  padding: 0 0.35rem;
+  background: #fff;
+  border: 1.5px solid #222;
+  font: 0.8rem var(--iw-mono);
+}
+.iw-dot { width: 9px; height: 9px; border-radius: 50%; background: #1a2a8a; }
+.iw-dot[data-dangling] { background: var(--iw-err); }
+.iw-hl { background: var(--iw-hl); }
+.iw-erased { opacity: 0.4; }
+.iw-erased .iw-val { border-style: dashed; }
+
+/* heap blocks */
+.iw-block { margin-bottom: 0.6rem; }
+.iw-cells { display: inline-flex; }
+.iw-cell {
+  min-width: 2.2rem;
+  height: 1.6rem;
+  line-height: 1.6rem;
+  margin-right: -1.5px;
+  padding: 0 0.3rem;
+  background: #fff;
+  border: 1.5px solid #222;
+  font: 0.8rem var(--iw-mono);
+  text-align: center;
+}
+.iw-cell.iw-hl { background: var(--iw-hl); }
+.iw-freed .iw-cell {
+  color: #888;
+  border-style: dashed;
+  border-color: #888;
+  background: repeating-linear-gradient(135deg, #f2f2f2 0 4px, #e2e2e2 4px 8px);
+}
+.iw-leak .iw-cell { background: var(--iw-leak); }
+.iw-garbage .iw-cell { color: #a33; font-style: italic; }
+.iw-tag { font-size: 0.72rem; color: #444; margin-top: 2px; }
+.iw-freed .iw-tag, .iw-leak .iw-tag, .iw-garbage .iw-tag { color: var(--iw-err); font-weight: 600; }
+
+/* note, output, error, nav */
+.iw-note { margin-top: 0.75rem; min-height: 1.5em; line-height: 1.5; }
+/* flow-root keeps the children's margins inside, so the locked min-height
+   (measured with offsetHeight) covers them. */
+.iw-msgs, .iw-codecol, .iw-why { display: flow-root; }
+.iw-output {
+  margin: 0.5rem 0 0;
+  padding: 0.35rem 0.6rem;
+  background: #1f2330;
+  color: #e8e8e8;
+  border-radius: 4px;
+  font: 0.8rem var(--iw-mono);
+}
+.iw-output::before { content: "Output: "; color: #9aa3c0; }
+.iw-err {
+  margin-top: 0.5rem;
+  padding: 0.4rem 0.6rem;
+  background: var(--iw-err-bg);
+  color: var(--iw-err);
+  border-radius: 4px;
+  font-weight: 600;
+}
+.iw-nav { display: flex; align-items: center; justify-content: center; gap: 0.8rem; margin-top: 0.8rem; }
+.iw-counter { font-size: 0.85rem; color: #555; min-width: 6.5rem; text-align: center; }
+.iw-btn {
+  padding: 0.3rem 0.9rem;
+  border: 1px solid #9aa0b5;
+  border-radius: 4px;
+  background: #f4f5f9;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.iw-btn:hover:not(:disabled) { background: #e6e9f3; }
+.iw-btn:disabled { opacity: 0.4; cursor: default; }
+.iw button:focus-visible { outline: 2px solid #2c3e8f; outline-offset: 2px; }
+
+/* ---- choice quiz ---- */
+.iw-given { font-size: 0.85rem; color: #555; margin-bottom: 0.25rem; }
+.iw-q { padding: 0.55rem 0; border-top: 1px solid #eceef3; }
+.iw-qcode {
+  display: inline-block;
+  margin-bottom: 0.4rem;
+  padding: 0.15rem 0.45rem;
+  background: #f8f8f8;
+  border: 1px solid #e3e3e3;
+  border-radius: 3px;
+  font: 0.85rem var(--iw-mono);
+  color: #222;
+}
+.iw-choices { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.iw-choice {
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--iw-border);
+  border-radius: 4px;
+  background: #fff;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.iw-choice:hover:not(:disabled) { background: #f1f3f8; }
+.iw-choice code, .iw-tab code { color: inherit; background: none; border: 0; padding: 0; }
+.iw-choice:disabled { cursor: default; }
+/* No bold here: a wider button could wrap the row and change the height. */
+.iw-choice.iw-right { background: var(--iw-ok-bg); border-color: var(--iw-ok); color: var(--iw-ok); box-shadow: inset 0 0 0 1px var(--iw-ok); }
+.iw-choice.iw-wrong { background: var(--iw-err-bg); border-color: var(--iw-err); color: var(--iw-err); }
+.iw-why { margin-top: 0.4rem; font-size: 0.88rem; line-height: 1.45; }
+.iw-pending { visibility: hidden; }
+.iw-why-right strong { color: var(--iw-ok); }
+.iw-why-wrong strong { color: var(--iw-err); }
+.iw-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.6rem;
+  border-top: 1px solid #eceef3;
+}
+.iw-score { font-size: 0.88rem; color: #333; }

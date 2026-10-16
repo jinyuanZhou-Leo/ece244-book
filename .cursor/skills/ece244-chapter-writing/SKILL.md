@@ -93,15 +93,17 @@ The value entered is 7
 
 ## Interactive examples
 
-Use interactive examples where they help, not on every page. The book has two:
+Use interactive examples where they help, not on every page. Not every one needs to be a Python Tutor trace: for a few hand-picked memory states, a comparison of two versions, or a quick check question, use the lightweight `<memory-stepper>` and `<choice-quiz>` widgets ([interactive.md](interactive.md)). Interactive examples must keep a fixed height while the reader steps or answers (see interactive.md). The two that run real code are:
 
 - **`<code-runner>`**: the reader edits and runs the code. Use it for any complete program whose output is the point. Invite the reader to change something ("Try changing `3` to `5` and run it again").
 - **`<c-visualizer>`**: a Python Tutor style memory view that steps through the code line by line, showing stack frames, heap blocks and pointer arrows, with your note for each line. Use it when the lesson is how memory changes over time and a static figure would need many steps: pointers, `new`/`delete`, dangling pointers, double pointers, copy constructor vs. assignment, linked list insertion and deletion, recursion stack frames. The model pages are `chapter03-dma-pointers/dma.md` and `array-of-pointers.md`.
 
 Rules for `<c-visualizer>`:
 - It is an **extra**, not a replacement. Keep the static figure sequence (the PDF and print readers need it) and add the visualizer after it under `**Try out this!**`, with one sentence on what to watch, *e.g.* "Step through the code and watch `y.grades` get its own array in the heap." It can also replace a `<code-runner>` when only the memory matters.
-- Keep the program small: under about 30 lines, no `cin` (stdin is empty), and well under 10,000 executed steps (no big loops). Use `int` arrays, not `string` or STL containers, because the view shows their internals.
-- Don't visualize programs that crash or have undefined behavior (double free, use after free). The trace is wrong or stops early. Show those with figures and a `<code-runner>`.
+- Keep the program small: under about 60 lines, no `cin` (stdin is empty), and well under 10,000 executed steps (no big loops). `std::string` shows as plain text (`"Kenya"`). Avoid other STL containers.
+- A **double free** works well. The trace runs normally, then stops at the second `delete[]` with "Invalid free() / delete / delete[]", so the reader sees exactly where it fails. Say this in the lead-in sentence.
+- A **memory leak** doesn't show: the view only draws heap blocks that are still pointed to, so the leaked block just disappears, which looks like it was freed. Show leaks with figures only.
+- Before you choose a visualizer, generate a test trace and check that it shows what the text claims. `python .cursor/skills/ece244-chapter-writing/trytrace.py prog.cpp …` (needs `full_network`) prints, for each program, the step count, the last event, any error, the most heap blocks at once, and the functions entered.
 - The trace is generated ahead of time from the code in the page. **Every time you change the code, regenerate the trace** (see [templates.md](templates.md)).
 
 ## Admonitions
@@ -129,7 +131,7 @@ Verifying code and building locally:
 - Compile and run every example (`g++ -std=c++17 -Wall`) before you write its `output=`, `**Output**` or any claim about its behavior. Put scratch files in `.scratch/`, which is gitignored.
 - To check `In line N` references, extract each `<code-runner>` body: turn `<br>` lines into blank lines, unescape `&#35;`/`&lt;`/`&gt;`, number the lines, then compile the result.
 - Check behavioral claims (undefined behavior, double free, use after free) with `-fsanitize=address` instead of reasoning alone.
-- If the book toolchain is missing, use `uv venv --python 3.8 .scratch/venv && VIRTUAL_ENV=.scratch/venv uv pip install -r requirements.txt pyspelling` (needs `full_network`), then `.scratch/venv/bin/jupyter-book build --all textbook` (needs `all`). `pyspelling` also needs the system `aspell`. If it is missing, ask the user before installing it.
+- If the book toolchain is missing, run `uv sync` (and `uv sync --group dev` for spell check) from the repo root, then `uv run jupyter-book build --all textbook` (needs `full_network` / `all` as needed). `pyspelling` also needs the system `aspell`. If it is missing, ask the user before installing it.
 - After building, grep the log for warnings in the chapter you changed. Warnings from `cover.md` and Chapters 3–4 were there before this work.
 
 Known defects in the existing text that you should not copy:

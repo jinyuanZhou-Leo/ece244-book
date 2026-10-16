@@ -164,6 +164,350 @@ Student& operator=(const Student& rhs) {
 
 **<span style="color:green">Solution.</span>** In line 2, we compare the address of the left-hand side object, `this`, with the address of the right-hand side object, `&rhs`. If they are equal, the object is assigned to itself, and there is nothing to copy. We return immediately in line 3.
 
+**Try both.** Step through `x = x;` for a `Student x` with the grades `90 85 70`, with and without lines 2 to 4.
+
+<memory-stepper>
+<script type="application/json">
+{
+  "code": [
+    "Student& operator=(const Student& rhs) {",
+    "  if (this == &rhs) {",
+    "    return *this;",
+    "  }",
+    "  delete[] grades;",
+    "  numGrades = rhs.numGrades;",
+    "  grades = new int[numGrades];",
+    "  for (int i = 0; i < numGrades; i++) {",
+    "    grades[i] = rhs.grades[i];",
+    "  }",
+    "  return *this;",
+    "}"
+  ],
+  "modes": [
+    {
+      "label": "With lines 2 to 4",
+      "steps": [
+        {
+          "line": 2,
+          "note": "`x = x;` calls `x.operator=(x)`. `this` points to `x`, and `rhs` refers to `x` too, so `this == &rhs` is true.",
+          "stack": [
+            {
+              "frame": "main"
+            },
+            {
+              "name": "x",
+              "id": "X",
+              "fields": [
+                {
+                  "name": "grades",
+                  "ptr": "A"
+                },
+                {
+                  "name": "numGrades",
+                  "value": "3"
+                }
+              ]
+            },
+            {
+              "frame": "operator=  (x = x;)"
+            },
+            {
+              "name": "this",
+              "ptr": "X"
+            },
+            {
+              "name": "rhs",
+              "ptr": "X"
+            }
+          ],
+          "heap": [
+            {
+              "id": "A",
+              "values": [
+                90,
+                85,
+                70
+              ],
+              "state": "alloc"
+            }
+          ]
+        },
+        {
+          "line": 3,
+          "note": "We return right away. The grades of `x` are untouched.",
+          "stack": [
+            {
+              "frame": "main"
+            },
+            {
+              "name": "x",
+              "id": "X",
+              "fields": [
+                {
+                  "name": "grades",
+                  "ptr": "A"
+                },
+                {
+                  "name": "numGrades",
+                  "value": "3"
+                }
+              ]
+            },
+            {
+              "frame": "operator=  (x = x;)"
+            },
+            {
+              "name": "this",
+              "ptr": "X"
+            },
+            {
+              "name": "rhs",
+              "ptr": "X"
+            }
+          ],
+          "heap": [
+            {
+              "id": "A",
+              "values": [
+                90,
+                85,
+                70
+              ],
+              "state": "alloc"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Without lines 2 to 4",
+      "dim": [
+        2,
+        3,
+        4
+      ],
+      "steps": [
+        {
+          "line": 5,
+          "note": "`delete[] grades;` frees the array of `x`. Since `rhs` is `x`, `rhs.grades` is this same pointer.",
+          "stack": [
+            {
+              "frame": "main"
+            },
+            {
+              "name": "x",
+              "id": "X",
+              "fields": [
+                {
+                  "name": "grades",
+                  "ptr": "A",
+                  "dangling": true
+                },
+                {
+                  "name": "numGrades",
+                  "value": "3"
+                }
+              ]
+            },
+            {
+              "frame": "operator=  (x = x;)"
+            },
+            {
+              "name": "this",
+              "ptr": "X"
+            },
+            {
+              "name": "rhs",
+              "ptr": "X"
+            }
+          ],
+          "heap": [
+            {
+              "id": "A",
+              "values": [
+                90,
+                85,
+                70
+              ],
+              "state": "freed"
+            }
+          ]
+        },
+        {
+          "line": 7,
+          "note": "A new array is allocated, and `grades` points to it. `rhs.grades` is the same data member, so it also refers to the new array, which holds garbage values.",
+          "stack": [
+            {
+              "frame": "main"
+            },
+            {
+              "name": "x",
+              "id": "X",
+              "fields": [
+                {
+                  "name": "grades",
+                  "ptr": "B"
+                },
+                {
+                  "name": "numGrades",
+                  "value": "3"
+                }
+              ]
+            },
+            {
+              "frame": "operator=  (x = x;)"
+            },
+            {
+              "name": "this",
+              "ptr": "X"
+            },
+            {
+              "name": "rhs",
+              "ptr": "X"
+            }
+          ],
+          "heap": [
+            {
+              "id": "A",
+              "values": [
+                90,
+                85,
+                70
+              ],
+              "state": "freed"
+            },
+            {
+              "id": "B",
+              "values": [
+                "?",
+                "?",
+                "?"
+              ],
+              "state": "garbage"
+            }
+          ]
+        },
+        {
+          "line": 9,
+          "note": "The loop copies `rhs.grades[i]` into `grades[i]`, which is the same element. Each garbage value is copied onto itself.",
+          "stack": [
+            {
+              "frame": "main"
+            },
+            {
+              "name": "x",
+              "id": "X",
+              "fields": [
+                {
+                  "name": "grades",
+                  "ptr": "B"
+                },
+                {
+                  "name": "numGrades",
+                  "value": "3"
+                }
+              ]
+            },
+            {
+              "frame": "operator=  (x = x;)"
+            },
+            {
+              "name": "this",
+              "ptr": "X"
+            },
+            {
+              "name": "rhs",
+              "ptr": "X"
+            }
+          ],
+          "heap": [
+            {
+              "id": "A",
+              "values": [
+                90,
+                85,
+                70
+              ],
+              "state": "freed"
+            },
+            {
+              "id": "B",
+              "values": [
+                "?",
+                "?",
+                "?"
+              ],
+              "state": "garbage",
+              "hl": [
+                0,
+                1,
+                2
+              ]
+            }
+          ]
+        },
+        {
+          "line": 11,
+          "note": "`operator=` returns, and `x` holds garbage.",
+          "error": "The original grades of `x`, `90 85 70`, are lost.",
+          "stack": [
+            {
+              "frame": "main"
+            },
+            {
+              "name": "x",
+              "id": "X",
+              "fields": [
+                {
+                  "name": "grades",
+                  "ptr": "B"
+                },
+                {
+                  "name": "numGrades",
+                  "value": "3"
+                }
+              ]
+            },
+            {
+              "frame": "operator=  (x = x;)"
+            },
+            {
+              "name": "this",
+              "ptr": "X"
+            },
+            {
+              "name": "rhs",
+              "ptr": "X"
+            }
+          ],
+          "heap": [
+            {
+              "id": "A",
+              "values": [
+                90,
+                85,
+                70
+              ],
+              "state": "freed"
+            },
+            {
+              "id": "B",
+              "values": [
+                "?",
+                "?",
+                "?"
+              ],
+              "state": "garbage"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+</memory-stepper>
+
 We add `operator=` to the `Student` class and run the same `main` function again.
 
 **Code**
@@ -241,6 +585,89 @@ y: 70 0 0
 </pre>
 
 In line 53, our `operator=` is called. `x` and `y` have their own arrays, the old array of `y` is freed, and each destructor frees a different array when `main` returns. The program ends without errors or memory leaks.
+
+**Try out this!** Step through the code below and follow Steps 2 to 4 of our `operator=` on the heap. The old array of `y` is freed, a new array of 3 grades is allocated, and the grades of `x` are copied into it. At the end, `x.grades` and `y.grades` point to different arrays.
+
+{{cpp_visualizer}}
+<c-visualizer example="1" lang="cpp">
+  <script type="application/json" data-kind="annotation">
+    {
+    "annotation": {
+      "50": "Create x with an array of 3 grades",
+      "51": "Set the first grade of x to 90",
+      "52": "Create y with its own array of 2 grades",
+      "53": "y already exists, so y = x calls our operator=",
+      "24": "Self-assignment check: this is &y and &rhs is &x, so they are different",
+      "27": "Step 2: free the old array of y",
+      "29": "Step 3: allocate a new array of 3 grades for y",
+      "31": "Copy each grade of x into the new array of y",
+      "33": "Step 4: return the left-hand side object y",
+      "54": "Change the first grade of y. The array of x is not affected",
+      "59": "main returns: each destructor frees a different array"
+    }
+  }
+  </script>
+  #include &lt;iostream&gt;
+  using namespace std;
+
+  class Student {
+    private:
+      int* grades;
+      int numGrades;
+    public:
+      Student(int n) {
+        numGrades = n;
+        grades = new int[numGrades];
+        for (int i = 0; i &lt; numGrades; i++) {
+          grades[i] = 0;
+        }
+      }
+      Student(const Student&amp; other) {
+        numGrades = other.numGrades;
+        grades = new int[numGrades];
+        for (int i = 0; i &lt; numGrades; i++) {
+          grades[i] = other.grades[i];
+        }
+      }
+      Student&amp; operator=(const Student&amp; rhs) {
+        if (this == &amp;rhs) {
+          return *this;
+        }
+        delete[] grades;
+        numGrades = rhs.numGrades;
+        grades = new int[numGrades];
+        for (int i = 0; i &lt; numGrades; i++) {
+          grades[i] = rhs.grades[i];
+        }
+        return *this;
+      }
+      ~Student() {
+        delete[] grades;
+      }
+      void setGrade(int index, int grade) {
+        grades[index] = grade;
+      }
+      void print() {
+        for (int i = 0; i &lt; numGrades; i++) {
+          cout &lt;&lt; grades[i] &lt;&lt; " ";
+        }
+        cout &lt;&lt; endl;
+      }
+  };
+
+  int main(void) {
+    Student x(3);
+    x.setGrade(0, 90);
+    Student y(2);
+    y = x; // Our operator=
+    y.setGrade(0, 70);
+    cout &lt;&lt; "x: ";
+    x.print();
+    cout &lt;&lt; "y: ";
+    y.print();
+    return 0;
+  }
+</c-visualizer>
 
 ## The Rule of Three
 
