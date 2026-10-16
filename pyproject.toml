@@ -1,0 +1,29 @@
+[project]
+name = "ece244-book"
+version = "0.0.0"
+description = "Khufu: ECE244 textbook (Jupyter Book build tooling)"
+readme = "README.md"
+requires-python = ">=3.12,<3.14"
+dependencies = [
+    "ipython==8.12",
+    "jupyter-book==0.13.1",
+    "matplotlib",
+    "numpy",
+    "attrs>=20.3,<22",
+    "lxml[html_clean]",
+    # jupyter-cache still imports pkg_resources (removed in setuptools 81+)
+    "setuptools>=70,<81",
+]
+
+[dependency-groups]
+dev = [
+    "pyspelling",
+]
+embeddings = [
+    "sentence-transformers",
+    "beautifulsoup4",
+]
+
+[tool.uv]
+managed = true
+default-groups = []

@@ -6,6 +6,8 @@ You will find the book at [learningcpp.org](https://learningcpp.org), or [learni
 
 ## Getting Started
 
+**本地构建与预览（中文步骤说明）**：见 [docs/local-development.md](docs/local-development.md)。
+
 If you are trying to build the book locally, you can follow the instructions below.
 
 1- Clone this GitHub repo. In your terminal, type the following command:
@@ -15,10 +17,19 @@ git clone https://github.com/salma-emara/ece244-book/
 cd ece244-book
 ```
 
-2- Install jupyter-book by running the following command in the terminal
+2- Install [uv](https://docs.astral.sh/uv/) and sync the book toolchain (Python 3.12 + Jupyter Book):
 
 ```
-pip install -r requirements.txt
+uv sync
+```
+
+This creates `.venv/` and installs locked dependencies from `uv.lock`. Use `uv run …` or `source .venv/bin/activate` before build commands.
+
+Optional dependency groups:
+
+```
+uv sync --group dev          # pyspelling
+uv sync --group embeddings   # semantic search (sentence-transformers, etc.)
 ```
 
 3- To build the book locally, run the following command:
@@ -26,18 +37,18 @@ pip install -r requirements.txt
 ```
 # To build everything for the first time 
 node ./textbook/_static/toml_to_js_convertor.js
-jupyter-book build --all textbook
+uv run jupyter-book build --all textbook
 cp -r textbook/exercises/ textbook/_build/html/exercises
 cp -r embeddings/outputs textbook/_build/html
 
 # To build everything
-jupyter-book build --all textbook
+uv run jupyter-book build --all textbook
 # To build after updating a markdown file
-jupyter-book build textbook
+uv run jupyter-book build textbook
 
 # To build after updating exercises
 node ./textbook/_static/toml_to_js_convertor.js
-jupyter-book build --all textbook
+uv run jupyter-book build --all textbook
 cp -r textbook/exercises/ textbook/_build/html/exercises
 ```
 
@@ -61,11 +72,11 @@ cp -r textbook/exercises/ textbook/_build/html/exercises
 
 1. Ensure you have installed the necessary packages as described in the `embeddings/README.md` file. Or run the following command 
    ```bash
-   pip install sentence-transformers beautifulsoup4 numpy
+   uv sync --group embeddings
    ```
 2. Run the following commands:
    ```bash
-   python embeddings/generate.py
+   uv run python embeddings/generate.py
    cp -r embeddings/outputs textbook/_build/html
    ```
 
@@ -99,7 +110,7 @@ Run this command if you are using cpp-visualizer in any of the markdown files
 
 
 ```
-jupyter-book build --all textbook
+uv run jupyter-book build --all textbook
 ```
 
 ```
@@ -124,7 +135,7 @@ open http://localhost:8000
 To check spelling mistakes, you need to install `pyspelling` using the following command:
 
 ```
-pip install pyspelling
+uv sync --group dev
 ```
 
 Then run the following command:

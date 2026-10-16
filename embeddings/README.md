@@ -29,9 +29,9 @@ Optional:
 ## Installation
 
 1. Clone the repository.
-2. Install the required Python packages:
+2. Install the required Python packages (from the repo root):
     ```bash
-    pip install sentence-transformers beautifulsoup4 numpy
+    uv sync --group embeddings
     ```
 
 Optional (if using FAISS):

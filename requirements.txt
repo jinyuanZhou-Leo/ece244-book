@@ -1,6 +1,6 @@
-ipython==8.12
-jupyter-book==0.13.1
-matplotlib
-numpy
-attrs>=20.3,<22
-lxml[html_clean]
+# Book build dependencies are defined in pyproject.toml.
+# Install/sync with:  uv sync
+# Optional groups:    uv sync --group dev --group embeddings
+#
+# Legacy pip one-liner (not recommended on Homebrew Python):
+#   uv export --no-emit-project --no-hashes -o requirements.txt

@@ -9,6 +9,9 @@ textbook/code/*/*/build/
 *.m4v
 textbook/code/
 
+# Python (uv-managed virtualenv)
+.venv/
+
 # Local scratch space (build venv, test programs)
 .scratch/
 
