@@ -52,12 +52,18 @@ parts:
           - file: chapters/chapter06-objects-w-pointers/testing-exercises.md
       - file: chapters/chapter07-linked-lists/intro.md
         sections:
+          - file: chapters/chapter07-linked-lists/linked-lists.md
+          - file: chapters/chapter07-linked-lists/stacks.md
+          - file: chapters/chapter07-linked-lists/queues.md
           - file: chapters/chapter07-linked-lists/testing-exercises.md
       - file: chapters/chapter08-recursion/intro.md
         sections:
           - file: chapters/chapter08-recursion/testing-exercises.md
       - file: chapters/chapter09-complexity-analysis/intro.md
         sections:
+          - file: chapters/chapter09-complexity-analysis/what-is-complexity-analysis.md
+          - file: chapters/chapter09-complexity-analysis/big-o-notation.md
+          - file: chapters/chapter09-complexity-analysis/complexity-examples.md
           - file: chapters/chapter09-complexity-analysis/testing-exercises.md
       - file: chapters/chapter10-inheritance/intro.md
         sections:
