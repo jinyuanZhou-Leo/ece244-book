@@ -140,7 +140,7 @@ int main(void) {
 
 **[Line 9]** `mid` is the index of the middle element of the search range. When the range has an even number of elements, there are two middle elements, and we pick the right one, *e.g.* index 4 for the range 0 to 7, as in the example above.
 
-**[Line 11 to 17]** If `x` equals `a[mid]`, we found it. Otherwise, we shrink the search range to its left half or its right half. In this implementation, each iteration compares `x` with one element, `a[mid]`, so we count it as one comparison.
+**[Line 11 to 17]** If `x` equals `a[mid]`, we found it. Otherwise, we shrink the search range to its left half or its right half. Each iteration compares `x` with one element, `a[mid]`, and decides whether `x` is equal, smaller or larger. Like the lecture, we count this as one **element comparison**, even though the code may evaluate two relational operators (`==` and `<`). Counting each relational operator separately would at most double the count, which does not change how it grows with $n$.
 
 **[Line 8]** If the search range becomes empty, *i.e.* `low > high`, `x` is not in the array.
 

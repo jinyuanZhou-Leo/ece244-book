@@ -84,8 +84,8 @@ msgstr "**[第 6 和 7 行]** 查找范围是从下标 `low` 到下标 `high`。
 msgid "**[Line 9]** `mid` is the index of the middle element of the search range. When the range has an even number of elements, there are two middle elements, and we pick the right one, *e.g.* index 4 for the range 0 to 7, as in the example above."
 msgstr "**[第 9 行]** `mid` 是查找范围中间元素的下标。当范围内的元素个数为偶数时，有两个中间元素，我们选择靠右的那个，*例如*对于范围 0 到 7 选择下标 4，与上面的例子一致。"
 
-msgid "**[Line 11 to 17]** If `x` equals `a[mid]`, we found it. Otherwise, we shrink the search range to its left half or its right half. In this implementation, each iteration compares `x` with one element, `a[mid]`, so we count it as one comparison."
-msgstr "**[第 11 到 17 行]** 如果 `x` 等于 `a[mid]`，就找到了。否则，我们把查找范围缩小为它的左半部分或右半部分。在这个实现中，每次迭代把 `x` 与一个元素 `a[mid]` 进行比较，所以我们把它算作一次比较。"
+msgid "**[Line 11 to 17]** If `x` equals `a[mid]`, we found it. Otherwise, we shrink the search range to its left half or its right half. Each iteration compares `x` with one element, `a[mid]`, and decides whether `x` is equal, smaller or larger. Like the lecture, we count this as one **element comparison**, even though the code may evaluate two relational operators (`==` and `<`). Counting each relational operator separately would at most double the count, which does not change how it grows with $n$."
+msgstr "**[第 11 到 17 行]** 如果 `x` 等于 `a[mid]`，就找到了。否则，我们把查找范围缩小为它的左半部分或右半部分。每次迭代把 `x` 与一个元素 `a[mid]` 进行比较，并判断 `x` 是等于、小于还是大于它。和课堂讲义一样，我们把这算作一次**元素比较**，尽管代码可能会计算两个关系运算符（`==` 和 `<`）。如果把每个关系运算符分开计数，次数最多翻倍，并不会改变它随 $n$ 增长的方式。"
 
 msgid "**[Line 8]** If the search range becomes empty, *i.e.* `low > high`, `x` is not in the array."
 msgstr "**[第 8 行]** 如果查找范围变为空，*即* `low > high`，说明 `x` 不在数组中。"
