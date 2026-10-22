@@ -60,8 +60,8 @@ msgstr "**如果栈是空的呢？** 那么 `head` 是 `nullptr`，所以新节�
 msgid "`pop`"
 msgstr "`pop`"
 
-msgid "**Line 2 to 4.** If the stack is empty, there is nothing to pop. In this example, we return `-1` to indicate this."
-msgstr "**第 2 到 4 行。** 如果栈是空的，就没有可以弹出的值。在这个例子中，我们返回 `-1` 来表示这种情况。"
+msgid "**Line 2 to 4.** If the stack is empty, there is nothing to pop. In this example, we return `-1` to indicate this. This is a simplification: `-1` can also be a valid value that was pushed, so the caller cannot always tell the two cases apart. A more complete stack would also provide a function such as `bool isEmpty()` that the caller checks before calling `pop`. The same applies to `dequeue` in the next section."
+msgstr "**第 2 到 4 行。** 如果栈是空的，就没有可以弹出的值。在这个例子中，我们返回 `-1` 来表示这种情况。这是一种简化：`-1` 也可能是被压入的有效值，因此调用者并不总能区分这两种情况。更完整的栈还会提供一个函数，例如 `bool isEmpty()`，让调用者在调用 `pop` 之前先检查。下一节中的 `dequeue` 也是如此。"
 
 msgid "**Line 5 and 6.** We keep a pointer `old_head` to the first node, and we save its data in `d`."
 msgstr "**第 5 和 6 行。** 我们用指针 `old_head` 记住第一个节点，并把它的数据保存在 `d` 中。"

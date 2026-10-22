@@ -91,7 +91,7 @@ int Stack::pop() {
 }
 ```
 
-**Line 2 to 4.** If the stack is empty, there is nothing to pop. In this example, we return `-1` to indicate this.
+**Line 2 to 4.** If the stack is empty, there is nothing to pop. In this example, we return `-1` to indicate this. This is a simplification: `-1` can also be a valid value that was pushed, so the caller cannot always tell the two cases apart. A more complete stack would also provide a function such as `bool isEmpty()` that the caller checks before calling `pop`. The same applies to `dequeue` in the next section.
 
 **Line 5 and 6.** We keep a pointer `old_head` to the first node, and we save its data in `d`.
 
