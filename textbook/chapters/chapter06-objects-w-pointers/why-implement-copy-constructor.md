@@ -978,6 +978,103 @@ Our copy constructor allocates a new array for `y` and copies the grades of `x` 
 </script>
 </memory-stepper>
 
+## Another example: `MyString`
+
+Let's look at one more class that owns dynamically allocated memory. `MyString` stores a C-string in a dynamically allocated array of characters `buf`, and its length in `len`. Unlike `Student`, a `MyString` object may own **no** array at all: the default constructor sets `buf` to `nullptr`.
+
+**<span style="color:red">Problem!</span>** Suppose `MyString` uses the default copy constructor, and we write:
+
+```{code-block} cpp
+MyString a("Hello");
+MyString b(a);       // Shallow copy: b.buf == a.buf
+b.setString("Oops");
+```
+
+There are two objects, but only one array that stores `"Hello"`. `setString` frees the old array of `b` before it allocates a new one for `"Oops"`. Since `b.buf` and `a.buf` point to the same array, `b.setString("Oops")` frees the array of `a` too! `a.buf` is now a **dangling pointer**: it stores the address of freed memory. Using `a` after this line, *e.g.* printing it, is undefined behavior, and when `a` goes out of scope its destructor frees the same array a second time.
+
+**<span style="color:green">Solution.</span>** We implement a copy constructor that makes a deep copy. Since `other.buf` may be `nullptr`, we only allocate and copy an array if `other` has one.
+
+**Code**
+{{code_runner_header}}
+<pre class="code-runner-wrapper">
+<code-runner language="c++" highlight-lines="19 20 21 22 23 24 25 26 47 48 52" output="Hello
+Oops
+(empty)">
+&#35;include &lt;cstring&gt;
+&#35;include &lt;iostream&gt;
+using namespace std;
+<br>
+class MyString {
+  private:
+    int len;
+    char* buf;
+  public:
+    MyString() {
+      len = 0;
+      buf = nullptr;
+    }
+    MyString(const char* src) {
+      len = strlen(src);
+      buf = new char[len + 1];
+      strcpy(buf, src);
+    }
+    MyString(const MyString& other) {
+      len = other.len;
+      buf = nullptr;
+      if (other.buf != nullptr) {
+        buf = new char[len + 1];
+        strcpy(buf, other.buf);
+      }
+    }
+    ~MyString() {
+      delete[] buf;
+    }
+    void setString(const char* src) {
+      delete[] buf;
+      len = strlen(src);
+      buf = new char[len + 1];
+      strcpy(buf, src);
+    }
+    void print() {
+      if (buf == nullptr) {
+        cout << "(empty)" << endl;
+      } else {
+        cout << buf << endl;
+      }
+    }
+};
+<br>
+int main(void) {
+  MyString a("Hello");
+  MyString b(a);
+  b.setString("Oops");
+  a.print();
+  b.print();
+  MyString c;
+  MyString d(c);
+  d.print();
+  return 0;
+}
+</code-runner>
+</pre>
+
+**[Line 14 to 18]** The constructor allocates `len + 1` characters, one extra for the null character `'\0'` at the end of a C-string, and copies `src` into the array using `strcpy`.
+
+**[Line 19 to 26]** Our copy constructor first sets `buf` to `nullptr`. If `other` owns an array, it allocates a **new** array of the same size and copies the characters of `other` into it. If `other.buf` is `nullptr`, there is nothing to copy, and `buf` stays `nullptr`. Without this check, `strcpy(buf, other.buf)` would read from `nullptr`, which is undefined behavior.
+
+**[Line 30 to 35]** `setString` frees the old array and allocates a new one for the new string. Calling `delete[]` on `nullptr` is safe and does nothing, so we do not need to check whether `buf` is `nullptr` before freeing it.
+
+**[Line 47 and 48]** `b` gets its own copy of `"Hello"`. When `b.setString("Oops")` frees the old array of `b`, the array of `a` is not affected, so `a` still prints `Hello`.
+
+**[Line 52]** `c` has no array, so `d` is created with `buf` set to `nullptr` too.
+
+**Output**
+<pre>
+Hello
+Oops
+(empty)
+</pre>
+
 **In short, if a class has a pointer to dynamically allocated memory, we need to implement a copy constructor that makes a deep copy.** Otherwise, the default copy constructor makes a shallow copy, and the copies share the same memory.
 
 In the next section, we will see that the default `operator=` has the same problem, and we will implement our own.

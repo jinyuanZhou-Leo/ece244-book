@@ -24,6 +24,8 @@ Given that `a` is an object of the `Student` class, the copy constructor is call
 
     For example, if the function prototype is `Student getCopy(Student& s);` and the function returns `s` using `return s;`, a new object is created to hold the returned value. The copy constructor is called to initialize this new object with the value of `s`.
 
+The copy constructor is also called when we **dynamically allocate** a new object as a copy of an existing one, *e.g.* `Student* p = new Student(a);`. Here, the new object is created on the heap, and it is initialized from `a` using the copy constructor, just like in case 1.
+
 **Try out this!** In the following code, we define our own copy constructor that prints a message every time it is called. We then trigger each of the four cases in `main`.
 
 **Code**
@@ -173,7 +175,7 @@ This is why `getCopy` returns its reference parameter `s` in our example: `s` is
 
 ## The default copy constructor
 
-**What if we do not define a copy constructor?** Just like the default `operator=` we discussed in the previous chapter, C++ provides a **default copy constructor** for every class that does not define its own. The default copy constructor performs a **member-wise copy**: it copies every data member of the existing object into the corresponding data member of the new object.
+**What if we do not define a copy constructor?** Just like the default `operator=` we discussed in the previous chapter, if we do not declare a copy constructor, the compiler generates a **default copy constructor** for us. The default copy constructor performs a **member-wise copy**: it copies every data member of the existing object into the corresponding data member of the new object.
 
 For the `Student` class, the default copy constructor behaves as if we wrote:
 
@@ -184,7 +186,83 @@ Student(const Student& other) {
 }
 ```
 
-This is exactly what we need for `Student`, so we did not have to write our own copy constructor, except to print a message. In the next section, we will see a class where the member-wise copy is **not** what we want.
+This is exactly what we need for `Student`, so we did not have to write our own copy constructor, except to print a message.
+
+**How is each data member copied?** Each data member is copied according to its own type. Consider the following class with an `int`, a `string` and a pointer to an `int`.
+
+```{code-block} cpp
+:linenos:
+class Example {
+  public:
+    int id;
+    string name;
+    int* ptr;
+    Example(int i, string n, int* p) {
+      id = i;
+      name = n;
+      ptr = p;
+    }
+};
+
+int main(void) {
+  int value = 10;
+  Example a(1, "Alice", &value);
+  Example b(a); // Default copy constructor
+  return 0;
+}
+```
+
+In line 16, the default copy constructor creates `b` from `a`:
+
+- `b.id` gets the value `1`.
+- `b.name` gets **its own copy** of the characters `"Alice"`, because `string` has its own copy constructor that copies the characters. Changing `b.name` later does not change `a.name`.
+- `b.ptr` gets the **same address** stored in `a.ptr`. Only the address is copied, so `a.ptr` and `b.ptr` point to the same `int`, `value`.
+
+In the next section, we will see that copying only the address of a pointer is **not** what we want when the pointer points to dynamically allocated memory that the object owns.
+
+## When the default copy constructor is not available
+
+Stream objects, such as `cin` (an `istream`), `cout` (an `ostream`), file streams (`ifstream` and `ofstream`) and string streams (`stringstream`), **cannot be copied**. This is why, when a function takes a stream as a parameter, *e.g.* `operator<<` in the Operator Overloading chapter, we pass the stream by reference. **Why can't we pass a stream by value?** Passing an object by value calls its copy constructor (case 3 above). The copy constructor of the stream classes, *e.g.* `istream`, is **deleted**, which means it is declared, but calling it is a compile-time error.
+
+```{code-block} cpp
+void readData(istream input) { /* ... */ } // input would be a copy
+
+int main(void) {
+  readData(cin); // Error: the copy constructor of istream is deleted
+  return 0;
+}
+```
+
+The solution is to pass the stream by reference, *i.e.* `void readData(istream& input)`, so no copy is made.
+
+Similarly, the compiler can only generate a default copy constructor if every data member can be copied. If a data member cannot be copied, such as a `stringstream`, the default copy constructor is **deleted**.
+
+```{code-block} cpp
+class Example {
+  public:
+    stringstream stream; // stringstream cannot be copied
+};
+
+int main(void) {
+  Example a;    // OK: the default constructor is fine
+  Example b(a); // Error: the default copy constructor is deleted
+  return 0;
+}
+```
+
+Copying `a` would require copying `a.stream`, which is not allowed. `g++` reports `error: use of deleted function 'Example::Example(const Example&)'`.
+
+We can also delete the copy constructor **ourselves** when objects of a class should never be copied. We write `= delete` after its declaration:
+
+```{code-block} cpp
+class Example {
+  public:
+    // ... other members
+    Example(const Example& other) = delete; // Forbid copying
+};
+```
+
+Now any line that would call the copy constructor, *e.g.* `Example b(a);` or passing an `Example` object by value, causes a compile-time error.
 
 ## Why is the parameter a `const` reference?
 
@@ -263,6 +341,11 @@ c = a;         // c already exists: operator=
       "code": "Student* p = &a;",
       "answer": 2,
       "why": "Only the address of `a` is stored in the pointer `p`. No `Student` object is created."
+    },
+    {
+      "code": "Student* q = new Student(a);",
+      "answer": 0,
+      "why": "A new `Student` object is created on the heap from the existing object `a`, so the copy constructor is called."
     },
     {
       "code": "Student e(\"Ana\", 1234);",
