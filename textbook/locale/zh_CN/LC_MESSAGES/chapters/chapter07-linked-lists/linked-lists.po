@@ -1,0 +1,83 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-22 17:54+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+msgid "From Arrays to Linked Lists"
+msgstr "从数组到链表"
+
+msgid "Why linked lists?"
+msgstr "为什么需要链表？"
+
+msgid "An array has a **fixed size**. For example, the following array can store exactly 3 integers:"
+msgstr "数组的**大小是固定的**。例如，下面的数组恰好可以存储 3 个整数："
+
+msgid "Even if we allocate the array dynamically, *e.g.* `int* arr = new int[3];`, its size cannot change after it is allocated. If we need space for more elements, we have to allocate a new, larger array, copy every element into it, and free the old array. Copying $n$ elements takes time that grows with $n$."
+msgstr "即使我们动态分配数组，*例如* `int* arr = new int[3];`，它的大小在分配之后也不能改变。如果需要空间来存放更多元素，我们必须分配一个新的、更大的数组，把每个元素复制进去，然后释放旧数组。复制 $n$ 个元素所需的时间随 $n$ 增长。"
+
+msgid "This is where **linked lists** are helpful. A linked list grows and shrinks one element at a time, without copying the other elements."
+msgstr "这正是**链表**派上用场的地方。链表每次增加或减少一个元素，而不需要复制其他元素。"
+
+msgid "What is a linked list?"
+msgstr "什么是链表？"
+
+msgid "A **linked list** is a collection of **nodes** that are linked together by pointers. Each node stores:"
+msgstr "**链表**（linked list）是由指针连接在一起的一组**节点**（node）。每个节点存储："
+
+msgid "**data**, *e.g.* an integer, and"
+msgstr "**数据**（data），*例如*一个整数，以及"
+
+msgid "a pointer **next** to the next node in the list."
+msgstr "一个指向链表中下一个节点的指针 **next**。"
+
+msgid "The pointer `head` points to the first node, and the `next` of the last node is `nullptr`, which marks the end of the list."
+msgstr "指针 `head` 指向第一个节点，最后一个节点的 `next` 是 `nullptr`，它标志着链表的结尾。"
+
+msgid "Unlike the elements of an array, the nodes of a linked list are not next to each other in memory. Each node is dynamically allocated on its own, and the `next` pointers connect them in order."
+msgstr "与数组的元素不同，链表的节点在内存中并不相邻。每个节点都是单独动态分配的，由 `next` 指针按顺序把它们连接起来。"
+
+msgid "A `Node` class"
+msgstr "`Node` 类"
+
+msgid "We define a node as a class in C++."
+msgstr "我们在 C++ 中把节点定义为一个类。"
+
+msgid "**Code in `node.h`**"
+msgstr "**`node.h` 中的代码**"
+
+msgid "**Line 3 and 4.** Each node stores an integer `data` and a pointer `next` to the next node."
+msgstr "**第 3 和 4 行。** 每个节点存储一个整数 `data` 和一个指向下一个节点的指针 `next`。"
+
+msgid "**Line 7.** The constructor initializes both data members. To create a node that is not linked to another node, we pass `nullptr` as `n`."
+msgstr "**第 7 行。** 构造函数初始化两个数据成员。要创建一个不与其他节点相连的节点，我们把 `nullptr` 作为 `n` 传入。"
+
+msgid "**Line 8.** The destructor deletes the next node. As we discussed in the Dynamic Memory Allocation chapter, `delete next;` calls the destructor of the next node, which deletes the node after it, and so on. Therefore, deleting the first node deletes **every** node in the list, from the last node back to the first. The `next` of the last node is `nullptr`, and `delete nullptr;` is safe and does nothing, so the recursion stops at the last node."
+msgstr "**第 8 行。** 析构函数删除下一个节点。正如我们在动态内存分配一章中讨论的，`delete next;` 会调用下一个节点的析构函数，而它又会删除再下一个节点，依此类推。因此，删除第一个节点会删除链表中的**每一个**节点，顺序是从最后一个节点回到第一个节点。最后一个节点的 `next` 是 `nullptr`，而 `delete nullptr;` 是安全的，什么也不做，所以递归在最后一个节点处停止。"
+
+msgid "**Line 9 to 12.** Since `data` and `next` are private, we provide getters and setters."
+msgstr "**第 9 到 12 行。** 由于 `data` 和 `next` 是私有的，我们提供了 getter 和 setter。"
+
+msgid "Be careful when deleting a single node"
+msgstr "删除单个节点时要小心"
+
+msgid "Since the destructor of `Node` deletes the next node, `delete p;` deletes the node that `p` points to **and all nodes after it**. To delete only one node, we must first set its `next` to `nullptr`, *e.g.* `p->setNext(nullptr);`. We will see why this matters in the next two sections."
+msgstr "由于 `Node` 的析构函数会删除下一个节点，`delete p;` 会删除 `p` 指向的节点**以及它后面的所有节点**。如果只想删除一个节点，我们必须先把它的 `next` 设为 `nullptr`，*例如* `p->setNext(nullptr);`。我们会在接下来的两节中看到这一点为什么重要。"
+
+msgid "There are many variants of linked lists. In the next two sections, we use `Node` to build two of them: a **stack** and a **queue**."
+msgstr "链表有许多变体。在接下来的两节中，我们用 `Node` 构建其中的两种：**栈**和**队列**。"
+

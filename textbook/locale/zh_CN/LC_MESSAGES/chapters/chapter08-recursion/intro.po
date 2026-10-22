@@ -15,8 +15,8 @@ msgstr ""
 "Generated-By: Babel 2.18.0\n"
 
 msgid "Recursion"
-msgstr ""
+msgstr "递归"
 
 msgid "In this chapter, we review recursive functions, and how to think recursively. We also introduce the process of backtracking in recursive functions."
-msgstr ""
+msgstr "在本章中，我们复习递归函数以及如何用递归的方式思考。我们还会介绍递归函数中的回溯（backtracking）过程。"
 

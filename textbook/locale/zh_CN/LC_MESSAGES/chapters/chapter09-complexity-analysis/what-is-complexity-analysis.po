@@ -1,0 +1,191 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-22 17:54+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+msgid "What is Complexity Analysis?"
+msgstr "什么是复杂度分析？"
+
+msgid "An **algorithm** is a sequence of steps for solving a problem, *e.g.* searching for a value in an array of $n$ elements. There is usually more than one algorithm that solves the same problem. **Complexity analysis** studies how the resources an algorithm needs grow with the **input size** $n$. There are two types of complexity:"
+msgstr "**算法**（algorithm）是解决一个问题的一系列步骤，*例如*在含有 $n$ 个元素的数组中查找一个值。解决同一个问题的算法通常不止一种。**复杂度分析**（complexity analysis）研究算法所需的资源如何随**输入规模** $n$ 增长。复杂度有两种："
+
+msgid "**Time complexity**: how the number of operations an algorithm needs grows with $n$."
+msgstr "**时间复杂度**：算法所需的操作次数如何随 $n$ 增长。"
+
+msgid "**Space complexity**: how the memory an algorithm needs grows with $n$."
+msgstr "**空间复杂度**：算法所需的内存如何随 $n$ 增长。"
+
+msgid "In this chapter, we focus on time complexity. To see why it matters, let's compare two algorithms that search an array for a value."
+msgstr "在本章中，我们关注时间复杂度。为了说明它为什么重要，我们来比较两种在数组中查找值的算法。"
+
+msgid "Linear search"
+msgstr "线性查找"
+
+msgid "**Linear search** checks the elements of the array one by one from left to right, until it finds the value or reaches the end of the array."
+msgstr "**线性查找**（linear search）从左到右逐个检查数组中的元素，直到找到该值或到达数组末尾。"
+
+msgid "**Code** {{code_runner_header}}"
+msgstr "**代码** {{code_runner_header}}"
+
+msgid "**[Line 4 to 13]** `linearSearch` compares `x` with `a[0]`, `a[1]`, `a[2]`, and so on. It returns `true` as soon as it finds `x`, or `false` after it checks every element. We count the element comparisons in `comparisons`, which is passed by reference."
+msgstr "**[第 4 到 13 行]** `linearSearch` 依次把 `x` 与 `a[0]`、`a[1]`、`a[2]` 等进行比较。它一旦找到 `x` 就返回 `true`，检查完所有元素仍未找到则返回 `false`。我们用按引用传递的 `comparisons` 来统计元素比较的次数。"
+
+msgid "Searching for `11` in the array below takes 4 element comparisons:"
+msgstr "在下面的数组中查找 `11` 需要 4 次元素比较："
+
+msgid "**How many comparisons does linear search need in an array of $n$ elements?**"
+msgstr "**在含有 $n$ 个元素的数组中，线性查找需要多少次比较？**"
+
+msgid "**Best case:** the first element matches, so we need only **one** element comparison."
+msgstr "**最好情况：** 第一个元素就匹配，所以只需要**一次**元素比较。"
+
+msgid "**Worst case:** the value is the last element or is not in the array, so we need $n$ element comparisons."
+msgstr "**最坏情况：** 要找的值是最后一个元素或者不在数组中，所以需要 $n$ 次元素比较。"
+
+msgid "Binary search"
+msgstr "二分查找"
+
+msgid "If the array is **sorted** in ascending order, we can do much better. **Binary search** works as follows:"
+msgstr "如果数组按升序**排好序**，我们可以做得好得多。**二分查找**（binary search）的步骤如下："
+
+msgid "Compare the value with the **middle** element of the search range, which is initially the whole array."
+msgstr "把要找的值与查找范围的**中间**元素进行比较，查找范围最初是整个数组。"
+
+msgid "If the value equals the middle element, it is found."
+msgstr "如果该值等于中间元素，就找到了。"
+
+msgid "If the value is smaller than the middle element, it can only be in the left half, so we continue searching the left half."
+msgstr "如果该值小于中间元素，它只可能在左半部分，所以继续在左半部分查找。"
+
+msgid "If the value is larger than the middle element, it can only be in the right half, so we continue searching the right half."
+msgstr "如果该值大于中间元素，它只可能在右半部分，所以继续在右半部分查找。"
+
+msgid "For example, searching for `11` in the same sorted array takes only 3 comparisons:"
+msgstr "例如，在同一个有序数组中查找 `11` 只需要 3 次比较："
+
+msgid "**[Line 6 and 7]** The search range is from index `low` to index `high`. Initially, it is the whole array."
+msgstr "**[第 6 和 7 行]** 查找范围是从下标 `low` 到下标 `high`。最初它是整个数组。"
+
+msgid "**[Line 9]** `mid` is the index of the middle element of the search range. When the range has an even number of elements, there are two middle elements, and we pick the right one, *e.g.* index 4 for the range 0 to 7, as in the example above."
+msgstr "**[第 9 行]** `mid` 是查找范围中间元素的下标。当范围内的元素个数为偶数时，有两个中间元素，我们选择靠右的那个，*例如*对于范围 0 到 7 选择下标 4，与上面的例子一致。"
+
+msgid "**[Line 11 to 17]** If `x` equals `a[mid]`, we found it. Otherwise, we shrink the search range to its left half or its right half. In this implementation, each iteration compares `x` with one element, `a[mid]`, so we count it as one comparison."
+msgstr "**[第 11 到 17 行]** 如果 `x` 等于 `a[mid]`，就找到了。否则，我们把查找范围缩小为它的左半部分或右半部分。在这个实现中，每次迭代把 `x` 与一个元素 `a[mid]` 进行比较，所以我们把它算作一次比较。"
+
+msgid "**[Line 8]** If the search range becomes empty, *i.e.* `low > high`, `x` is not in the array."
+msgstr "**[第 8 行]** 如果查找范围变为空，*即* `low > high`，说明 `x` 不在数组中。"
+
+msgid "**How many comparisons does binary search need in an array of $n$ elements?**"
+msgstr "**在含有 $n$ 个元素的数组中，二分查找需要多少次比较？**"
+
+msgid "**Best case:** the middle element matches, so we need only **one** comparison."
+msgstr "**最好情况：** 中间元素就匹配，所以只需要**一次**比较。"
+
+msgid "**Worst case:** the search continues until there is only one element left in the search range. Each comparison **halves** the search range:"
+msgstr "**最坏情况：** 查找一直持续到查找范围内只剩下一个元素。每次比较都会把查找范围**减半**："
+
+msgid "After 1 comparison, the search range has $n/2 = n/2^1$ elements."
+msgstr "比较 1 次之后，查找范围有 $n/2 = n/2^1$ 个元素。"
+
+msgid "After 2 comparisons, the search range has $n/4 = n/2^2$ elements."
+msgstr "比较 2 次之后，查找范围有 $n/4 = n/2^2$ 个元素。"
+
+msgid "..."
+msgstr ""
+
+msgid "After $k$ comparisons, the search range has about $n/2^k$ elements."
+msgstr "比较 $k$ 次之后，查找范围大约有 $n/2^k$ 个元素。"
+
+msgid "The search range has one element left when $n/2^k \\approx 1$, *i.e.* $2^k \\approx n$, so $k \\approx \\log_2 n$. In the worst case, binary search needs approximately $\\log_2 n$ comparisons."
+msgstr "当 $n/2^k \\approx 1$，*即* $2^k \\approx n$ 时，查找范围只剩下一个元素，所以 $k \\approx \\log_2 n$。在最坏情况下，二分查找大约需要 $\\log_2 n$ 次比较。"
+
+#, python-brace-format
+msgid "The worst-case number of comparisons of linear search grows **linearly** with $n$, while that of binary search grows **logarithmically** with $n$. For an array of one million elements, linear search may need one million comparisons, while binary search needs only about 20, since $2^{20} \\approx 10^6$."
+msgstr "线性查找在最坏情况下的比较次数随 $n$ **线性**增长，而二分查找的比较次数随 $n$ **对数**增长。对于一个有一百万个元素的数组，线性查找可能需要一百万次比较，而二分查找只需要大约 20 次，因为 $2^{20} \\approx 10^6$。"
+
+msgid "Why not just measure the running time?"
+msgstr "为什么不直接测量运行时间？"
+
+msgid "**Why do we count operations instead of measuring the running time of a program in seconds?** The measured running time of a program depends on many things other than the algorithm:"
+msgstr "**为什么我们要统计操作次数，而不是测量程序以秒为单位的运行时间？** 程序实测的运行时间除了取决于算法之外，还取决于许多其他因素："
+
+msgid "the hardware, *e.g.* a faster or slower computer,"
+msgstr "硬件，*例如*计算机的快慢，"
+
+msgid "the compiler,"
+msgstr "编译器，"
+
+msgid "the programming language, and"
+msgstr "编程语言，以及"
+
+msgid "the input."
+msgstr "输入。"
+
+msgid "However, the choice of algorithm matters, especially for large inputs. Suppose we run linear search on a **faster** computer, and binary search on a much **slower** computer, and we measure the worst-case running time:"
+msgstr "然而，算法的选择很重要，尤其是对于大规模输入。假设我们在一台**较快**的计算机上运行线性查找，在一台慢得多的计算机上运行二分查找，并测量最坏情况下的运行时间："
+
+msgid "Input size $n$"
+msgstr "输入规模 $n$"
+
+msgid "Linear search: faster computer"
+msgstr "线性查找：较快的计算机"
+
+msgid "Binary search: slower computer"
+msgstr "二分查找：较慢的计算机"
+
+msgid "$10$"
+msgstr ""
+
+msgid "$10$ ns"
+msgstr ""
+
+msgid "$1000$ ns"
+msgstr ""
+
+msgid "$1000$"
+msgstr ""
+
+msgid "$3000$ ns"
+msgstr ""
+
+#, python-brace-format
+msgid "$10{,}000{,}000$"
+msgstr ""
+
+#, python-brace-format
+msgid "$10{,}000{,}000$ ns"
+msgstr ""
+
+msgid "$7000$ ns"
+msgstr ""
+
+msgid "For small inputs, the faster computer wins. As the input size grows, binary search wins, even though it runs on the slower computer. **The time complexity of the algorithm matters as the input size increases.**"
+msgstr "对于小规模输入，较快的计算机胜出。随着输入规模增大，即使二分查找运行在较慢的计算机上，它也会胜出。**随着输入规模的增大，算法的时间复杂度起着决定性作用。**"
+
+msgid "In short:"
+msgstr "简而言之："
+
+msgid "**Measurements** evaluate how an implementation performs for a given input on a given computer."
+msgstr "**测量**评估的是某个实现在给定计算机上、对给定输入的表现。"
+
+msgid "**Complexity analysis** predicts how an algorithm performs for large inputs, regardless of the computer."
+msgstr "**复杂度分析**预测的是算法在大规模输入下的表现，与计算机无关。"
+
+msgid "In the next section, we will make this idea more formal."
+msgstr "在下一节中，我们会把这个想法形式化。"
+

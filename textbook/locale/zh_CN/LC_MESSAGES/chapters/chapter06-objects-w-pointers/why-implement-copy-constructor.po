@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the Python package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Python \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-16 14:33-0400\n"
+"POT-Creation-Date: 2026-10-22 17:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_CN\n"
@@ -20,79 +19,79 @@ msgstr ""
 "Generated-By: Babel 2.18.0\n"
 
 msgid "When do we need to implement a copy constructor?"
-msgstr ""
+msgstr "什么时候需要实现拷贝构造函数？"
 
 msgid "In the previous section, we discussed that C++ provides a default copy constructor that copies every data member of an existing object into the new object. This member-wise copy works well for a `Student` with a `name` and an `ID`. In this section, we will see that it causes serious problems when a data member is a pointer to dynamically allocated memory, and we will implement our own copy constructor to fix them."
-msgstr ""
+msgstr "在上一节中，我们讨论了 C++ 提供的默认拷贝构造函数，它把已有对象的每个数据成员复制到新对象中。对于只有 `name` 和 `ID` 的 `Student`，这种逐成员复制工作得很好。在本节中，我们会看到当数据成员是指向动态分配内存的指针时，它会导致严重的问题，并且我们会实现自己的拷贝构造函数来解决这些问题。"
 
 msgid "Recap: `Student` with dynamically allocated grades"
-msgstr ""
+msgstr "回顾：成绩动态分配的 `Student`"
 
 msgid "Recall from the Dynamic Memory Allocation chapter that a `Student` can store its grades in an array that is dynamically allocated in the constructor. The size of the array is only known when the object is created. The destructor frees the array when the object goes out of scope, so there is no memory leak."
-msgstr ""
+msgstr "回忆动态内存分配一章：`Student` 可以把成绩存储在一个在构造函数中动态分配的数组里。数组的大小只有在对象创建时才知道。析构函数在对象离开作用域时释放这个数组，因此不会有内存泄漏。"
 
 msgid "In the following code, we create a `Student x` with 3 grades, then create `y` as a copy of `x`. We did **not** define a copy constructor, so the default copy constructor is called."
-msgstr ""
+msgstr "在下面的代码中，我们创建一个有 3 个成绩的 `Student x`，然后把 `y` 创建为 `x` 的副本。我们**没有**定义拷贝构造函数，所以调用的是默认拷贝构造函数。"
 
 msgid "**Code** {{code_runner_header}}"
-msgstr ""
+msgstr "**代码** {{code_runner_header}}"
 
 msgid "**[Line 9 to 15]** The constructor sets `numGrades`, dynamically allocates an array of `numGrades` integers, and sets every grade to `0`."
-msgstr ""
+msgstr "**[第 9 到 15 行]** 构造函数设置 `numGrades`，动态分配一个含有 `numGrades` 个整数的数组，并把每个成绩设为 `0`。"
 
 msgid "**[Line 16 to 18]** The destructor frees the dynamically allocated array."
-msgstr ""
+msgstr "**[第 16 到 18 行]** 析构函数释放动态分配的数组。"
 
 msgid "**[Line 33]** `y` is created as a copy of `x` using the default copy constructor."
-msgstr ""
+msgstr "**[第 33 行]** 使用默认拷贝构造函数把 `y` 创建为 `x` 的副本。"
 
 msgid "**[Line 34]** We change the first grade of `y` to `70`. We never changed the grades of `x` after setting its first grade to `90`."
-msgstr ""
+msgstr "**[第 34 行]** 我们把 `y` 的第一个成绩改为 `70`。在把 `x` 的第一个成绩设为 `90` 之后，我们从未修改过 `x` 的成绩。"
 
 msgid "**Output**"
-msgstr ""
+msgstr "**输出**"
 
 msgid "The problem with the default copy constructor"
-msgstr ""
+msgstr "默认拷贝构造函数的问题"
 
 msgid "**<span style=\"color:red\">Problem 1: the grades are shared!</span>** The output shows that the first grade of `x` is `70`, although we only changed the grades of `y`."
-msgstr ""
+msgstr "**<span style=\"color:red\">问题 1：成绩被共享了！</span>** 输出显示 `x` 的第一个成绩是 `70`，尽管我们只修改了 `y` 的成绩。"
 
 #, python-brace-format
 msgid "The default copy constructor copies each data member of `x` into `y`. The data member `grades` is a pointer, so the default copy constructor copies the **address** stored in `x.grades` into `y.grades`. It does not copy the array that `x.grades` points to. As we show in {numref}`shallow-copy-a`, `x.grades` and `y.grades` now point to the same array on the heap."
-msgstr ""
+msgstr "默认拷贝构造函数把 `x` 的每个数据成员复制到 `y` 中。数据成员 `grades` 是一个指针，所以默认拷贝构造函数复制的是 `x.grades` 中存储的**地址**，并没有复制 `x.grades` 所指向的数组。如 {numref}`shallow-copy-a` 所示，`x.grades` 和 `y.grades` 现在指向堆上的同一个数组。"
 
 msgid "x.grades and y.grades point to the same array"
-msgstr ""
+msgstr "x.grades 和 y.grades 指向同一个数组"
 
 msgid "The default copy constructor copies the address stored in `x.grades` into `y.grades`. Both pointers point to the same array on the heap."
-msgstr ""
+msgstr "默认拷贝构造函数把 `x.grades` 中存储的地址复制到 `y.grades` 中。两个指针都指向堆上的同一个数组。"
 
 #, python-brace-format
 msgid "When we change a grade of `y` in line 34, we change the only array there is. In {numref}`shallow-copy-b`, we see that this change also appears when we print the grades of `x`."
-msgstr ""
+msgstr "当我们在第 34 行修改 `y` 的一个成绩时，修改的是唯一存在的那个数组。在 {numref}`shallow-copy-b` 中可以看到，当我们打印 `x` 的成绩时，这个修改同样会出现。"
 
 msgid "Changing y also changes x"
-msgstr ""
+msgstr "修改 y 也会修改 x"
 
 msgid "`y.setGrade(0, 70)` changes the first element of the shared array, so the first grade of `x` also becomes `70`."
-msgstr ""
+msgstr "`y.setGrade(0, 70)` 修改了共享数组的第一个元素，所以 `x` 的第一个成绩也变成了 `70`。"
 
 #, python-brace-format
 msgid "**<span style=\"color:red\">Problem 2: the array is freed twice!</span>** When `main` returns, `x` and `y` go out of scope, and the destructor of each object is called. Objects on the stack are destroyed in the reverse order of their creation, so `y` is destroyed first. As we show in {numref}`shallow-copy-c`, the destructor of `y` frees the array. `x.grades` still stores the address of the freed array."
-msgstr ""
+msgstr "**<span style=\"color:red\">问题 2：数组被释放了两次！</span>** 当 `main` 返回时，`x` 和 `y` 离开作用域，每个对象的析构函数都会被调用。栈上的对象按创建的相反顺序销毁，所以 `y` 先被销毁。如 {numref}`shallow-copy-c` 所示，`y` 的析构函数释放了数组，而 `x.grades` 仍然存储着已被释放的数组的地址。"
 
 msgid "y frees the shared array"
-msgstr ""
+msgstr "y 释放了共享的数组"
 
 msgid "`y` goes out of scope first, and its destructor frees the shared array. `x.grades` now points to memory that has been freed."
-msgstr ""
+msgstr "`y` 先离开作用域，它的析构函数释放了共享的数组。`x.grades` 现在指向已经被释放的内存。"
 
 msgid "Next, the destructor of `x` is called, and it executes `delete[] grades;` on the same address again. **Freeing the same memory twice is undefined behavior.** In practice, the program usually crashes after printing its output. If you run the code above, you may see an error such as `free(): double free detected in tcache 2` after the output."
-msgstr ""
+msgstr "接下来，`x` 的析构函数被调用，它对同一个地址再次执行 `delete[] grades;`。**释放同一块内存两次是未定义行为。** 实际上，程序通常会在打印输出之后崩溃。如果你运行上面的代码，可能会在输出之后看到类似 `free(): double free detected in tcache 2` 的错误。"
 
 msgid "**Try out this!** Step through the code below. After line 33, the arrows from `x.grades` and `y.grades` point to the same array on the heap. When `main` returns, the destructor of `y` frees this array, and the destructor of `x` tries to free it again. The visualizer stops at that line with the error `Invalid free() / delete / delete[]`."
-msgstr ""
+msgstr "**动手试一试！** 单步执行下面的代码。在第 33 行之后，`x.grades` 和 `y.grades` 的箭头指向堆上的同一个数组。当 `main` 返回时，`y` 的析构函数释放这个数组，然后 `x` 的析构函数试图再次释放它。可视化工具会在那一行停下，并显示错误 `Invalid free() / delete / delete[]`。"
 
 #, python-brace-format
 msgid "class Student {     private:       int* grades;       int numGrades;     public:       Student(int n) {         numGrades = n;         grades = new int[numGrades];         for (int i = 0; i &lt; numGrades; i++) {           grades[i] = 0;         }       }       ~Student() {         delete[] grades;       }       void setGrade(int index, int grade) {         grades[index] = grade;       }       void print() {         for (int i = 0; i &lt; numGrades; i++) {           cout &lt;&lt; grades[i] &lt;&lt; \" \";         }         cout &lt;&lt; endl;       }   };"
@@ -103,54 +102,84 @@ msgid "int main(void) {     Student x(3);     x.setGrade(0, 90);     Student y =
 msgstr ""
 
 msgid "Shallow copy"
-msgstr ""
+msgstr "浅拷贝"
 
 msgid "A copy that only copies the pointers, and not the memory they point to, is called a **shallow copy**. The default copy constructor makes a shallow copy. After a shallow copy, two objects share the same dynamically allocated memory:"
-msgstr ""
+msgstr "只复制指针、而不复制指针所指向内存的复制，称为**浅拷贝**（shallow copy）。默认拷贝构造函数进行的是浅拷贝。浅拷贝之后，两个对象共享同一块动态分配的内存："
 
 msgid "changing the memory through one object changes it for the other object, and"
-msgstr ""
+msgstr "通过一个对象修改这块内存，另一个对象看到的内容也会改变，并且"
 
 msgid "both destructors free the same memory."
-msgstr ""
+msgstr "两个析构函数会释放同一块内存。"
 
 msgid "Deep copy"
-msgstr ""
+msgstr "深拷贝"
 
 msgid "**<span style=\"color:green\">Solution.</span>** We implement our own copy constructor that makes a **deep copy**: instead of copying the address, it allocates a **new** array for the new object and copies every element of the existing array into it."
-msgstr ""
+msgstr "**<span style=\"color:green\">解决方法。</span>** 我们实现自己的拷贝构造函数，进行**深拷贝**（deep copy）：它不复制地址，而是为新对象分配一个**新**数组，并把已有数组的每个元素复制进去。"
 
 msgid "**Code in `Student` class**"
-msgstr ""
+msgstr "**`Student` 类中的代码**"
 
 msgid "**Line 2.** We copy the number of grades. `numGrades` is an `int`, so copying its value is all we need."
-msgstr ""
+msgstr "**第 2 行。** 我们复制成绩的个数。`numGrades` 是一个 `int`，所以复制它的值就足够了。"
 
 msgid "**Line 3.** We dynamically allocate a new array for the object being created. `grades` now points to this new array, not to the array of `other`."
-msgstr ""
+msgstr "**第 3 行。** 我们为正在创建的对象动态分配一个新数组。`grades` 现在指向这个新数组，而不是 `other` 的数组。"
 
 msgid "**Line 4 to 6.** We copy every grade from the array of `other` into the new array."
-msgstr ""
+msgstr "**第 4 到 6 行。** 我们把 `other` 数组中的每个成绩复制到新数组中。"
 
 msgid "We add the copy constructor to the `Student` class and run the same `main` function again."
-msgstr ""
+msgstr "我们把拷贝构造函数加入 `Student` 类，并再次运行同一个 `main` 函数。"
 
 #, python-brace-format
 msgid "In line 40, our copy constructor is called to create `y`. As we show in {numref}`deep-copy`, `x` and `y` now have their own arrays. Changing a grade of `y` does not change the grades of `x`, and when `x` and `y` go out of scope, each destructor frees a different array. The program ends without errors."
-msgstr ""
+msgstr "在第 40 行，我们的拷贝构造函数被调用来创建 `y`。如 {numref}`deep-copy` 所示，`x` 和 `y` 现在各自拥有自己的数组。修改 `y` 的成绩不会改变 `x` 的成绩；当 `x` 和 `y` 离开作用域时，每个析构函数释放的是不同的数组。程序正常结束，没有错误。"
 
 msgid "x and y have their own arrays"
-msgstr ""
+msgstr "x 和 y 各自拥有自己的数组"
 
 msgid "Our copy constructor allocates a new array for `y` and copies the grades of `x` into it. `x.grades` and `y.grades` point to different arrays."
-msgstr ""
+msgstr "我们的拷贝构造函数为 `y` 分配一个新数组，并把 `x` 的成绩复制进去。`x.grades` 和 `y.grades` 指向不同的数组。"
 
 msgid "**Compare the two.** Step through `main` below with the default copy constructor and with ours. You can switch between them at any step to see how the memory differs."
-msgstr ""
+msgstr "**比较两者。** 分别使用默认拷贝构造函数和我们的拷贝构造函数单步执行下面的 `main`。你可以在任何一步切换，查看内存有何不同。"
+
+msgid "Another example: `MyString`"
+msgstr "另一个例子：`MyString`"
+
+msgid "Let's look at one more class that owns dynamically allocated memory. `MyString` stores a C-string in a dynamically allocated array of characters `buf`, and its length in `len`. Unlike `Student`, a `MyString` object may own **no** array at all: the default constructor sets `buf` to `nullptr`."
+msgstr "我们再来看一个拥有动态分配内存的类。`MyString` 把一个 C 字符串存储在动态分配的字符数组 `buf` 中，并把它的长度存储在 `len` 中。与 `Student` 不同，`MyString` 对象可能**不**拥有任何数组：默认构造函数把 `buf` 设为 `nullptr`。"
+
+msgid "**<span style=\"color:red\">Problem!</span>** Suppose `MyString` uses the default copy constructor, and we write:"
+msgstr "**<span style=\"color:red\">问题！</span>** 假设 `MyString` 使用默认拷贝构造函数，并且我们写下："
+
+msgid "There are two objects, but only one array that stores `\"Hello\"`. `setString` frees the old array of `b` before it allocates a new one for `\"Oops\"`. Since `b.buf` and `a.buf` point to the same array, `b.setString(\"Oops\")` frees the array of `a` too! `a.buf` is now a **dangling pointer**: it stores the address of freed memory. Using `a` after this line, *e.g.* printing it, is undefined behavior, and when `a` goes out of scope its destructor frees the same array a second time."
+msgstr "这里有两个对象，但只有一个存储 `\"Hello\"` 的数组。`setString` 会先释放 `b` 的旧数组，再为 `\"Oops\"` 分配新数组。由于 `b.buf` 和 `a.buf` 指向同一个数组，`b.setString(\"Oops\")` 也释放了 `a` 的数组！`a.buf` 现在是一个**悬空指针**（dangling pointer）：它存储着已释放内存的地址。在这一行之后使用 `a`，*例如*打印它，是未定义行为；并且当 `a` 离开作用域时，它的析构函数会第二次释放同一个数组。"
+
+msgid "**<span style=\"color:green\">Solution.</span>** We implement a copy constructor that makes a deep copy. Since `other.buf` may be `nullptr`, we only allocate and copy an array if `other` has one."
+msgstr "**<span style=\"color:green\">解决方法。</span>** 我们实现一个进行深拷贝的拷贝构造函数。由于 `other.buf` 可能是 `nullptr`，只有当 `other` 拥有数组时，我们才分配并复制数组。"
+
+msgid "**[Line 14 to 18]** The constructor allocates `len + 1` characters, one extra for the null character `'\\0'` at the end of a C-string, and copies `src` into the array using `strcpy`."
+msgstr "**[第 14 到 18 行]** 构造函数分配 `len + 1` 个字符，多出的一个用于 C 字符串末尾的空字符 `'\\0'`，然后用 `strcpy` 把 `src` 复制到数组中。"
+
+msgid "**[Line 19 to 26]** Our copy constructor first sets `buf` to `nullptr`. If `other` owns an array, it allocates a **new** array of the same size and copies the characters of `other` into it. If `other.buf` is `nullptr`, there is nothing to copy, and `buf` stays `nullptr`. Without this check, `strcpy(buf, other.buf)` would read from `nullptr`, which is undefined behavior."
+msgstr "**[第 19 到 26 行]** 我们的拷贝构造函数先把 `buf` 设为 `nullptr`。如果 `other` 拥有数组，就分配一个同样大小的**新**数组，并把 `other` 的字符复制进去。如果 `other.buf` 是 `nullptr`，就没有什么需要复制的，`buf` 保持为 `nullptr`。如果没有这个检查，`strcpy(buf, other.buf)` 会从 `nullptr` 读取数据，这是未定义行为。"
+
+msgid "**[Line 30 to 35]** `setString` frees the old array and allocates a new one for the new string. Calling `delete[]` on `nullptr` is safe and does nothing, so we do not need to check whether `buf` is `nullptr` before freeing it."
+msgstr "**[第 30 到 35 行]** `setString` 释放旧数组，并为新字符串分配新数组。对 `nullptr` 调用 `delete[]` 是安全的，什么也不会做，所以释放之前不需要检查 `buf` 是否为 `nullptr`。"
+
+msgid "**[Line 47 and 48]** `b` gets its own copy of `\"Hello\"`. When `b.setString(\"Oops\")` frees the old array of `b`, the array of `a` is not affected, so `a` still prints `Hello`."
+msgstr "**[第 47 和 48 行]** `b` 得到 `\"Hello\"` 的一份独立副本。当 `b.setString(\"Oops\")` 释放 `b` 的旧数组时，`a` 的数组不受影响，所以 `a` 仍然打印 `Hello`。"
+
+msgid "**[Line 52]** `c` has no array, so `d` is created with `buf` set to `nullptr` too."
+msgstr "**[第 52 行]** `c` 没有数组，所以创建出来的 `d` 的 `buf` 也是 `nullptr`。"
 
 msgid "**In short, if a class has a pointer to dynamically allocated memory, we need to implement a copy constructor that makes a deep copy.** Otherwise, the default copy constructor makes a shallow copy, and the copies share the same memory."
-msgstr ""
+msgstr "**简而言之，如果一个类含有指向动态分配内存的指针，我们就需要实现一个进行深拷贝的拷贝构造函数。** 否则，默认拷贝构造函数会进行浅拷贝，副本之间会共享同一块内存。"
 
 msgid "In the next section, we will see that the default `operator=` has the same problem, and we will implement our own."
-msgstr ""
+msgstr "在下一节中，我们会看到默认的 `operator=` 也有同样的问题，并且我们会实现自己的 `operator=`。"
 

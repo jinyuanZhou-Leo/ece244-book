@@ -15,8 +15,8 @@ msgstr ""
 "Generated-By: Babel 2.18.0\n"
 
 msgid "Complexity Analysis"
-msgstr ""
+msgstr "复杂度分析"
 
 msgid "In this chapter, we discuss how do we evaluate the performance of algorithms based on the run time given an input size."
-msgstr ""
+msgstr "在本章中，我们讨论如何根据给定输入规模下的运行时间来评估算法的性能。"
 

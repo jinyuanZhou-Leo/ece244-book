@@ -3,7 +3,6 @@
 # This file is distributed under the same license as the Python package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Python \n"
@@ -20,14 +19,14 @@ msgstr ""
 "Generated-By: Babel 2.18.0\n"
 
 msgid "Exercises"
-msgstr ""
+msgstr "练习"
 
 msgid "Many of these exercises are taken from past exams of ECE 244 Programming Fundamentals courses at University of Toronto. The solutions are provided in the answer boxes."
-msgstr ""
+msgstr "这些练习中有许多来自多伦多大学 ECE 244 Programming Fundamentals 课程的往年考试。答案在答案框中给出。"
 
 msgid "Headings in this page classify the exercises into different categories: **[Easy]**, **[Intermediate]**, and **[Challenging]**. I suggest you start by easy exercises and work your way up to the challenging ones."
-msgstr ""
+msgstr "本页的标题将练习分为不同的难度：**[Easy]**（简单）、**[Intermediate]**（中等）和 **[Challenging]**（困难）。建议你从简单的练习开始，逐步挑战更难的题目。"
 
 msgid "In-progress!"
-msgstr ""
+msgstr "编写中！"
 

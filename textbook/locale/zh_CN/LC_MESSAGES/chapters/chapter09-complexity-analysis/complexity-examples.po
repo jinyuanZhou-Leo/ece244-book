@@ -1,0 +1,209 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-22 17:54+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+msgid "Analyzing Code with Big-O"
+msgstr "用 Big-O 分析代码"
+
+msgid "In this section, we find the Big-O bound of the worst-case running time of several pieces of code. In each example, we count how many times the constant-time work is repeated as a function of $n$."
+msgstr "在本节中，我们求出几段代码在最坏情况下运行时间的 Big-O 上界。在每个例子中，我们把常数时间工作被重复的次数表示为 $n$ 的函数。"
+
+msgid "Example 1: Matrix addition"
+msgstr "例 1：矩阵加法"
+
+msgid "The following code adds the corresponding entries of two $n \\times n$ integer matrices `A` and `B`, and stores the result in `C`."
+msgstr "下面的代码把两个 $n \\times n$ 整数矩阵 `A` 和 `B` 的对应元素相加，并把结果存入 `C`。"
+
+msgid "Each iteration of the inner loop performs constant work, $O(1)$."
+msgstr "内层循环的每次迭代执行常数工作，即 $O(1)$。"
+
+msgid "The inner loop runs $n$ times for each iteration of the outer loop."
+msgstr "外层循环每迭代一次，内层循环运行 $n$ 次。"
+
+msgid "The outer loop runs $n$ times."
+msgstr "外层循环运行 $n$ 次。"
+
+msgid "In total, line 4 is executed $n \\times n = n^2$ times, so"
+msgstr "总的来说，第 4 行被执行 $n \\times n = n^2$ 次，所以"
+
+msgid "T(n) = O(n^2)."
+msgstr ""
+
+msgid "Example 2: A nested loop that depends on the outer loop"
+msgstr "例 2：依赖于外层循环的嵌套循环"
+
+msgid "This time, the number of iterations of the inner loop depends on `i`: the inner loop runs `i` times for each iteration of the outer loop."
+msgstr "这一次，内层循环的迭代次数取决于 `i`：外层循环每迭代一次，内层循环运行 `i` 次。"
+
+msgid "`i`"
+msgstr ""
+
+msgid "$0$"
+msgstr ""
+
+msgid "$1$"
+msgstr ""
+
+msgid "$2$"
+msgstr ""
+
+msgid "$\\cdots$"
+msgstr ""
+
+msgid "$n - 1$"
+msgstr ""
+
+msgid "Executions of the inner-loop body"
+msgstr "内层循环体的执行次数"
+
+msgid "The total number of executions of the inner-loop body is"
+msgstr "内层循环体的总执行次数为"
+
+#, python-brace-format
+msgid "0 + 1 + 2 + \\cdots + (n - 1) = \\frac{n(n - 1)}{2} = \\frac{1}{2}n^2 - \\frac{1}{2}n."
+msgstr ""
+
+#, python-brace-format
+msgid "The dominant term is $\\frac{1}{2}n^2$, so"
+msgstr "主导项是 $\\frac{1}{2}n^2$，所以"
+
+msgid "Although the inner loop runs fewer times than in Example 1, about half as many, the running time still grows quadratically."
+msgstr "虽然内层循环的运行次数比例 1 少，大约只有一半，但运行时间仍然呈二次增长。"
+
+msgid "Example 3: A loop that halves its counter"
+msgstr "例 3：计数器减半的循环"
+
+msgid "`j` is halved in each iteration using integer division, so it takes the values"
+msgstr "`j` 在每次迭代中通过整数除法减半，所以它依次取值"
+
+msgid "n, \\quad \\lfloor n/2 \\rfloor, \\quad \\lfloor n/4 \\rfloor, \\quad \\ldots, \\quad 1, \\quad 0."
+msgstr ""
+
+msgid "The loop stops when `j` becomes `0`. It runs $\\lfloor \\log_2 n \\rfloor + 1$ times, with constant work per iteration, so"
+msgstr "当 `j` 变为 `0` 时循环停止。它运行 $\\lfloor \\log_2 n \\rfloor + 1$ 次，每次迭代执行常数工作，所以"
+
+msgid "T(n) = O(\\log n)."
+msgstr ""
+
+msgid "This is the same reason binary search is $O(\\log n)$: the problem size is halved in each step."
+msgstr "这和二分查找是 $O(\\log n)$ 的原因相同：问题规模在每一步都减半。"
+
+msgid "Example 4: A recursive function that halves its input"
+msgstr "例 4：输入减半的递归函数"
+
+msgid "A recursive function calls itself on a smaller input until it reaches a base case. To analyze it, we count the work done in each call and the number of calls."
+msgstr "递归函数在更小的输入上调用自己，直到到达基本情况（base case）。为了分析它，我们统计每次调用所做的工作以及调用的次数。"
+
+msgid "Each call that is not a base case performs constant work, say $c$, and makes **one** recursive call on half of the input. The base case, $n \\leq 1$, performs constant work, say $d$. We can describe the running time using a **recurrence**:"
+msgstr "每次非基本情况的调用执行常数工作，记为 $c$，并在一半的输入上进行**一次**递归调用。基本情况 $n \\leq 1$ 执行常数工作，记为 $d$。我们可以用一个**递推式**（recurrence）来描述运行时间："
+
+msgid "T(n) = c + T(n/2), \\qquad T(1) = d."
+msgstr ""
+
+msgid "To simplify the expansion, assume $n$ is a power of two. We expand the recurrence by substituting $T(n/2) = c + T(n/4)$, and so on:"
+msgstr "为了简化展开，假设 $n$ 是 2 的幂。我们通过代入 $T(n/2) = c + T(n/4)$ 等来展开递推式："
+
+#, python-brace-format
+msgid ""
+"\n"
+"\\begin{aligned}\n"
+"T(n) &= c + T(n/2) \\\\\n"
+"     &= 2c + T(n/4) \\\\\n"
+"     &= 3c + T(n/8) \\\\\n"
+"     &\\;\\;\\vdots \\\\\n"
+"     &= kc + T(n/2^k).\n"
+"\\end{aligned}\n"
+msgstr ""
+
+msgid "The base case is reached when $n/2^k = 1$, so $k = \\log_2 n$. Therefore,"
+msgstr "当 $n/2^k = 1$，即 $k = \\log_2 n$ 时，到达基本情况。因此，"
+
+msgid "T(n) = c \\log_2 n + d = O(\\log n)."
+msgstr ""
+
+msgid "The same growth bound holds for any positive $n$, not only for powers of two."
+msgstr "对于任意正整数 $n$，而不仅仅是 2 的幂，同样的增长上界都成立。"
+
+msgid "Example 5: A recursive function with two recursive calls"
+msgstr "例 5：有两次递归调用的递归函数"
+
+msgid "Each call that is not a base case makes **two** recursive calls in line 5, each on an input of size $n - 1$. The multiplication by `3` is constant work: it does **not** create three recursive calls. The recurrence is"
+msgstr "每次非基本情况的调用在第 5 行进行**两次**递归调用，每次的输入规模都是 $n - 1$。乘以 `3` 只是常数工作：它**不会**产生三次递归调用。递推式为"
+
+msgid "T(n) = c + 2T(n - 1), \\qquad T(1) = d."
+msgstr ""
+
+msgid "We expand the recurrence:"
+msgstr "我们展开递推式："
+
+#, python-brace-format
+msgid ""
+"\n"
+"\\begin{aligned}\n"
+"T(n) &= c + 2T(n - 1) \\\\\n"
+"     &= 3c + 4T(n - 2) \\\\\n"
+"     &= 7c + 8T(n - 3) \\\\\n"
+"     &\\;\\;\\vdots \\\\\n"
+"     &= (2^k - 1)c + 2^k T(n - k).\n"
+"\\end{aligned}\n"
+msgstr ""
+
+msgid "The base case is reached when $n - k = 1$, so $k = n - 1$. Therefore,"
+msgstr "当 $n - k = 1$，即 $k = n - 1$ 时，到达基本情况。因此，"
+
+#, python-brace-format
+msgid "T(n) = (2^{n-1} - 1)c + 2^{n-1}d = O(2^n)."
+msgstr ""
+
+msgid "The number of calls doubles at each level of recursion, so the running time grows **exponentially**."
+msgstr "每深入一层递归，调用次数就翻一倍，所以运行时间呈**指数**增长。"
+
+msgid "Avoid repeated recursive calls"
+msgstr "避免重复的递归调用"
+
+msgid "Both recursive calls in Example 5 compute the same value, `rfunc(n - 1)`. If we call it once, store the result, and compute `4 * result`, there is only one recursive call per level, and the running time becomes $T(n) = c + T(n - 1) = O(n)$."
+msgstr "例 5 中的两次递归调用计算的是同一个值 `rfunc(n - 1)`。如果我们只调用一次，保存结果，然后计算 `4 * result`，那么每一层只有一次递归调用，运行时间就变为 $T(n) = c + T(n - 1) = O(n)$。"
+
+msgid "Summary"
+msgstr "小结"
+
+msgid "In this chapter, we have learned:"
+msgstr "在本章中，我们学习了："
+
+msgid "complexity analysis studies how the time or memory an algorithm needs grows with the input size $n$,"
+msgstr "复杂度分析研究算法所需的时间或内存如何随输入规模 $n$ 增长，"
+
+msgid "linear search needs $n$ comparisons in the worst case, while binary search on a sorted array needs only about $\\log_2 n$,"
+msgstr "线性查找在最坏情况下需要 $n$ 次比较，而在有序数组上进行二分查找只需要大约 $\\log_2 n$ 次，"
+
+msgid "the measured running time depends on the hardware, compiler, language and input, but the time complexity of the algorithm dominates for large inputs,"
+msgstr "实测的运行时间取决于硬件、编译器、编程语言和输入，但对于大规模输入，算法的时间复杂度起决定作用，"
+
+msgid "asymptotic analysis focuses on growth as $n$ becomes very large, ignoring constant factors and lower-order terms,"
+msgstr "渐近分析关注 $n$ 变得非常大时的增长情况，忽略常数因子和低阶项，"
+
+msgid "Big-O notation expresses an asymptotic upper bound: $T(n) = O(g(n))$ means $T(n)$ is at most a constant multiple of $g(n)$ for sufficiently large $n$, and"
+msgstr "Big-O 记号表示渐近上界：$T(n) = O(g(n))$ 表示对于足够大的 $n$，$T(n)$ 至多是 $g(n)$ 的常数倍，以及"
+
+msgid "how to find the Big-O bound of loops and recursive functions."
+msgstr "如何求出循环和递归函数的 Big-O 上界。"
+
+msgid "We will use these techniques to analyze the data structures and algorithms in the rest of this book."
+msgstr "在本书的其余部分，我们会用这些技巧来分析数据结构和算法。"
+

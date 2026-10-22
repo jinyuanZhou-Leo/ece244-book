@@ -15,8 +15,8 @@ msgstr ""
 "Generated-By: Babel 2.18.0\n"
 
 msgid "Hash Tables"
-msgstr ""
+msgstr "哈希表"
 
 msgid "In this chapter, we discuss a new data structure, called hashtable, that has an average run-time performance of $O(1)$ for search/insert/delete operations."
-msgstr ""
+msgstr "在本章中，我们讨论一种新的数据结构，称为哈希表（hash table）。它的查找、插入和删除操作的平均运行时间为 $O(1)$。"
 

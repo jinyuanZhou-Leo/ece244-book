@@ -1,0 +1,291 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-22 17:54+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+msgid "Big-O Notation"
+msgstr "Big-O 记号"
+
+msgid "In the previous section, we counted the comparisons of linear search and binary search. In this section, we count operations more formally, and we introduce the **Big-O notation** to describe how the number of operations grows with the input size."
+msgstr "在上一节中，我们统计了线性查找和二分查找的比较次数。在本节中，我们更正式地统计操作次数，并引入 **Big-O 记号**来描述操作次数如何随输入规模增长。"
+
+msgid "Estimating the running time $T(n)$"
+msgstr "估计运行时间 $T(n)$"
+
+msgid "We write $T(n)$ for the **estimated running time** of an algorithm as a function of its input size $n$. For an algorithm that works on an array, $n$ is usually the number of elements in the array."
+msgstr "我们用 $T(n)$ 表示算法的**估计运行时间**，它是输入规模 $n$ 的函数。对于处理数组的算法，$n$ 通常是数组中元素的个数。"
+
+msgid "We treat simple operations, such as integer arithmetic, array indexing, comparisons and assignments, as **constant-time operations**: they take the same time regardless of $n$. We count each of them as $1$. For example, each of the following has an estimated running time of $1$:"
+msgstr "我们把简单的操作，例如整数运算、数组下标访问、比较和赋值，看作**常数时间操作**：无论 $n$ 是多少，它们花费的时间都相同。我们把每个这样的操作计为 $1$。例如，下面每一行的估计运行时间都是 $1$："
+
+msgid "Example: computing a sum"
+msgstr "例子：计算求和"
+
+msgid "Let's estimate $T(n)$ for the following code that computes $0 + 1 + \\cdots + (n - 1)$."
+msgstr "我们来估计下面这段计算 $0 + 1 + \\cdots + (n - 1)$ 的代码的 $T(n)$。"
+
+msgid "We count how many times each operation is executed:"
+msgstr "我们统计每个操作被执行的次数："
+
+msgid "Operation"
+msgstr "操作"
+
+msgid "Executions"
+msgstr "执行次数"
+
+msgid "Initialize `sum` and `i`"
+msgstr "初始化 `sum` 和 `i`"
+
+msgid "$2$"
+msgstr ""
+
+msgid "Test `i < n`, including the final test that fails"
+msgstr "测试 `i < n`，包括最后一次失败的测试"
+
+msgid "$n + 1$"
+msgstr ""
+
+msgid "Increment `i`"
+msgstr "递增 `i`"
+
+msgid "$n$"
+msgstr ""
+
+msgid "Update `sum`"
+msgstr "更新 `sum`"
+
+msgid "Adding them up, we get"
+msgstr "把它们加起来，得到"
+
+msgid "T(n) = 2 + (n + 1) + n + n = 3n + 3."
+msgstr ""
+
+msgid "Example: linear search"
+msgstr "例子：线性查找"
+
+msgid "The number of operations depends on the input, not only on $n$:"
+msgstr "操作次数不仅取决于 $n$，还取决于输入本身："
+
+msgid "**Best case:** the first element matches. We initialize `i`, test `i < n` once, compare `a[0] == x` once, and return, so $T(n) = 4$."
+msgstr "**最好情况：** 第一个元素就匹配。我们初始化 `i`，测试 `i < n` 一次，比较 `a[0] == x` 一次，然后返回，所以 $T(n) = 4$。"
+
+msgid "**Worst case:** `x` is not in the array. We initialize `i` once, test `i < n` $n + 1$ times, increment `i` $n$ times, compare `a[i] == x` $n$ times, and return once, so $T(n) = 1 + (n + 1) + n + n + 1 = 3n + 3$."
+msgstr "**最坏情况：** `x` 不在数组中。我们初始化 `i` 一次，测试 `i < n` $n + 1$ 次，递增 `i` $n$ 次，比较 `a[i] == x` $n$ 次，返回一次，所以 $T(n) = 1 + (n + 1) + n + n + 1 = 3n + 3$。"
+
+msgid "**Average case:** if `x` is in the array and equally likely to be at each position, we check about half of the elements on average, so $T(n) \\approx (3n + 3)/2$."
+msgstr "**平均情况：** 如果 `x` 在数组中，并且出现在每个位置的可能性相同，那么平均需要检查大约一半的元素，所以 $T(n) \\approx (3n + 3)/2$。"
+
+msgid "In this chapter, we will usually analyze the **worst case**, since it gives a guarantee: the algorithm never takes longer than that."
+msgstr "在本章中，我们通常分析**最坏情况**，因为它给出了一个保证：算法的运行时间永远不会超过它。"
+
+msgid "Asymptotic analysis"
+msgstr "渐近分析"
+
+msgid "**Which of the following running times is the worst (largest)?**"
+msgstr "**下面哪个运行时间最差（最大）？**"
+
+msgid "$3n + 3$"
+msgstr ""
+
+msgid "$2n + 100$"
+msgstr ""
+
+msgid "$n^2$"
+msgstr ""
+
+msgid "$2^n$"
+msgstr ""
+
+msgid "For small $n$, $2n + 100$ is the largest. But as $n$ grows, $2^n$ becomes much larger than all the others. **What truly makes a difference is the highest-order term, as it dominates when $n$ is very large.**"
+msgstr "当 $n$ 较小时，$2n + 100$ 最大。但随着 $n$ 增长，$2^n$ 会变得比其他所有函数都大得多。**真正起决定作用的是最高阶项，因为当 $n$ 非常大时它占主导地位。**"
+
+msgid "**Asymptotic** means describing the behavior as the input size approaches infinity ($n \\to \\infty$). **Asymptotic analysis** studies how the running time grows as $n$ becomes very large. It focuses on the **dominant term**, and ignores constant factors and lower-order terms. For example, $T(n) = 3n^2 + 10n + 5$ has **quadratic** growth, because the $n^2$ term eventually dominates. Asymptotic analysis helps us compare how algorithms **scale** as their inputs grow."
+msgstr "**渐近**（asymptotic）指的是描述输入规模趋于无穷大（$n \\to \\infty$）时的行为。**渐近分析**研究当 $n$ 变得非常大时运行时间如何增长。它关注**主导项**，忽略常数因子和低阶项。例如，$T(n) = 3n^2 + 10n + 5$ 呈**二次**增长，因为 $n^2$ 项最终会占主导地位。渐近分析帮助我们比较算法随着输入增大的**可扩展性**。"
+
+msgid "Big-O notation"
+msgstr "Big-O 记号"
+
+msgid "**Big-O notation** expresses an **asymptotic upper bound** on the running time. We write"
+msgstr "**Big-O 记号**表示运行时间的**渐近上界**。我们写作"
+
+msgid "T(n) = O(g(n))"
+msgstr ""
+
+msgid "if, for sufficiently large $n$, $T(n)$ is at most a constant multiple of $g(n)$. $g(n)$ is a simple function, such as $1$, $\\log_2 n$, $n$, $n \\log_2 n$, $n^2$ or $2^n$."
+msgstr "如果对于足够大的 $n$，$T(n)$ 至多是 $g(n)$ 的常数倍。$g(n)$ 是一个简单的函数，例如 $1$、$\\log_2 n$、$n$、$n \\log_2 n$、$n^2$ 或 $2^n$。"
+
+msgid "For example, for every $n \\geq 1$, $10n \\leq 10n^2$ and $5 \\leq 5n^2$, so"
+msgstr "例如，对于所有 $n \\geq 1$，有 $10n \\leq 10n^2$ 和 $5 \\leq 5n^2$，所以"
+
+msgid "T(n) = 3n^2 + 10n + 5 \\leq 3n^2 + 10n^2 + 5n^2 = 18n^2."
+msgstr ""
+
+msgid "$T(n)$ is at most $18$ times $n^2$, therefore"
+msgstr "$T(n)$ 至多是 $n^2$ 的 $18$ 倍，因此"
+
+msgid "T(n) = O(n^2)."
+msgstr ""
+
+msgid "This reads as \"$T$ of $n$ is Big-O of $n$ squared.\""
+msgstr "读作“$T$ of $n$ is Big-O of $n$ squared”，即“$T(n)$ 是 $n^2$ 的大 O”。"
+
+msgid "Big-O is a growth bound"
+msgstr "Big-O 是增长的上界"
+
+msgid "Big-O describes how the running time **grows** with $n$. It is not an exact count of operations, and it is not a time in seconds."
+msgstr "Big-O 描述的是运行时间如何随 $n$ **增长**。它不是操作次数的精确值，也不是以秒为单位的时间。"
+
+msgid "In practice, to find the Big-O bound of a running time, **keep the dominant term and drop its constant coefficient**:"
+msgstr "在实践中，求一个运行时间的 Big-O 上界时，**保留主导项并去掉它的常数系数**："
+
+msgid "Running time $T(n)$"
+msgstr "运行时间 $T(n)$"
+
+msgid "Dominant term"
+msgstr "主导项"
+
+msgid "Big-O bound"
+msgstr "Big-O 上界"
+
+msgid "$1$"
+msgstr ""
+
+msgid "$O(1)$"
+msgstr ""
+
+msgid "$2 + 3n$"
+msgstr ""
+
+msgid "$3n$"
+msgstr ""
+
+msgid "$O(n)$"
+msgstr ""
+
+msgid "$3n^2 + n + 1$"
+msgstr ""
+
+msgid "$3n^2$"
+msgstr ""
+
+msgid "$O(n^2)$"
+msgstr ""
+
+msgid "$10000n^2 + 2n \\log n + n^3$"
+msgstr ""
+
+msgid "$n^3$"
+msgstr ""
+
+msgid "$O(n^3)$"
+msgstr ""
+
+msgid "In the last row, even with a large coefficient on $n^2$, the $n^3$ term eventually dominates. For example, the sum and linear search examples above have $T(n) = 3n + 3 = O(n)$ in the worst case, and binary search needs about $\\log_2 n$ comparisons, so it is $O(\\log n)$ in the worst case."
+msgstr "在最后一行中，即使 $n^2$ 的系数很大，$n^3$ 项最终仍会占主导地位。例如，上面的求和和线性查找例子在最坏情况下都有 $T(n) = 3n + 3 = O(n)$，而二分查找大约需要 $\\log_2 n$ 次比较，所以它在最坏情况下是 $O(\\log n)$。"
+
+msgid "Which term is more dominant?"
+msgstr "哪一项更占主导？"
+
+msgid "The following table shows the value of common functions for a few input sizes."
+msgstr "下表给出了几个常见函数在不同输入规模下的值。"
+
+msgid "$\\log_2 n$"
+msgstr ""
+
+msgid "$n \\log_2 n$"
+msgstr ""
+
+msgid "$8$"
+msgstr ""
+
+msgid "$3$"
+msgstr ""
+
+msgid "$24$"
+msgstr ""
+
+msgid "$64$"
+msgstr ""
+
+msgid "$512$"
+msgstr ""
+
+msgid "$256$"
+msgstr ""
+
+msgid "$16$"
+msgstr ""
+
+msgid "$4$"
+msgstr ""
+
+msgid "$4096$"
+msgstr ""
+
+#, python-brace-format
+msgid "$65{,}536$"
+msgstr ""
+
+msgid "$32$"
+msgstr ""
+
+msgid "$5$"
+msgstr ""
+
+msgid "$160$"
+msgstr ""
+
+msgid "$1024$"
+msgstr ""
+
+#, python-brace-format
+msgid "$32{,}768$"
+msgstr ""
+
+msgid "$\\approx 4.3 \\times 10^9$"
+msgstr ""
+
+msgid "$10$"
+msgstr ""
+
+#, python-brace-format
+msgid "$10{,}240$"
+msgstr ""
+
+msgid "$\\approx 10^6$"
+msgstr ""
+
+msgid "$\\approx 10^9$"
+msgstr ""
+
+#, python-brace-format
+msgid "$\\approx 10^{308}$"
+msgstr ""
+
+msgid "For sufficiently large $n$, the functions are in increasing order of growth:"
+msgstr "对于足够大的 $n$，这些函数按增长速度从慢到快排列为："
+
+msgid "\\log n < n < n \\log n < n^2 < n^3 < 2^n."
+msgstr ""
+
+msgid "An $O(\\log n)$ algorithm scales much better than an $O(n)$ algorithm, which scales much better than an $O(n^2)$ algorithm, and an $O(2^n)$ algorithm quickly becomes impractical, even for inputs of a few dozen elements."
+msgstr "$O(\\log n)$ 算法的可扩展性远好于 $O(n)$ 算法，而 $O(n)$ 算法又远好于 $O(n^2)$ 算法；$O(2^n)$ 算法则很快会变得不切实际，即使输入只有几十个元素。"
+
+msgid "In the next section, we will find the Big-O bound of several pieces of code, including loops and recursive functions."
+msgstr "在下一节中，我们会求出几段代码的 Big-O 上界，包括循环和递归函数。"
+

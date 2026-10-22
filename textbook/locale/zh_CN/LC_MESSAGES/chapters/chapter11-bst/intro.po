@@ -15,8 +15,8 @@ msgstr ""
 "Generated-By: Babel 2.18.0\n"
 
 msgid "Binary Search Trees"
-msgstr ""
+msgstr "二叉搜索树"
 
 msgid "In this chapter, we discuss a new data structure: binary search trees. Binary search Trees (BSTs) are known to allow for faster operations on searching and inserting."
-msgstr ""
+msgstr "在本章中，我们讨论一种新的数据结构：二叉搜索树。二叉搜索树（BST）能够更快地完成查找和插入操作。"
 
