@@ -15,8 +15,8 @@ msgstr ""
 "Generated-By: Babel 2.18.0\n"
 
 msgid "Inheritance"
-msgstr ""
+msgstr "继承"
 
 msgid "This chapter delves into the concept of inheritance, a fundamental aspect of object-oriented programming where classes inherit properties from other classes. Through inheritance, we achieve enhanced code reusability and improved modularity, streamlining the development process and fostering more efficient programming practices."
-msgstr ""
+msgstr "本章深入探讨继承这一概念。继承是面向对象编程的基本特性之一，类可以从其他类继承属性。通过继承，我们可以提高代码的可复用性和模块化程度，简化开发过程，并促进更高效的编程实践。"
 

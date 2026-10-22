@@ -1,0 +1,191 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-22 17:54+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+msgid "Stacks: Last In, First Out"
+msgstr "栈：后进先出"
+
+msgid "A **stack** is a linked list where we insert and remove nodes only at the **head**. Think of a stack of plates: we put a new plate on top, and we take the plate on top first. This is called **LIFO: Last In, First Out**. A stack has two operations:"
+msgstr "**栈**（stack）是一种只在**头部**插入和删除节点的链表。想象一摞盘子：我们把新盘子放在最上面，取的时候也先取最上面的盘子。这被称为 **LIFO：后进先出**（Last In, First Out）。栈有两个操作："
+
+msgid "`push(d)`: insert the value `d` at the head."
+msgstr "`push(d)`：在头部插入值 `d`。"
+
+msgid "`pop()`: remove and return the most recently pushed value, which is at the head."
+msgstr "`pop()`：删除并返回最近一次压入的值，它位于头部。"
+
+msgid "For example, after `s.push(2); s.push(1);`, the stack looks like this, and the next `s.pop()` returns `1`:"
+msgstr "例如，执行 `s.push(2); s.push(1);` 之后，栈如下所示，下一次 `s.pop()` 返回 `1`："
+
+msgid "The `Stack` class"
+msgstr "`Stack` 类"
+
+msgid "A stack only needs a pointer to its first node, `head`. We use the `Node` class from the previous section."
+msgstr "栈只需要一个指向第一个节点的指针 `head`。我们使用上一节中的 `Node` 类。"
+
+msgid "**Code in `stack.h`**"
+msgstr "**`stack.h` 中的代码**"
+
+msgid "**Line 6.** An empty stack has no nodes, so `head` is `nullptr`."
+msgstr "**第 6 行。** 空栈没有节点，所以 `head` 是 `nullptr`。"
+
+msgid "**Line 7.** The destructor deletes the first node. Since the destructor of `Node` deletes the next node, this frees **all** the nodes in the stack. If the stack is empty, `delete nullptr;` does nothing."
+msgstr "**第 7 行。** 析构函数删除第一个节点。由于 `Node` 的析构函数会删除下一个节点，这会释放栈中的**所有**节点。如果栈是空的，`delete nullptr;` 什么也不做。"
+
+msgid "`push`"
+msgstr "`push`"
+
+msgid "We allocate a new node that stores `d`, and whose `next` points to the current first node. Then, `head` points to the new node. For example, `s.push(1)` on a stack whose first node stores `2`:"
+msgstr "我们分配一个存储 `d` 的新节点，它的 `next` 指向当前的第一个节点。然后让 `head` 指向这个新节点。例如，在第一个节点存储 `2` 的栈上执行 `s.push(1)`："
+
+msgid "**What if the stack is empty?** Then `head` is `nullptr`, so the new node's `next` is `nullptr`, and it becomes the only node. The same line works for both cases."
+msgstr "**如果栈是空的呢？** 那么 `head` 是 `nullptr`，所以新节点的 `next` 是 `nullptr`，它成为唯一的节点。同一行代码对两种情况都适用。"
+
+msgid "`pop`"
+msgstr "`pop`"
+
+msgid "**Line 2 to 4.** If the stack is empty, there is nothing to pop. In this example, we return `-1` to indicate this. This is a simplification: `-1` can also be a valid value that was pushed, so the caller cannot always tell the two cases apart. A more complete stack would also provide a function such as `bool isEmpty()` that the caller checks before calling `pop`. The same applies to `dequeue` in the next section."
+msgstr "**第 2 到 4 行。** 如果栈是空的，就没有可以弹出的值。在这个例子中，我们返回 `-1` 来表示这种情况。这是一种简化：`-1` 也可能是被压入的有效值，因此调用者并不总能区分这两种情况。更完整的栈还会提供一个函数，例如 `bool isEmpty()`，让调用者在调用 `pop` 之前先检查。下一节中的 `dequeue` 也是如此。"
+
+msgid "**Line 5 and 6.** We keep a pointer `old_head` to the first node, and we save its data in `d`."
+msgstr "**第 5 和 6 行。** 我们用指针 `old_head` 记住第一个节点，并把它的数据保存在 `d` 中。"
+
+msgid "**Line 7.** `head` moves to the second node. If there was only one node, `head` becomes `nullptr`."
+msgstr "**第 7 行。** `head` 移到第二个节点。如果原来只有一个节点，`head` 变为 `nullptr`。"
+
+msgid "**Line 8 and 9.** We detach the old first node from the list, and then delete it."
+msgstr "**第 8 和 9 行。** 我们把原来的第一个节点从链表中分离出来，然后删除它。"
+
+msgid "**Line 10.** We return the saved data."
+msgstr "**第 10 行。** 我们返回保存的数据。"
+
+msgid "**<span style=\"color:red\">Problem 1: What if we do not check whether `head` is `nullptr`?</span>** If the stack is empty, `old_head` is `nullptr`, and `old_head->getData()` dereferences `nullptr`. This is undefined behavior, and the program may crash."
+msgstr "**<span style=\"color:red\">问题 1：如果不检查 `head` 是否为 `nullptr` 会怎样？</span>** 如果栈是空的，`old_head` 是 `nullptr`，`old_head->getData()` 会解引用 `nullptr`。这是未定义行为，程序可能会崩溃。"
+
+msgid "**<span style=\"color:red\">Problem 2: What if we do not call `old_head->setNext(nullptr)` before `delete old_head;`?</span>** Recall that the destructor of `Node` deletes the next node. `old_head->next` still points to the node that `head` now points to, so `delete old_head;` deletes the **entire** linked list! `head` is left pointing to freed memory, *i.e.* it becomes a **dangling pointer**."
+msgstr "**<span style=\"color:red\">问题 2：如果在 `delete old_head;` 之前不调用 `old_head->setNext(nullptr)` 会怎样？</span>** 回忆一下，`Node` 的析构函数会删除下一个节点。`old_head->next` 仍然指向 `head` 现在所指向的节点，所以 `delete old_head;` 会删除**整个**链表！`head` 指向的是已释放的内存，*即*它成为一个**悬空指针**。"
+
+msgid "Putting it all together"
+msgstr "把所有部分组合起来"
+
+msgid "**Code** {{code_runner_header}}"
+msgstr "**代码** {{code_runner_header}}"
+
+msgid "**[Line 47 to 50]** After `s.push(2)` and `s.push(1)`, the stack is `head --> [1] --> [2] --> nullptr`. The first `pop` returns `1`, the value pushed **last**, and the second `pop` returns `2`."
+msgstr "**[第 47 到 50 行]** 执行 `s.push(2)` 和 `s.push(1)` 之后，栈是 `head --> [1] --> [2] --> nullptr`。第一次 `pop` 返回 `1`，即**最后**压入的值；第二次 `pop` 返回 `2`。"
+
+msgid "**[Line 51]** The stack is empty, so `pop` returns `-1`."
+msgstr "**[第 51 行]** 栈已经空了，所以 `pop` 返回 `-1`。"
+
+msgid "**[Line 52 and 53]** We push two more values, and do not pop them. When `s` goes out of scope at the end of `main`, its destructor frees the two nodes that are still in the stack, so there is no memory leak."
+msgstr "**[第 52 和 53 行]** 我们再压入两个值，并且不弹出它们。当 `s` 在 `main` 结束时离开作用域，它的析构函数会释放仍在栈中的两个节点，因此没有内存泄漏。"
+
+msgid "**Output**"
+msgstr "**输出**"
+
+msgid "What about copying a stack?"
+msgstr "复制栈会怎样？"
+
+msgid "`Stack` has a destructor that frees the nodes it owns. Recall the Rule of Three from the Objects with Pointers chapter: such a class also needs a copy constructor and `operator=`. With the default ones, `Stack t = s;` would make a shallow copy: `t.head` and `s.head` would point to the same nodes, and both destructors would free them. If we do not need to copy stacks, the simplest fix is to forbid copying:"
+msgstr "`Stack` 有一个释放它所拥有节点的析构函数。回忆含指针的对象一章中的三法则：这样的类还需要拷贝构造函数和 `operator=`。如果使用默认版本，`Stack t = s;` 会进行浅拷贝：`t.head` 和 `s.head` 会指向相同的节点，并且两个析构函数都会释放它们。如果我们不需要复制栈，最简单的解决方法是禁止复制："
+
+msgid "Otherwise, the copy constructor and `operator=` must make a deep copy, *i.e.* allocate a new node for every node of `other`, in the same order. The same applies to the `Queue` class in the next section."
+msgstr "否则，拷贝构造函数和 `operator=` 必须进行深拷贝，*即*为 `other` 的每个节点按相同的顺序分配一个新节点。下一节中的 `Queue` 类也是如此。"
+
+msgid "Special cases"
+msgstr "特殊情况"
+
+msgid "When we implement a linked data structure, we should always think of the special cases: **What if the stack is empty? What if it has only one node?**"
+msgstr "实现链式数据结构时，我们应该始终考虑特殊情况：**如果栈是空的怎么办？如果它只有一个节点怎么办？**"
+
+msgid "Case"
+msgstr "情况"
+
+msgid "What happens?"
+msgstr "会发生什么？"
+
+msgid "Push into an empty stack"
+msgstr "向空栈压入"
+
+msgid "The new node's `next` is `nullptr`"
+msgstr "新节点的 `next` 是 `nullptr`"
+
+msgid "Pop from an empty stack"
+msgstr "从空栈弹出"
+
+msgid "Return `-1`; do not dereference `head`"
+msgstr "返回 `-1`；不要解引用 `head`"
+
+msgid "Pop the only node"
+msgstr "弹出唯一的节点"
+
+msgid "`head` becomes `nullptr`"
+msgstr "`head` 变为 `nullptr`"
+
+msgid "Destroy an empty stack"
+msgstr "销毁空栈"
+
+msgid "`delete nullptr;` is safe"
+msgstr "`delete nullptr;` 是安全的"
+
+msgid "Time complexity"
+msgstr "时间复杂度"
+
+msgid "Let $n$ be the number of nodes in the stack. Using the Big-O notation from the Complexity Analysis chapter:"
+msgstr "设 $n$ 为栈中的节点数。使用复杂度分析一章中的 Big-O 记号："
+
+msgid "Operation"
+msgstr "操作"
+
+msgid "Work performed"
+msgstr "所做的工作"
+
+msgid "Constructor"
+msgstr "构造函数"
+
+msgid "Set `head` to `nullptr`"
+msgstr "把 `head` 设为 `nullptr`"
+
+msgid "$O(1)$"
+msgstr ""
+
+msgid "`push(d)`"
+msgstr ""
+
+msgid "Allocate one node and update `head`"
+msgstr "分配一个节点并更新 `head`"
+
+msgid "`pop()`"
+msgstr ""
+
+msgid "Move `head`, detach and delete one node"
+msgstr "移动 `head`，分离并删除一个节点"
+
+msgid "Destructor"
+msgstr "析构函数"
+
+msgid "Delete all nodes"
+msgstr "删除所有节点"
+
+msgid "$O(n)$"
+msgstr ""
+
+msgid "`push` and `pop` do the same amount of work regardless of how many nodes are in the stack, since they only change the first node. The destructor, however, is $O(n)$: although `delete head;` is one statement, it triggers a destructor call for every node in the list."
+msgstr "无论栈中有多少个节点，`push` 和 `pop` 所做的工作量都相同，因为它们只改变第一个节点。然而，析构函数是 $O(n)$ 的：虽然 `delete head;` 只是一条语句，它却会对链表中的每个节点调用一次析构函数。"
+

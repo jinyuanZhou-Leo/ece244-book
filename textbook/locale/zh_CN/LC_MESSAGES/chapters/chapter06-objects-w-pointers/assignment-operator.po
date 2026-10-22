@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the Python package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Python \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-16 14:33-0400\n"
+"POT-Creation-Date: 2026-10-22 17:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_CN\n"
@@ -20,124 +19,133 @@ msgstr ""
 "Generated-By: Babel 2.18.0\n"
 
 msgid "Implementing the Assignment Operator"
-msgstr ""
+msgstr "实现赋值运算符"
 
 msgid "In the previous section, we implemented a copy constructor that makes a deep copy of a `Student` with dynamically allocated grades. However, the copy constructor is only called when a **new** object is created. When we assign one **existing** object to another, *e.g.* `y = x;`, `operator=` is called instead. In this section, we will see that the default `operator=` makes a shallow copy too, and we will implement our own."
-msgstr ""
+msgstr "在上一节中，我们为成绩动态分配的 `Student` 实现了一个进行深拷贝的拷贝构造函数。然而，拷贝构造函数只在创建**新**对象时才会被调用。当我们把一个**已有**对象赋值给另一个已有对象时，*例如* `y = x;`，调用的是 `operator=`。在本节中，我们会看到默认的 `operator=` 同样进行浅拷贝，并且我们会实现自己的 `operator=`。"
 
 msgid "The problem with the default `operator=`"
-msgstr ""
+msgstr "默认 `operator=` 的问题"
 
 msgid "Recall from the Operator Overloading chapter that C++ provides a default `operator=` that assigns every data member of the right-hand side object to the corresponding data member of the left-hand side object. In the following code, `Student` has the copy constructor from the previous section, but no `operator=`."
-msgstr ""
+msgstr "回忆运算符重载一章：C++ 提供了一个默认的 `operator=`，它把右侧对象的每个数据成员赋值给左侧对象对应的数据成员。在下面的代码中，`Student` 有上一节的拷贝构造函数，但没有 `operator=`。"
 
 msgid "**Code** {{code_runner_header}}"
-msgstr ""
+msgstr "**代码** {{code_runner_header}}"
 
 msgid "**[Line 40]** `y` is created using the constructor `Student(int n)`, so it has its own array of 2 grades."
-msgstr ""
+msgstr "**[第 40 行]** `y` 是用构造函数 `Student(int n)` 创建的，所以它有自己的含 2 个成绩的数组。"
 
 msgid "**[Line 41]** `y` already exists, so `y = x;` calls `operator=`, not the copy constructor. We did not implement `operator=`, so the default `operator=` is called."
-msgstr ""
+msgstr "**[第 41 行]** `y` 已经存在，所以 `y = x;` 调用的是 `operator=`，而不是拷贝构造函数。我们没有实现 `operator=`，所以调用的是默认的 `operator=`。"
 
 msgid "**Output**"
-msgstr ""
+msgstr "**输出**"
 
 msgid "The default `operator=` copies the address stored in `x.grades` into `y.grades`, just like the default copy constructor. As a result, we get the same two problems we saw in the previous section: `x` and `y` share the same array, and both destructors free it when `main` returns, which usually crashes the program after the output is printed."
-msgstr ""
+msgstr "和默认拷贝构造函数一样，默认的 `operator=` 把 `x.grades` 中存储的地址复制到 `y.grades` 中。结果，我们遇到了上一节中的两个相同问题：`x` 和 `y` 共享同一个数组，并且当 `main` 返回时两个析构函数都会释放它，这通常会让程序在打印输出后崩溃。"
 
 #, python-brace-format
 msgid "**<span style=\"color:red\">Problem 3: memory leak!</span>** There is one more problem. Before line 41, `y.grades` pointed to the array of 2 grades that the constructor of `y` allocated. The default `operator=` overwrote `y.grades` with the address of the array of `x`, so no pointer stores the address of the old array of `y` anymore. As we show in {numref}`assignment-leak`, this array can never be freed."
-msgstr ""
+msgstr "**<span style=\"color:red\">问题 3：内存泄漏！</span>** 还有一个问题。在第 41 行之前，`y.grades` 指向 `y` 的构造函数分配的含 2 个成绩的数组。默认的 `operator=` 用 `x` 的数组地址覆盖了 `y.grades`，于是再也没有指针存储 `y` 旧数组的地址。如 {numref}`assignment-leak` 所示，这个数组永远无法被释放。"
 
 msgid "Memory leak after the default operator="
-msgstr ""
+msgstr "默认 operator= 之后的内存泄漏"
 
 msgid "After `y = x;` with the default `operator=`, `x.grades` and `y.grades` point to the same array, and the old array of `y` is leaked."
-msgstr ""
+msgstr "使用默认 `operator=` 执行 `y = x;` 之后，`x.grades` 和 `y.grades` 指向同一个数组，而 `y` 的旧数组发生了泄漏。"
 
 msgid "Implementing `operator=` with a deep copy"
-msgstr ""
+msgstr "用深拷贝实现 `operator=`"
 
 msgid "**<span style=\"color:green\">Solution.</span>** We implement our own `operator=`. Compared to the copy constructor, `operator=` has one extra job: the left-hand side object already exists, so it already owns an array that we must free before we allocate a new one."
-msgstr ""
+msgstr "**<span style=\"color:green\">解决方法。</span>** 我们实现自己的 `operator=`。与拷贝构造函数相比，`operator=` 多了一项工作：左侧对象已经存在，所以它已经拥有一个数组，我们必须在分配新数组之前释放它。"
 
 msgid "**Step 1: Write the function header**"
-msgstr ""
+msgstr "**第 1 步：编写函数头**"
 
 msgid "As we discussed in the Operator Overloading chapter, `y = x` is interpreted as `y.operator=(x)`. `operator=` is a member function that takes the right-hand side object as a `const` reference and returns a reference to the left-hand side object to allow chained assignments, *e.g.* `z = y = x;`."
-msgstr ""
+msgstr "正如我们在运算符重载一章中讨论的，`y = x` 被解释为 `y.operator=(x)`。`operator=` 是一个成员函数，它以 `const` 引用的形式接收右侧对象，并返回左侧对象的引用，以支持链式赋值，*例如* `z = y = x;`。"
 
 msgid "**Step 2: Free the old array**"
-msgstr ""
+msgstr "**第 2 步：释放旧数组**"
 
 #, python-brace-format
 msgid "The left-hand side object, `y`, will receive a copy of the grades of `rhs`, so it no longer needs its old array. We free it using `delete[] grades;`, as we show in {numref}`deep-assignment-a`."
-msgstr ""
+msgstr "左侧对象 `y` 将得到 `rhs` 成绩的副本，所以它不再需要旧数组。如 {numref}`deep-assignment-a` 所示，我们用 `delete[] grades;` 释放它。"
 
 msgid "Free the old array of y"
-msgstr ""
+msgstr "释放 y 的旧数组"
 
 msgid "`delete[] grades;` frees the old array of `y`, so it is not leaked. `y.grades` still stores the address of the freed array until we change it in the next step."
-msgstr ""
+msgstr "`delete[] grades;` 释放了 `y` 的旧数组，因此不会泄漏。在下一步修改之前，`y.grades` 仍然存储着已释放数组的地址。"
 
 msgid "**Step 3: Allocate a new array and copy the grades**"
-msgstr ""
+msgstr "**第 3 步：分配新数组并复制成绩**"
 
 #, python-brace-format
 msgid "Like the copy constructor, we copy `numGrades`, allocate a new array, and copy every grade from `rhs`, as we show in {numref}`deep-assignment-b`."
-msgstr ""
+msgstr "和拷贝构造函数一样，我们复制 `numGrades`，分配一个新数组，并复制 `rhs` 的每个成绩，如 {numref}`deep-assignment-b` 所示。"
 
 msgid "Allocate a new array for y and copy the grades"
-msgstr ""
+msgstr "为 y 分配新数组并复制成绩"
 
 msgid "`y.grades` now points to a new array that holds a copy of the grades of `x`. `x` and `y` have their own arrays."
-msgstr ""
+msgstr "`y.grades` 现在指向一个保存着 `x` 成绩副本的新数组。`x` 和 `y` 各自拥有自己的数组。"
 
 msgid "**Step 4: Return the left-hand side object**"
-msgstr ""
+msgstr "**第 4 步：返回左侧对象**"
 
 msgid "Finally, we return the left-hand side object using `return *this;`, as we did for `Complex` in the Operator Overloading chapter."
-msgstr ""
+msgstr "最后，我们用 `return *this;` 返回左侧对象，就像在运算符重载一章中对 `Complex` 所做的那样。"
 
 msgid "Putting it all together:"
-msgstr ""
+msgstr "把所有部分组合起来："
 
 msgid "**Code in `Student` class**"
-msgstr ""
+msgstr "**`Student` 类中的代码**"
 
 msgid "**Line 5.** We free the old array of the left-hand side object (Step 2)."
-msgstr ""
+msgstr "**第 5 行。** 我们释放左侧对象的旧数组（第 2 步）。"
 
 msgid "**Line 6 to 10.** We make a deep copy of `rhs`, exactly as in the copy constructor (Step 3)."
-msgstr ""
+msgstr "**第 6 到 10 行。** 我们对 `rhs` 进行深拷贝，和拷贝构造函数中的做法完全相同（第 3 步）。"
 
 msgid "**Line 11.** We return the left-hand side object (Step 4)."
-msgstr ""
+msgstr "**第 11 行。** 我们返回左侧对象（第 4 步）。"
+
+msgid "Another order: allocate first, then free"
+msgstr "另一种顺序：先分配，再释放"
+
+msgid "You may also see `operator=` written so that it allocates and fills the new array **before** it frees the old one. For `Student`, this looks like:"
+msgstr "你也可能看到另一种写法的 `operator=`：它在释放旧数组**之前**先分配并填充新数组。对于 `Student`，代码如下："
+
+msgid "Both versions make a deep copy and free the old array exactly once. The advantage of this order is that the left-hand side object is only changed after the copy is ready: if `new` fails, `grades` still points to the old, valid array instead of freed memory."
+msgstr "两个版本都进行深拷贝，并且都只释放旧数组一次。这种顺序的好处是：只有当副本准备好之后，左侧对象才会被修改；如果 `new` 失败，`grades` 仍然指向原来有效的数组，而不是已释放的内存。"
 
 msgid "Self-assignment"
-msgstr ""
+msgstr "自赋值"
 
 msgid "**What are lines 2 to 4 for?** They handle **self-assignment**, where an object is assigned to itself, *e.g.* `x = x;`. You will rarely write `x = x;` directly, but it can happen indirectly, *e.g.* `arr[i] = arr[j];` when `i` and `j` are equal."
-msgstr ""
+msgstr "**第 2 到 4 行有什么用？** 它们处理**自赋值**（self-assignment），即把一个对象赋值给它自己，*例如* `x = x;`。你很少会直接写 `x = x;`，但它可能间接发生，*例如*当 `i` 和 `j` 相等时执行 `arr[i] = arr[j];`。"
 
 msgid "**<span style=\"color:red\">Problem!</span>** Without lines 2 to 4, `x = x;` would execute `delete[] grades;` and free the array of `x`. Since `rhs` is `x` itself, `rhs.grades` and `grades` are the same data member. After line 7 allocates a new array, both refer to this new array, which holds garbage values. Lines 8 to 10 then copy the garbage values into themselves, and the original grades of `x` are lost."
-msgstr ""
+msgstr "**<span style=\"color:red\">问题！</span>** 如果没有第 2 到 4 行，`x = x;` 会执行 `delete[] grades;`，释放 `x` 的数组。由于 `rhs` 就是 `x` 本身，`rhs.grades` 和 `grades` 是同一个数据成员。第 7 行分配新数组之后，两者都指向这个装着垃圾值的新数组。第 8 到 10 行随后把这些垃圾值复制给它们自己，`x` 原来的成绩就丢失了。"
 
 msgid "**<span style=\"color:green\">Solution.</span>** In line 2, we compare the address of the left-hand side object, `this`, with the address of the right-hand side object, `&rhs`. If they are equal, the object is assigned to itself, and there is nothing to copy. We return immediately in line 3."
-msgstr ""
+msgstr "**<span style=\"color:green\">解决方法。</span>** 在第 2 行，我们比较左侧对象的地址 `this` 和右侧对象的地址 `&rhs`。如果两者相等，说明对象被赋值给了它自己，没有什么需要复制的。我们在第 3 行立即返回。"
 
 msgid "**Try both.** Step through `x = x;` for a `Student x` with the grades `90 85 70`, with and without lines 2 to 4."
-msgstr ""
+msgstr "**两种都试试。** 对一个成绩为 `90 85 70` 的 `Student x`，分别在有和没有第 2 到 4 行的情况下单步执行 `x = x;`。"
 
 msgid "We add `operator=` to the `Student` class and run the same `main` function again."
-msgstr ""
+msgstr "我们把 `operator=` 加入 `Student` 类，并再次运行同一个 `main` 函数。"
 
 msgid "In line 53, our `operator=` is called. `x` and `y` have their own arrays, the old array of `y` is freed, and each destructor frees a different array when `main` returns. The program ends without errors or memory leaks."
-msgstr ""
+msgstr "在第 53 行，我们的 `operator=` 被调用。`x` 和 `y` 各自拥有自己的数组，`y` 的旧数组被释放，并且当 `main` 返回时每个析构函数释放的是不同的数组。程序正常结束，没有错误，也没有内存泄漏。"
 
 msgid "**Try out this!** Step through the code below and follow Steps 2 to 4 of our `operator=` on the heap. The old array of `y` is freed, a new array of 3 grades is allocated, and the grades of `x` are copied into it. At the end, `x.grades` and `y.grades` point to different arrays."
-msgstr ""
+msgstr "**动手试一试！** 单步执行下面的代码，在堆上跟踪我们的 `operator=` 的第 2 到 4 步。`y` 的旧数组被释放，一个含 3 个成绩的新数组被分配，然后 `x` 的成绩被复制进去。最后，`x.grades` 和 `y.grades` 指向不同的数组。"
 
 #, python-brace-format
 msgid "class Student {     private:       int* grades;       int numGrades;     public:       Student(int n) {         numGrades = n;         grades = new int[numGrades];         for (int i = 0; i &lt; numGrades; i++) {           grades[i] = 0;         }       }       Student(const Student&amp; other) {         numGrades = other.numGrades;         grades = new int[numGrades];         for (int i = 0; i &lt; numGrades; i++) {           grades[i] = other.grades[i];         }       }       Student&amp; operator=(const Student&amp; rhs) {         if (this == &amp;rhs) {           return *this;         }         delete[] grades;         numGrades = rhs.numGrades;         grades = new int[numGrades];         for (int i = 0; i &lt; numGrades; i++) {           grades[i] = rhs.grades[i];         }         return *this;       }       ~Student() {         delete[] grades;       }       void setGrade(int index, int grade) {         grades[index] = grade;       }       void print() {         for (int i = 0; i &lt; numGrades; i++) {           cout &lt;&lt; grades[i] &lt;&lt; \" \";         }         cout &lt;&lt; endl;       }   };"
@@ -148,50 +156,140 @@ msgid "int main(void) {     Student x(3);     x.setGrade(0, 90);     Student y(2
 msgstr ""
 
 msgid "The Rule of Three"
-msgstr ""
+msgstr "三法则"
 
 msgid "Look at the three member functions we implemented for `Student`:"
-msgstr ""
+msgstr "看看我们为 `Student` 实现的三个成员函数："
 
 msgid "The **destructor** frees the dynamically allocated memory that the object owns."
-msgstr ""
+msgstr "**析构函数**释放对象拥有的动态分配内存。"
 
 msgid "The **copy constructor** makes a deep copy when a new object is created from an existing object."
-msgstr ""
+msgstr "**拷贝构造函数**在从已有对象创建新对象时进行深拷贝。"
 
 msgid "**`operator=`** frees the old memory of an existing object, then makes a deep copy into it."
-msgstr ""
+msgstr "**`operator=`** 先释放已有对象的旧内存，然后把数据深拷贝进去。"
 
-msgid "All three are needed for the same reason: the object owns dynamically allocated memory, and the default versions provided by C++ do not manage it correctly. This leads to a well-known guideline."
-msgstr ""
+msgid "All three are needed for the same reason: the object owns dynamically allocated memory, and the default versions provided by C++ do not manage it correctly. Note that a deep-copy constructor alone does **not** fix `y = x;`: assignment is a separate operation that calls `operator=`, not the copy constructor. This leads to a well-known guideline."
+msgstr "三者都是出于同一个原因而必需的：对象拥有动态分配的内存，而 C++ 提供的默认版本不能正确地管理它。注意，仅有深拷贝的拷贝构造函数**并不能**解决 `y = x;` 的问题：赋值是一个独立的操作，它调用的是 `operator=`，而不是拷贝构造函数。这就引出了一条著名的准则。"
 
-msgid "If a class needs a user-defined destructor, copy constructor, or `operator=`, it almost certainly needs **all three**."
-msgstr ""
+msgid "If a class needs a user-defined destructor, copy constructor, or copy-assignment operator (`operator=`) to manage a resource, such as dynamically allocated memory, it usually needs **all three**."
+msgstr "如果一个类为了管理某种资源（例如动态分配的内存）而需要用户自定义的析构函数、拷贝构造函数或拷贝赋值运算符（`operator=`），那么它通常**三者都需要**。"
 
 msgid "In practice, if your class has a pointer to memory that it dynamically allocates, start by writing the destructor, the copy constructor, and `operator=` together."
+msgstr "在实践中，如果你的类含有一个指向它自己动态分配的内存的指针，就从同时编写析构函数、拷贝构造函数和 `operator=` 开始。"
+
+msgid "The default `operator=`"
+msgstr "默认的 `operator=`"
+
+msgid "Like the default copy constructor, the compiler generates a default `operator=` if we do not declare one. It assigns each data member according to its own type. For the `Example` class in the copy constructor section, with an `int id`, a `string name` and an `int* ptr`:"
+msgstr "和默认拷贝构造函数一样，如果我们没有声明 `operator=`，编译器会生成一个默认的 `operator=`。它按照每个数据成员自己的类型来赋值。以拷贝构造函数一节中含有 `int id`、`string name` 和 `int* ptr` 的 `Example` 类为例："
+
+msgid "`b` already exists, so this is an assignment, not a copy construction. `b.id` gets the value `1`, `b.name` gets its own copy of `\"Alice\"` because `string` has its own `operator=` that copies the characters, and `b.ptr` gets the same address stored in `a.ptr`."
+msgstr "`b` 已经存在，所以这是赋值，而不是拷贝构造。`b.id` 得到值 `1`；`b.name` 得到 `\"Alice\"` 的一份独立副本，因为 `string` 有自己的 `operator=`，会复制这些字符；`b.ptr` 得到 `a.ptr` 中存储的同一个地址。"
+
+msgid "Also like the default copy constructor, the default `operator=` is **deleted** if a data member cannot be assigned, *e.g.* a stream such as `stringstream`. Note that a member can sometimes be copied but not assigned: a `const` data member or a reference data member can be initialized by the default copy constructor, but it cannot be changed after it is created, so the default `operator=` is deleted. We can also delete it ourselves using `Student& operator=(const Student& rhs) = delete;`."
+msgstr "同样和默认拷贝构造函数一样，如果某个数据成员不能被赋值，例如 `stringstream` 这样的流，默认的 `operator=` 就是**被删除的**。注意，有些成员可以被复制，却不能被赋值：`const` 数据成员或引用数据成员可以由默认拷贝构造函数初始化，但在创建之后就不能再被修改，所以默认的 `operator=` 会被删除。我们也可以用 `Student& operator=(const Student& rhs) = delete;` 自己删除它。"
+
+msgid "Copy constructor vs. `operator=`"
+msgstr "拷贝构造函数与 `operator=` 的比较"
+
+msgid "The following table summarizes the differences between the copy constructor and the copy-assignment operator `operator=` for a class `Student`."
+msgstr "下表以 `Student` 类为例，总结了拷贝构造函数和拷贝赋值运算符 `operator=` 之间的区别。"
+
+msgid "Copy constructor"
+msgstr "拷贝构造函数"
+
+msgid "`operator=`"
 msgstr ""
+
+msgid "Declaration"
+msgstr "声明"
+
+msgid "`Student(const Student& other);`"
+msgstr ""
+
+msgid "`Student& operator=(const Student& rhs);`"
+msgstr ""
+
+msgid "Purpose"
+msgstr "用途"
+
+msgid "Initializes a **new** object"
+msgstr "初始化一个**新**对象"
+
+msgid "Updates an **existing** object"
+msgstr "更新一个**已有**对象"
+
+msgid "Called by"
+msgstr "何时被调用"
+
+msgid "`Student y(x);` <br> `Student y = x;` <br> `new Student(x)` <br> passing or returning a `Student` by value"
+msgstr "`Student y(x);` <br> `Student y = x;` <br> `new Student(x)` <br> 按值传递或按值返回 `Student`"
+
+msgid "`y = x;` <br> `y.operator=(x);`"
+msgstr ""
+
+msgid "Parameter"
+msgstr "参数"
+
+msgid "**Must** be a reference"
+msgstr "**必须**是引用"
+
+msgid "Should be a `const` reference to avoid a copy"
+msgstr "应该是 `const` 引用，以避免复制"
+
+msgid "Return"
+msgstr "返回值"
+
+msgid "No return type"
+msgstr "没有返回类型"
+
+msgid "Returns `*this` by reference"
+msgstr "按引用返回 `*this`"
+
+msgid "If not declared"
+msgstr "如果没有声明"
+
+msgid "Generated by the compiler (member-wise copy), unless a member cannot be copied, *e.g.* a stream"
+msgstr "由编译器生成（逐成员复制），除非某个成员不能被复制，*例如*流"
+
+msgid "Generated by the compiler (member-wise assignment), unless a member cannot be assigned, *e.g.* a stream, a `const` member or a reference member"
+msgstr "由编译器生成（逐成员赋值），除非某个成员不能被赋值，*例如*流、`const` 成员或引用成员"
 
 msgid "Summary"
-msgstr ""
+msgstr "小结"
 
 msgid "In this chapter, we have learned:"
-msgstr ""
+msgstr "在本章中，我们学习了："
 
-msgid "the copy constructor is called when a new object is created from an existing object, including when an object is passed or returned by value,"
-msgstr ""
+msgid "the copy constructor is called when a new object is created from an existing object, including when an object is passed or returned by value, or dynamically allocated with `new`,"
+msgstr "从已有对象创建新对象时会调用拷贝构造函数，包括按值传递或按值返回对象，以及用 `new` 动态分配对象的情况，"
 
 msgid "the default copy constructor and the default `operator=` copy each data member, which makes a shallow copy of pointers,"
-msgstr ""
+msgstr "默认拷贝构造函数和默认 `operator=` 会复制每个数据成员，这对指针来说是浅拷贝，"
+
+msgid "the default copy constructor is deleted if a data member, such as a stream, cannot be copied, the default `operator=` is deleted if a data member cannot be assigned, and we can delete either of them ourselves using `= delete`,"
+msgstr "如果某个数据成员（例如流）不能被复制，默认拷贝构造函数会被删除；如果某个数据成员不能被赋值，默认 `operator=` 会被删除；我们也可以用 `= delete` 自己删除它们，"
 
 msgid "how to implement a copy constructor that makes a deep copy,"
-msgstr ""
+msgstr "如何实现进行深拷贝的拷贝构造函数，"
 
 msgid "how to implement `operator=` that frees the old memory, handles self-assignment, and makes a deep copy, and"
-msgstr ""
+msgstr "如何实现释放旧内存、处理自赋值并进行深拷贝的 `operator=`，以及"
 
 msgid "the Rule of Three."
-msgstr ""
+msgstr "三法则。"
 
 msgid "In the next chapter, we will use these ideas to build linked lists, where objects point to other dynamically allocated objects."
-msgstr ""
+msgstr "在下一章中，我们会利用这些思想来构建链表，其中的对象指向其他动态分配的对象。"
+
+#~ msgid "All three are needed for the same reason: the object owns dynamically allocated memory, and the default versions provided by C++ do not manage it correctly. This leads to a well-known guideline."
+#~ msgstr ""
+
+#~ msgid "If a class needs a user-defined destructor, copy constructor, or `operator=`, it almost certainly needs **all three**."
+#~ msgstr ""
+
+#~ msgid "the copy constructor is called when a new object is created from an existing object, including when an object is passed or returned by value,"
+#~ msgstr ""
 

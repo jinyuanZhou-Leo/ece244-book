@@ -1,0 +1,269 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-22 17:54+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+msgid "Queues: First In, First Out"
+msgstr "队列：先进先出"
+
+msgid "A **queue** is a linked list where we insert nodes at the **tail** and remove nodes at the **head**. Think of a line of people waiting at a store: new people join at the end of the line, and the person at the front is served first. This is called **FIFO: First In, First Out**. A queue has two operations:"
+msgstr "**队列**（queue）是一种在**尾部**插入节点、在**头部**删除节点的链表。想象在商店里排队的人：新来的人排在队尾，排在最前面的人先被服务。这被称为 **FIFO：先进先出**（First In, First Out）。队列有两个操作："
+
+msgid "`enqueue(d)`: insert the value `d` at the tail."
+msgstr "`enqueue(d)`：在尾部插入值 `d`。"
+
+msgid "`dequeue()`: remove and return the oldest value, which is at the head."
+msgstr "`dequeue()`：删除并返回最早进入的值，它位于头部。"
+
+msgid "For example, after `q.enqueue(1); q.enqueue(2);`, the queue looks like this, and the next `q.dequeue()` returns `1`:"
+msgstr "例如，执行 `q.enqueue(1); q.enqueue(2);` 之后，队列如下所示，下一次 `q.dequeue()` 返回 `1`："
+
+msgid "Unlike a stack, a queue inserts and removes at **different** ends."
+msgstr "与栈不同，队列在**不同的**两端插入和删除。"
+
+msgid "The `Queue` class"
+msgstr "`Queue` 类"
+
+msgid "To insert at the tail without walking through the whole list, a queue keeps a second pointer, `tail`, to its last node. We use the `Node` class from the From Arrays to Linked Lists section."
+msgstr "为了在尾部插入时不必遍历整个链表，队列保存了第二个指针 `tail`，指向它的最后一个节点。我们使用“从数组到链表”一节中的 `Node` 类。"
+
+msgid "**Code in `queue.h`**"
+msgstr "**`queue.h` 中的代码**"
+
+msgid "**Line 7.** An empty queue has no nodes, so both `head` and `tail` are `nullptr`."
+msgstr "**第 7 行。** 空队列没有节点，所以 `head` 和 `tail` 都是 `nullptr`。"
+
+msgid "**Line 8.** Like the destructor of `Stack`, deleting the first node frees all the nodes in the queue."
+msgstr "**第 8 行。** 和 `Stack` 的析构函数一样，删除第一个节点会释放队列中的所有节点。"
+
+msgid "`enqueue`"
+msgstr "`enqueue`"
+
+msgid "**Line 2.** The new node will be the last node, so its `next` is `nullptr`."
+msgstr "**第 2 行。** 新节点将成为最后一个节点，所以它的 `next` 是 `nullptr`。"
+
+msgid "**Line 3 to 5.** If the queue is not empty, we link the old last node to the new node."
+msgstr "**第 3 到 5 行。** 如果队列不为空，我们把原来的最后一个节点连接到新节点。"
+
+msgid "**Line 6.** `tail` points to the new last node."
+msgstr "**第 6 行。** `tail` 指向新的最后一个节点。"
+
+msgid "**Line 7 to 9.** If the queue was empty, the new node is also the first node, so `head` points to it too."
+msgstr "**第 7 到 9 行。** 如果队列原来是空的，新节点同时也是第一个节点，所以 `head` 也指向它。"
+
+msgid "`dequeue`"
+msgstr "`dequeue`"
+
+msgid "`dequeue` is the same as `pop` of a stack, except for lines 8 to 10."
+msgstr "除了第 8 到 10 行之外，`dequeue` 与栈的 `pop` 完全相同。"
+
+msgid "**Line 2 to 4.** If the queue is empty, we return `-1`."
+msgstr "**第 2 到 4 行。** 如果队列是空的，我们返回 `-1`。"
+
+msgid "**Line 5 to 7.** We save the data of the first node, and `head` moves to the second node."
+msgstr "**第 5 到 7 行。** 我们保存第一个节点的数据，`head` 移到第二个节点。"
+
+msgid "**Line 8 to 10.** If we removed the only node, the queue is now empty, so `tail` must become `nullptr` too."
+msgstr "**第 8 到 10 行。** 如果我们删除的是唯一的节点，队列现在为空，所以 `tail` 也必须变为 `nullptr`。"
+
+msgid "**Line 11 to 13.** We detach the old first node, delete it, and return its data."
+msgstr "**第 11 到 13 行。** 我们分离原来的第一个节点，删除它，并返回它的数据。"
+
+msgid "Like `pop`, `dequeue` must check whether `head` is `nullptr` before dereferencing it, and must call `old_head->setNext(nullptr)` before `delete old_head;`. Otherwise, it dereferences `nullptr` on an empty queue, or deletes the entire linked list."
+msgstr "和 `pop` 一样，`dequeue` 必须在解引用 `head` 之前检查它是否为 `nullptr`，并且必须在 `delete old_head;` 之前调用 `old_head->setNext(nullptr)`。否则，它会在空队列上解引用 `nullptr`，或者删除整个链表。"
+
+msgid "**<span style=\"color:red\">Problem: What if we do not reset `tail` after removing the last node?</span>** Without lines 8 to 10, dequeuing the only node frees it, but `tail` still stores its address:"
+msgstr "**<span style=\"color:red\">问题：如果删除最后一个节点后不重置 `tail` 会怎样？</span>** 如果没有第 8 到 10 行，删除唯一的节点时会释放它，但 `tail` 仍然存储着它的地址："
+
+msgid "The next `enqueue` sees `tail != nullptr` and calls `tail->setNext(new_tail)` on freed memory, which is undefined behavior. **An empty queue must have both pointers equal to `nullptr`.**"
+msgstr "下一次 `enqueue` 看到 `tail != nullptr`，就会在已释放的内存上调用 `tail->setNext(new_tail)`，这是未定义行为。**空队列的两个指针都必须等于 `nullptr`。**"
+
+msgid "Putting it all together"
+msgstr "把所有部分组合起来"
+
+msgid "**Code** {{code_runner_header}}"
+msgstr "**代码** {{code_runner_header}}"
+
+msgid "**Output**"
+msgstr "**输出**"
+
+msgid "The values leave the queue in the **same** order they entered. After the third `dequeue`, both `head` and `tail` are `nullptr`, so the next `enqueue(4)` correctly treats the queue as empty. If any nodes were left in the queue, its destructor would free them when `q` goes out of scope."
+msgstr "值离开队列的顺序与进入的顺序**相同**。第三次 `dequeue` 之后，`head` 和 `tail` 都是 `nullptr`，所以下一次 `enqueue(4)` 能正确地把队列当作空队列处理。如果队列中还剩有节点，当 `q` 离开作用域时，它的析构函数会释放它们。"
+
+msgid "Special cases"
+msgstr "特殊情况"
+
+msgid "Case"
+msgstr "情况"
+
+msgid "What happens?"
+msgstr "会发生什么？"
+
+msgid "Enqueue into an empty queue"
+msgstr "向空队列入队"
+
+msgid "Both pointers point to the new node"
+msgstr "两个指针都指向新节点"
+
+msgid "Enqueue into a nonempty queue"
+msgstr "向非空队列入队"
+
+msgid "Link the old tail to the new node, then move `tail`"
+msgstr "把原来的尾节点连接到新节点，然后移动 `tail`"
+
+msgid "Dequeue from an empty queue"
+msgstr "从空队列出队"
+
+msgid "Return `-1`; do not dereference `head`"
+msgstr "返回 `-1`；不要解引用 `head`"
+
+msgid "Dequeue the only node"
+msgstr "出队唯一的节点"
+
+msgid "Both pointers become `nullptr`"
+msgstr "两个指针都变为 `nullptr`"
+
+msgid "Destroy an empty queue"
+msgstr "销毁空队列"
+
+msgid "`delete nullptr;` is safe"
+msgstr "`delete nullptr;` 是安全的"
+
+msgid "Time complexity"
+msgstr "时间复杂度"
+
+msgid "Let $n$ be the number of nodes in the queue."
+msgstr "设 $n$ 为队列中的节点数。"
+
+msgid "Operation"
+msgstr "操作"
+
+msgid "Work performed"
+msgstr "所做的工作"
+
+msgid "Constructor"
+msgstr "构造函数"
+
+msgid "Initialize `head` and `tail`"
+msgstr "初始化 `head` 和 `tail`"
+
+msgid "$O(1)$"
+msgstr ""
+
+msgid "`enqueue(d)`"
+msgstr ""
+
+msgid "Allocate one node and update the links"
+msgstr "分配一个节点并更新链接"
+
+msgid "`dequeue()`"
+msgstr ""
+
+msgid "Detach and delete the first node"
+msgstr "分离并删除第一个节点"
+
+msgid "Destructor"
+msgstr "析构函数"
+
+msgid "Delete all nodes"
+msgstr "删除所有节点"
+
+msgid "$O(n)$"
+msgstr ""
+
+msgid "Thanks to the `tail` pointer, `enqueue` does not need to walk through the list to find the last node, so it is $O(1)$."
+msgstr "多亏了 `tail` 指针，`enqueue` 不需要遍历链表来寻找最后一个节点，所以它是 $O(1)$ 的。"
+
+msgid "Comparing stacks and queues"
+msgstr "比较栈和队列"
+
+msgid "Stack"
+msgstr "栈"
+
+msgid "Queue"
+msgstr "队列"
+
+msgid "Rule"
+msgstr "规则"
+
+msgid "LIFO"
+msgstr "LIFO（后进先出）"
+
+msgid "FIFO"
+msgstr "FIFO（先进先出）"
+
+msgid "Insert"
+msgstr "插入"
+
+msgid "`push` at the head"
+msgstr "在头部 `push`"
+
+msgid "`enqueue` at the tail"
+msgstr "在尾部 `enqueue`"
+
+msgid "Remove"
+msgstr "删除"
+
+msgid "`pop` at the head"
+msgstr "在头部 `pop`"
+
+msgid "`dequeue` at the head"
+msgstr "在头部 `dequeue`"
+
+msgid "Pointers to nodes"
+msgstr "指向节点的指针"
+
+msgid "`head`"
+msgstr ""
+
+msgid "`head` and `tail`"
+msgstr "`head` 和 `tail`"
+
+msgid "Removal order after inserting 1, 2, 3"
+msgstr "依次插入 1、2、3 之后的删除顺序"
+
+msgid "3, 2, 1"
+msgstr "3、2、1"
+
+msgid "1, 2, 3"
+msgstr "1、2、3"
+
+msgid "Each insertion or removal changes a constant number of pointers, so it takes $O(1)$ time. Destroying a stack or a queue with $n$ nodes takes $O(n)$ time."
+msgstr "每次插入或删除都只改变常数个指针，所以耗时 $O(1)$。销毁一个有 $n$ 个节点的栈或队列耗时 $O(n)$。"
+
+msgid "Summary"
+msgstr "小结"
+
+msgid "In this chapter, we have learned:"
+msgstr "在本章中，我们学习了："
+
+msgid "a linked list is a collection of dynamically allocated nodes linked by pointers, which can grow and shrink without copying elements,"
+msgstr "链表是由指针连接起来的一组动态分配的节点，它可以增长和收缩而不需要复制元素，"
+
+msgid "the destructor of a node can delete the rest of the list, so we must detach a node before deleting it on its own,"
+msgstr "节点的析构函数可能会删除链表的其余部分，所以在单独删除一个节点之前必须先把它分离出来，"
+
+msgid "a stack inserts and removes at the head (LIFO), and a queue inserts at the tail and removes at the head (FIFO),"
+msgstr "栈在头部插入和删除（LIFO），而队列在尾部插入、在头部删除（FIFO），"
+
+msgid "to always think of the special cases: an empty list and a list with only one node, and"
+msgstr "要始终考虑特殊情况：空链表和只有一个节点的链表，以及"
+
+msgid "`push`, `pop`, `enqueue` and `dequeue` are $O(1)$, while destroying a list of $n$ nodes is $O(n)$."
+msgstr "`push`、`pop`、`enqueue` 和 `dequeue` 都是 $O(1)$ 的，而销毁一个有 $n$ 个节点的链表是 $O(n)$ 的。"
+

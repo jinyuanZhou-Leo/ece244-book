@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the Python package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Python \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-16 14:33-0400\n"
+"POT-Creation-Date: 2026-10-22 17:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_CN\n"
@@ -20,70 +19,73 @@ msgstr ""
 "Generated-By: Babel 2.18.0\n"
 
 msgid "What is a copy constructor?"
-msgstr ""
+msgstr "什么是拷贝构造函数？"
 
 msgid "In the previous chapter, we overloaded the assignment operator `operator=` to copy one **existing** object into another **existing** object, *e.g.* `z = x;`. But what if the object is being created at the same time as it is copied, *e.g.* `Student b = a;`? In this case, there is no existing `b` to assign to. Instead, `b` is constructed from `a` using a special constructor called the copy constructor."
-msgstr ""
+msgstr "在上一章中，我们重载了赋值运算符 `operator=`，用来把一个**已有**对象复制到另一个**已有**对象中，*例如* `z = x;`。但如果对象是在复制的同时被创建的呢，*例如* `Student b = a;`？这时并不存在一个已有的 `b` 可以被赋值。相反，`b` 是通过一种叫做拷贝构造函数的特殊构造函数，从 `a` 构造出来的。"
 
 msgid "A **copy constructor** is a special constructor that initializes a new object as a copy of an existing object of the same class."
-msgstr ""
+msgstr "**拷贝构造函数**（copy constructor）是一种特殊的构造函数，它把一个新对象初始化为同一个类的某个已有对象的副本。"
 
 msgid "When is the copy constructor called?"
-msgstr ""
+msgstr "拷贝构造函数在什么时候被调用？"
 
 msgid "Given that `a` is an object of the `Student` class, the copy constructor is called when:"
-msgstr ""
+msgstr "假设 `a` 是 `Student` 类的一个对象，拷贝构造函数会在以下情况被调用："
 
 msgid "**An object is created from an existing object using parentheses**, *e.g.* `Student b(a);`"
-msgstr ""
+msgstr "**用圆括号从已有对象创建对象**，*例如* `Student b(a);`"
 
 msgid "`a` is an existing object, and `b` is being created as a copy of `a`. We are passing `a` to the constructor of `b`."
-msgstr ""
+msgstr "`a` 是一个已有对象，`b` 正在被创建为 `a` 的副本。我们把 `a` 传给 `b` 的构造函数。"
 
 msgid "**An object is created from an existing object using `=`**, *e.g.* `Student b = a;`"
-msgstr ""
+msgstr "**用 `=` 从已有对象创建对象**，*例如* `Student b = a;`"
 
 msgid "Although the `=` syntax is used, `b` is being created in this same line, so this calls the copy constructor. **`operator=` is not called here.**"
-msgstr ""
+msgstr "虽然这里使用了 `=` 语法，但 `b` 正是在这一行被创建的，所以调用的是拷贝构造函数。**这里不会调用 `operator=`。**"
 
 msgid "**An object is passed by value to a function.**"
-msgstr ""
+msgstr "**按值把对象传给函数。**"
 
 msgid "For example, if the function prototype is `void printStudent(Student s);` and the function call is `printStudent(a);`, a new object `s` is created in the function's scope. The copy constructor is called to initialize `s` with the value of `a`."
-msgstr ""
+msgstr "例如，如果函数原型是 `void printStudent(Student s);`，函数调用是 `printStudent(a);`，那么会在函数的作用域中创建一个新对象 `s`。拷贝构造函数被调用，用 `a` 的值来初始化 `s`。"
 
 msgid "**An object is returned by value from a function.**"
-msgstr ""
+msgstr "**函数按值返回对象。**"
 
 msgid "For example, if the function prototype is `Student getCopy(Student& s);` and the function returns `s` using `return s;`, a new object is created to hold the returned value. The copy constructor is called to initialize this new object with the value of `s`."
-msgstr ""
+msgstr "例如，如果函数原型是 `Student getCopy(Student& s);`，并且函数用 `return s;` 返回 `s`，那么会创建一个新对象来保存返回值。拷贝构造函数被调用，用 `s` 的值来初始化这个新对象。"
+
+msgid "The copy constructor is also called when we **dynamically allocate** a new object as a copy of an existing one, *e.g.* `Student* p = new Student(a);`. Here, the new object is created on the heap, and it is initialized from `a` using the copy constructor, just like in case 1."
+msgstr "当我们把一个新对象**动态分配**为某个已有对象的副本时，拷贝构造函数也会被调用，*例如* `Student* p = new Student(a);`。这里新对象创建在堆上，并且和情况 1 一样，通过拷贝构造函数从 `a` 初始化。"
 
 msgid "**Try out this!** In the following code, we define our own copy constructor that prints a message every time it is called. We then trigger each of the four cases in `main`."
-msgstr ""
+msgstr "**动手试一试！** 在下面的代码中，我们定义了自己的拷贝构造函数，它每次被调用时都会打印一条消息。然后我们在 `main` 中依次触发上述四种情况。"
 
 msgid "**Code** {{code_runner_header}}"
-msgstr ""
+msgstr "**代码** {{code_runner_header}}"
 
 msgid "**[Line 15 to 19]** We define the copy constructor. Like any constructor, it has the same name as the class and no return type. Its only parameter is a reference to an existing `Student` object, which we name `other`. We copy `other.name` and `other.ID` into the data members of the object being created."
-msgstr ""
+msgstr "**[第 15 到 19 行]** 我们定义拷贝构造函数。和所有构造函数一样，它与类同名，并且没有返回类型。它唯一的参数是对一个已有 `Student` 对象的引用，我们将其命名为 `other`。我们把 `other.name` 和 `other.ID` 复制到正在创建的对象的数据成员中。"
 
 msgid "**[Line 34]** `a` is created using the regular constructor `Student(string n, int id)`, which prints `Constructor called for Kenya`."
-msgstr ""
+msgstr "**[第 34 行]** `a` 是用普通构造函数 `Student(string n, int id)` 创建的，它打印 `Constructor called for Kenya`。"
 
 msgid "**[Line 35 and 36]** `b` and `c` are created as copies of `a`. Each line calls the copy constructor once."
-msgstr ""
+msgstr "**[第 35 和 36 行]** `b` 和 `c` 被创建为 `a` 的副本。每一行都调用一次拷贝构造函数。"
 
 msgid "**[Line 37]** `a` is passed by value to `printStudent`. The copy constructor creates the parameter `s` as a copy of `a`, then `s.print()` prints the name and ID."
-msgstr ""
+msgstr "**[第 37 行]** `a` 被按值传给 `printStudent`。拷贝构造函数把参数 `s` 创建为 `a` 的副本，然后 `s.print()` 打印姓名和 ID。"
 
 msgid "**[Line 38]** `getCopy` returns `s` by value. The copy constructor creates the returned object as a copy of `s`, and this object becomes `d`."
-msgstr ""
+msgstr "**[第 38 行]** `getCopy` 按值返回 `s`。拷贝构造函数把返回的对象创建为 `s` 的副本，这个对象成为 `d`。"
 
 msgid "**Output**"
-msgstr ""
+msgstr "**输出**"
 
 msgid "**Watch it step by step.** Step through the same code and watch the stack. Every time a copy is made, a new frame for the copy constructor `Student::Student(Student const&)` appears on top of the stack. Count them: there are four."
-msgstr ""
+msgstr "**逐步观察。** 单步执行同一段代码并观察栈。每进行一次复制，栈顶就会出现一个拷贝构造函数 `Student::Student(Student const&)` 的新栈帧。数一数：一共有四个。"
 
 #, python-brace-format
 msgid "class Student {     private:       string name;       int ID;     public:       Student(string n, int id) {         name = n;         ID = id;         cout &lt;&lt; \"Constructor called for \" &lt;&lt; name &lt;&lt; endl;       }       Student(const Student&amp; other) {         name = other.name;         ID = other.ID;         cout &lt;&lt; \"Copy constructor called for \" &lt;&lt; name &lt;&lt; endl;       }       void print() {         cout &lt;&lt; \"Name: \" &lt;&lt; name &lt;&lt; \", ID: \" &lt;&lt; ID &lt;&lt; endl;       }   };"
@@ -102,56 +104,101 @@ msgid "int main(void) {     Student a(\"Kenya\", 8012);     Student b(a);       
 msgstr ""
 
 msgid "Copies the compiler can skip"
-msgstr ""
+msgstr "编译器可以省略的复制"
 
 msgid "The compiler is allowed to skip some copies to make the program faster. This is called **copy elision**. For example, if `getCopy` returned a local object instead of its parameter, the compiler would usually build the returned object directly in `d`, and the copy constructor would not be called at all:"
-msgstr ""
+msgstr "为了让程序运行得更快，编译器可以省略某些复制。这被称为**复制省略**（copy elision）。例如，如果 `getCopy` 返回的是一个局部对象而不是它的参数，编译器通常会直接在 `d` 中构造返回的对象，拷贝构造函数根本不会被调用："
 
 msgid "This is why `getCopy` returns its reference parameter `s` in our example: `s` is not local to `getCopy`, so a copy must be made. Do not rely on a copy being skipped or not; your copy constructor should be correct either way."
-msgstr ""
+msgstr "这就是为什么在我们的例子中 `getCopy` 返回的是它的引用参数 `s`：`s` 不是 `getCopy` 的局部变量，所以必须进行复制。不要依赖某次复制是否会被省略；无论哪种情况，你的拷贝构造函数都应该是正确的。"
 
 msgid "The default copy constructor"
-msgstr ""
+msgstr "默认拷贝构造函数"
 
-msgid "**What if we do not define a copy constructor?** Just like the default `operator=` we discussed in the previous chapter, C++ provides a **default copy constructor** for every class that does not define its own. The default copy constructor performs a **member-wise copy**: it copies every data member of the existing object into the corresponding data member of the new object."
-msgstr ""
+msgid "**What if we do not define a copy constructor?** Just like the default `operator=` we discussed in the previous chapter, if we do not declare a copy constructor, the compiler generates a **default copy constructor** for us. The default copy constructor performs a **member-wise copy**: it copies every data member of the existing object into the corresponding data member of the new object."
+msgstr "**如果我们不定义拷贝构造函数会怎样？** 就像我们在上一章讨论的默认 `operator=` 一样，如果我们没有声明拷贝构造函数，编译器会为我们生成一个**默认拷贝构造函数**。默认拷贝构造函数执行**逐成员复制**（member-wise copy）：它把已有对象的每个数据成员复制到新对象对应的数据成员中。"
 
 msgid "For the `Student` class, the default copy constructor behaves as if we wrote:"
-msgstr ""
+msgstr "对于 `Student` 类，默认拷贝构造函数的行为就像我们写了："
 
-msgid "This is exactly what we need for `Student`, so we did not have to write our own copy constructor, except to print a message. In the next section, we will see a class where the member-wise copy is **not** what we want."
-msgstr ""
+msgid "This is exactly what we need for `Student`, so we did not have to write our own copy constructor, except to print a message."
+msgstr "这正是 `Student` 所需要的，所以除了打印消息之外，我们其实不需要自己编写拷贝构造函数。"
+
+msgid "**How is each data member copied?** Each data member is copied according to its own type. Consider the following class with an `int`, a `string` and a pointer to an `int`."
+msgstr "**每个数据成员是如何被复制的？** 每个数据成员都按照它自己的类型来复制。考虑下面这个类，它有一个 `int`、一个 `string` 和一个指向 `int` 的指针。"
+
+msgid "In line 16, the default copy constructor creates `b` from `a`:"
+msgstr "在第 16 行，默认拷贝构造函数从 `a` 创建 `b`："
+
+msgid "`b.id` gets the value `1`."
+msgstr "`b.id` 得到值 `1`。"
+
+msgid "`b.name` gets **its own copy** of the characters `\"Alice\"`, because `string` has its own copy constructor that copies the characters. Changing `b.name` later does not change `a.name`."
+msgstr "`b.name` 得到字符 `\"Alice\"` 的**一份独立副本**，因为 `string` 有自己的拷贝构造函数，会复制这些字符。之后修改 `b.name` 不会改变 `a.name`。"
+
+msgid "`b.ptr` gets the **same address** stored in `a.ptr`. Only the address is copied, so `a.ptr` and `b.ptr` point to the same `int`, `value`."
+msgstr "`b.ptr` 得到 `a.ptr` 中存储的**同一个地址**。只有地址被复制，所以 `a.ptr` 和 `b.ptr` 指向同一个 `int`，即 `value`。"
+
+msgid "In the next section, we will see that copying only the address of a pointer is **not** what we want when the pointer points to dynamically allocated memory that the object owns."
+msgstr "在下一节中，我们会看到：当指针指向对象自己拥有的动态分配内存时，只复制指针的地址**并不是**我们想要的。"
+
+msgid "When the default copy constructor is not available"
+msgstr "默认拷贝构造函数不可用的情况"
+
+msgid "Stream objects, such as `cin` (an `istream`), `cout` (an `ostream`), file streams (`ifstream` and `ofstream`) and string streams (`stringstream`), **cannot be copied**. This is why, when a function takes a stream as a parameter, *e.g.* `operator<<` in the Operator Overloading chapter, we pass the stream by reference. **Why can't we pass a stream by value?** Passing an object by value calls its copy constructor (case 3 above). The copy constructor of the stream classes, *e.g.* `istream`, is **deleted**, which means it is declared, but calling it is a compile-time error."
+msgstr "流对象，例如 `cin`（一个 `istream`）、`cout`（一个 `ostream`）、文件流（`ifstream` 和 `ofstream`）以及字符串流（`stringstream`），都**不能被复制**。这就是为什么当函数以流作为参数时，*例如*运算符重载一章中的 `operator<<`，我们会按引用传递流。**为什么不能按值传递流？** 按值传递对象会调用它的拷贝构造函数（上面的情况 3）。流类（*例如* `istream`）的拷贝构造函数是**被删除的**（deleted），也就是说它被声明了，但调用它会导致编译错误。"
+
+msgid "The solution is to pass the stream by reference, *i.e.* `void readData(istream& input)`, so no copy is made."
+msgstr "解决方法是按引用传递流，*即* `void readData(istream& input)`，这样就不会进行复制。"
+
+msgid "Similarly, the compiler can only generate a default copy constructor if every data member can be copied. If a data member cannot be copied, such as a `stringstream`, the default copy constructor is **deleted**."
+msgstr "类似地，只有当每个数据成员都可以被复制时，编译器才能生成默认拷贝构造函数。如果某个数据成员不能被复制，例如 `stringstream`，那么默认拷贝构造函数就是**被删除的**。"
+
+msgid "Copying `a` would require copying `a.stream`, which is not allowed. `g++` reports `error: use of deleted function 'Example::Example(const Example&)'`."
+msgstr "复制 `a` 需要复制 `a.stream`，而这是不允许的。`g++` 会报告 `error: use of deleted function 'Example::Example(const Example&)'`。"
+
+msgid "We can also delete the copy constructor **ourselves** when objects of a class should never be copied. We write `= delete` after its declaration:"
+msgstr "当某个类的对象永远不应该被复制时，我们也可以**自己**删除拷贝构造函数。我们在它的声明后面写上 `= delete`："
+
+msgid "Now any line that would call the copy constructor, *e.g.* `Example b(a);` or passing an `Example` object by value, causes a compile-time error."
+msgstr "现在，任何会调用拷贝构造函数的代码，*例如* `Example b(a);` 或按值传递一个 `Example` 对象，都会导致编译错误。"
 
 msgid "Why is the parameter a `const` reference?"
-msgstr ""
+msgstr "为什么参数是 `const` 引用？"
 
 msgid "The copy constructor takes its parameter as `const Student&`. Both the `&` and the `const` are important."
-msgstr ""
+msgstr "拷贝构造函数的参数类型是 `const Student&`。其中的 `&` 和 `const` 都很重要。"
 
 msgid "**<span style=\"color:red\">Problem!</span>** What if we pass the existing object by value, *i.e.* `Student(Student other)`? Passing an object by value creates a copy of it (case 3 above). To create this copy, the copy constructor is called. This call passes its argument by value again, which calls the copy constructor again, and so on forever. The compiler does not allow this. For example, `clang++` reports:"
-msgstr ""
+msgstr "**<span style=\"color:red\">问题！</span>** 如果我们按值传递已有对象，*即* `Student(Student other)`，会怎样？按值传递对象会创建它的一个副本（上面的情况 3）。为了创建这个副本，需要调用拷贝构造函数。而这次调用又会按值传递它的参数，于是再次调用拷贝构造函数，如此无限循环下去。编译器不允许这样做。例如，`clang++` 会报告："
 
 msgid "**<span style=\"color:green\">Solution.</span>** We pass the existing object by reference, `Student& other`, so no copy is needed to call the copy constructor."
-msgstr ""
+msgstr "**<span style=\"color:green\">解决方法。</span>** 我们按引用传递已有对象，即 `Student& other`，这样调用拷贝构造函数时就不需要进行复制。"
 
 msgid "We also make the reference `const` for two reasons:"
-msgstr ""
+msgstr "我们把引用声明为 `const` 有两个原因："
 
 msgid "The copy constructor should not modify the object it copies from. `const` makes the compiler enforce this."
-msgstr ""
+msgstr "拷贝构造函数不应该修改被复制的对象。`const` 让编译器来保证这一点。"
 
 msgid "It allows us to copy from `const` objects, *e.g.* `const Student a(\"Kenya\", 8012); Student b = a;`. A non-`const` reference cannot refer to a `const` object, so without `const` this line would not compile."
-msgstr ""
+msgstr "它允许我们从 `const` 对象复制，*例如* `const Student a(\"Kenya\", 8012); Student b = a;`。非 `const` 引用不能引用 `const` 对象，所以如果没有 `const`，这一行将无法编译。"
 
 msgid "Copy constructor or operator=?"
-msgstr ""
+msgstr "拷贝构造函数还是 operator=？"
 
 msgid "Whether `=` calls the copy constructor or `operator=` depends on whether the object on the left-hand side is being created."
-msgstr ""
+msgstr "`=` 调用的是拷贝构造函数还是 `operator=`，取决于左边的对象是否正在被创建。"
 
 msgid "**Check your understanding.** For each line below, decide whether it calls the copy constructor, `operator=`, or neither."
-msgstr ""
+msgstr "**检验你的理解。** 对于下面的每一行，判断它调用的是拷贝构造函数、`operator=`，还是都不调用。"
 
 msgid "In the next section, we will see why the default copy constructor causes serious problems when a class has a pointer to dynamically allocated memory."
-msgstr ""
+msgstr "在下一节中，我们会看到当类含有指向动态分配内存的指针时，默认拷贝构造函数为什么会导致严重的问题。"
+
+#~ msgid "**What if we do not define a copy constructor?** Just like the default `operator=` we discussed in the previous chapter, C++ provides a **default copy constructor** for every class that does not define its own. The default copy constructor performs a **member-wise copy**: it copies every data member of the existing object into the corresponding data member of the new object."
+#~ msgstr ""
+
+#~ msgid "This is exactly what we need for `Student`, so we did not have to write our own copy constructor, except to print a message. In the next section, we will see a class where the member-wise copy is **not** what we want."
+#~ msgstr ""
 

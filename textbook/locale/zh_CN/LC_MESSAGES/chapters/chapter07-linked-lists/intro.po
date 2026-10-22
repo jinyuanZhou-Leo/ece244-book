@@ -15,8 +15,8 @@ msgstr ""
 "Generated-By: Babel 2.18.0\n"
 
 msgid "Linked Lists"
-msgstr ""
+msgstr "链表"
 
 msgid "In this chapter, we discuss linked lists in object-oriented programming. We see the need for a copy constructor, destructor, and assignment operator."
-msgstr ""
+msgstr "在本章中，我们讨论面向对象编程中的链表。我们会看到为什么需要拷贝构造函数、析构函数和赋值运算符。"
 

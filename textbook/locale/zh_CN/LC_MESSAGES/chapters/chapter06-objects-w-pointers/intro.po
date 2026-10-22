@@ -15,8 +15,8 @@ msgstr ""
 "Generated-By: Babel 2.18.0\n"
 
 msgid "Objects with Pointers"
-msgstr ""
+msgstr "含指针的对象"
 
 msgid "In this chapter, we discuss the copy constructor, a special constructor that is called when we create an object from an existing object, including when an object is passed or returned by value. C++ gives every class a default copy constructor and a default `operator=`, unless we define our own. However, we will soon realize that in classes that have pointers to dynamically allocated memory, these defaults make shallow copies, and we need to define the class' own copy constructor, `operator=` and destructor. This guideline is known as the Rule of Three."
-msgstr ""
+msgstr "在本章中，我们讨论拷贝构造函数（copy constructor）。它是一种特殊的构造函数，在我们用一个已有对象创建新对象时被调用，包括按值传递或按值返回对象的情况。除非我们自己定义，否则 C++ 会为每个类提供默认的拷贝构造函数和默认的 `operator=`。然而，我们很快会发现，对于含有指向动态分配内存的指针的类，这些默认版本只会进行浅拷贝，因此我们需要为类定义自己的拷贝构造函数、`operator=` 和析构函数。这条准则被称为三法则（Rule of Three）。"
 
