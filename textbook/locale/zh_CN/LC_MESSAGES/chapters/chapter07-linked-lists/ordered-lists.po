@@ -1,0 +1,380 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-07 22:03+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+msgid "Ordered Linked Lists"
+msgstr "有序链表"
+
+msgid "In an **ordered linked list**, the values are stored in **nondecreasing** order from the head to the tail. Unlike a stack or a queue, we can insert or remove a node anywhere in the list, as long as the list stays ordered. An ordered linked list provides:"
+msgstr "在**有序链表**（ordered linked list）中，值从头到尾按**非递减**顺序存储。与栈和队列不同，我们可以在链表的任何位置插入或删除节点，只要链表保持有序即可。有序链表提供："
+
+msgid "`dataExists(d)`: search for the value `d`."
+msgstr "`dataExists(d)`：查找值 `d`。"
+
+msgid "`insertData(d)`: insert a new node that stores `d`, at the position that keeps the list ordered."
+msgstr "`insertData(d)`：在能保持链表有序的位置插入一个存储 `d` 的新节点。"
+
+msgid "`deleteData(d)`: remove the first node that stores `d`."
+msgstr "`deleteData(d)`：删除第一个存储 `d` 的节点。"
+
+msgid "a copy constructor and a copy assignment operator."
+msgstr "拷贝构造函数和拷贝赋值运算符。"
+
+msgid "The `OrderedList` class"
+msgstr "`OrderedList` 类"
+
+msgid "Like a stack, an ordered linked list only needs a pointer to its first node, `head`. We use the `Node` class from the From Arrays to Linked Lists section."
+msgstr "和栈一样，有序链表只需要一个指向第一个节点的指针 `head`。我们使用“从数组到链表”一节中的 `Node` 类。"
+
+msgid "**Code in `OrderedList.h`**"
+msgstr "**`OrderedList.h` 中的代码**"
+
+msgid "**Line 6 and 7.** As in `Stack`, an empty list has `head` equal to `nullptr`, and the destructor frees all the nodes by deleting the first one."
+msgstr "**第 6 和 7 行。** 和 `Stack` 一样，空链表的 `head` 等于 `nullptr`，析构函数通过删除第一个节点来释放所有节点。"
+
+msgid "**Line 8.** `dataExists` does not change the list, so it is a `const` member function."
+msgstr "**第 8 行。** `dataExists` 不会改变链表，所以它是一个 `const` 成员函数。"
+
+msgid "**Line 11 and 12.** The class owns dynamically allocated nodes and has a destructor, so by the Rule of Three it also needs its own copy constructor and copy assignment operator. We implement them at the end of this section."
+msgstr "**第 11 和 12 行。** 这个类拥有动态分配的节点，并且有析构函数，所以根据三法则（Rule of Three），它也需要自己的拷贝构造函数和拷贝赋值运算符。我们在本节最后实现它们。"
+
+msgid "`dataExists`"
+msgstr "`dataExists`"
+
+msgid "**Line 2.** We start at the first node."
+msgstr "**第 2 行。** 我们从第一个节点开始。"
+
+msgid "**Line 3.** We keep walking while there is a node, and its value is not larger than `d`. Since the list is ordered, once we reach a value larger than `d`, every value after it is also larger than `d`, so we can stop early. Note that the order of the two conditions matters: `&&` evaluates `current != nullptr` first, so we never call `current->getData()` on `nullptr`."
+msgstr "**第 3 行。** 只要还有节点，并且它的值不大于 `d`，我们就继续向后走。由于链表是有序的，一旦遇到一个大于 `d` 的值，它后面的每个值也都大于 `d`，所以我们可以提前停止。注意两个条件的顺序很重要：`&&` 会先求值 `current != nullptr`，所以我们永远不会对 `nullptr` 调用 `current->getData()`。"
+
+msgid "**Line 4 to 6.** If the current node stores `d`, we found it."
+msgstr "**第 4 到 6 行。** 如果当前节点存储的是 `d`，就找到了。"
+
+msgid "**Line 9.** We reached the end of the list or a larger value, so `d` is not in the list."
+msgstr "**第 9 行。** 我们到达了链表末尾或遇到了更大的值，所以 `d` 不在链表中。"
+
+msgid "For example, searching for `3` in `[1, 3]` walks past `1` and returns `true` at the second node. Searching for `2` in `[1, 3]` walks past `1`, then stops at `3` because `3 <= 2` is false, and returns `false` without reaching the end of the list:"
+msgstr "例如，在 `[1, 3]` 中查找 `3` 时，会走过 `1`，然后在第二个节点处返回 `true`。在 `[1, 3]` 中查找 `2` 时，会走过 `1`，然后因为 `3 <= 2` 为假而停在 `3`，不必走到链表末尾就返回 `false`："
+
+msgid "If the list is empty, `current` starts as `nullptr`, so we skip the loop and return `false`."
+msgstr "如果链表为空，`current` 一开始就是 `nullptr`，所以我们跳过循环并返回 `false`。"
+
+msgid "Case"
+msgstr "情况"
+
+msgid "Result"
+msgstr "结果"
+
+msgid "Empty list"
+msgstr "空链表"
+
+msgid "Return `false` immediately"
+msgstr "立即返回 `false`"
+
+msgid "Target smaller than the head value"
+msgstr "目标小于头节点的值"
+
+msgid "Stop at the head; return `false`"
+msgstr "停在头节点；返回 `false`"
+
+msgid "Target equals the head value"
+msgstr "目标等于头节点的值"
+
+msgid "Return `true` immediately"
+msgstr "立即返回 `true`"
+
+msgid "Target larger than every value"
+msgstr "目标大于所有值"
+
+msgid "Visit every node; return `false`"
+msgstr "访问每个节点；返回 `false`"
+
+msgid "**Time complexity.** Let $n$ be the number of nodes. In the worst case, *e.g.* when the target is larger than every value, we visit all $n$ nodes, so `dataExists` is $O(n)$. In the best case, the list is empty or the head stores the target, so it is $O(1)$."
+msgstr "**时间复杂度。** 设 $n$ 为节点数。在最坏情况下，*例如*目标大于所有值时，我们会访问全部 $n$ 个节点，所以 `dataExists` 是 $O(n)$ 的。在最好情况下，链表为空或头节点存储的就是目标，所以是 $O(1)$ 的。"
+
+msgid "Why not binary search?"
+msgstr "为什么不用二分查找？"
+
+msgid "The values are sorted, and we saw in the Complexity Analysis chapter that binary search on a sorted array is $O(\\log n)$, which is better than the $O(n)$ of linear search. However, binary search needs to jump to the middle element. An array supports **random access**: `arr[i]` takes $O(1)$ time. A linked list does not: to reach the middle node, we have to follow $n/2$ `next` pointers from the head, which already takes $O(n)$ time. Therefore, binary search does not help on a linked list."
+msgstr "这些值是有序的，而我们在复杂度分析一章中看到，在有序数组上进行二分查找是 $O(\\log n)$ 的，比线性查找的 $O(n)$ 更好。但是，二分查找需要跳到中间的元素。数组支持**随机访问**：`arr[i]` 只需 $O(1)$ 时间。链表不支持：要到达中间节点，我们必须从头节点开始沿着 $n/2$ 个 `next` 指针走，这本身就需要 $O(n)$ 时间。因此，二分查找对链表没有帮助。"
+
+msgid "`insertData`"
+msgstr "`insertData`"
+
+msgid "To insert a node, we need to change the `next` of the node **before** the insertion position. Since a node only points to the node after it, we walk through the list with two pointers: `current`, and `previous`, which is always one node behind `current`."
+msgstr "要插入一个节点，我们需要修改插入位置**之前**那个节点的 `next`。由于节点只指向它后面的节点，我们用两个指针遍历链表：`current`，以及始终比 `current` 落后一个节点的 `previous`。"
+
+msgid "**Line 4 to 7.** We advance both pointers while the value of `current` is smaller than `d`. When the loop stops, the new node belongs between `previous` and `current`. Note that we use `<`, and not `<=`: if `d` is already in the list, we stop at the first node that stores `d`, so the new node is inserted **before** the first equal value."
+msgstr "**第 4 到 7 行。** 只要 `current` 的值小于 `d`，我们就让两个指针都前进。循环停止时，新节点应该位于 `previous` 和 `current` 之间。注意我们用的是 `<` 而不是 `<=`：如果 `d` 已经在链表中，我们会停在第一个存储 `d` 的节点处，所以新节点被插入到第一个相等值的**前面**。"
+
+msgid "**Line 8.** The new node stores `d`, and its `next` points to `current`. If `current` is `nullptr`, the new node becomes the last node."
+msgstr "**第 8 行。** 新节点存储 `d`，它的 `next` 指向 `current`。如果 `current` 是 `nullptr`，新节点就成为最后一个节点。"
+
+msgid "**Line 9 to 13.** If `previous` is `nullptr`, the loop did not advance, so the new node is the new first node and `head` must point to it. Otherwise, we link `previous` to the new node."
+msgstr "**第 9 到 13 行。** 如果 `previous` 是 `nullptr`，说明循环没有前进过，所以新节点是新的第一个节点，`head` 必须指向它。否则，我们把 `previous` 链接到新节点。"
+
+msgid "**What if the new value belongs before the head?** For example, to insert `2` into `[3]`, the loop is skipped because `3 < 2` is false, so `previous` is still `nullptr`. The new node points to the old first node, and `head` moves to the new node:"
+msgstr "**如果新值应该放在头节点之前呢？** 例如，把 `2` 插入 `[3]` 时，因为 `3 < 2` 为假，循环被跳过，所以 `previous` 仍然是 `nullptr`。新节点指向原来的第一个节点，`head` 移到新节点："
+
+msgid "**What if the list is empty?** Both `previous` and `current` are `nullptr`, so the new node's `next` is `nullptr`, and `head` points to it. The same code handles both cases."
+msgstr "**如果链表为空呢？** `previous` 和 `current` 都是 `nullptr`，所以新节点的 `next` 是 `nullptr`，`head` 指向它。同一段代码可以处理这两种情况。"
+
+msgid "`head` points to the new node; its `next` is `nullptr`"
+msgstr "`head` 指向新节点；它的 `next` 是 `nullptr`"
+
+msgid "Value smaller than the head value"
+msgstr "值小于头节点的值"
+
+msgid "Insert at the front and update `head`"
+msgstr "插入到最前面并更新 `head`"
+
+msgid "Value larger than every value"
+msgstr "值大于所有值"
+
+msgid "Append at the tail; the new node's `next` is `nullptr`"
+msgstr "追加到尾部；新节点的 `next` 是 `nullptr`"
+
+msgid "Duplicate value"
+msgstr "重复的值"
+
+msgid "Insert before the first equal value"
+msgstr "插入到第一个相等值的前面"
+
+msgid "**Time complexity.** In the worst case, *e.g.* when the new value is larger than every value, we walk through all $n$ nodes to find the insertion position, so `insertData` is $O(n)$. In the best case, the list is empty or the new value belongs before the head, so it is $O(1)$."
+msgstr "**时间复杂度。** 在最坏情况下，*例如*新值大于所有值时，我们要走过全部 $n$ 个节点才能找到插入位置，所以 `insertData` 是 $O(n)$ 的。在最好情况下，链表为空或新值应该放在头节点之前，所以是 $O(1)$ 的。"
+
+msgid "`deleteData`"
+msgstr "`deleteData`"
+
+msgid "**Line 2 to 7.** The same loop as in `insertData` stops at the first node whose value is not smaller than `d`, with `previous` one node behind."
+msgstr "**第 2 到 7 行。** 与 `insertData` 中相同的循环会停在第一个值不小于 `d` 的节点处，`previous` 落后一个节点。"
+
+msgid "**Line 8 to 10.** If we reached the end of the list, or the value of `current` is larger than `d`, then `d` is not in the list. We return `false` without changing any link."
+msgstr "**第 8 到 10 行。** 如果我们到达了链表末尾，或者 `current` 的值大于 `d`，那么 `d` 不在链表中。我们返回 `false`，不修改任何链接。"
+
+msgid "**Line 11 to 15.** We unlink `current`. If it is the first node, `head` moves to the second node. Otherwise, `previous` is linked to the node after `current`. If `current` is the last node, `current->getNext()` is `nullptr`, so `previous` becomes the new last node."
+msgstr "**第 11 到 15 行。** 我们把 `current` 从链表中断开。如果它是第一个节点，`head` 移到第二个节点。否则，把 `previous` 链接到 `current` 之后的节点。如果 `current` 是最后一个节点，`current->getNext()` 是 `nullptr`，所以 `previous` 成为新的最后一个节点。"
+
+msgid "**Line 16 and 17.** As in `pop` and `dequeue`, we must detach `current` before deleting it. Otherwise, the destructor of `Node` would also delete every node after it."
+msgstr "**第 16 和 17 行。** 和 `pop` 与 `dequeue` 一样，我们必须在删除 `current` 之前把它分离出来。否则，`Node` 的析构函数还会删除它后面的每个节点。"
+
+msgid "Return `false`"
+msgstr "返回 `false`"
+
+msgid "Target absent"
+msgstr "目标不存在"
+
+msgid "Return `false`; change no links"
+msgstr "返回 `false`；不修改任何链接"
+
+msgid "Remove the head"
+msgstr "删除头节点"
+
+msgid "Advance `head`"
+msgstr "`head` 前进"
+
+msgid "Remove the only node"
+msgstr "删除唯一的节点"
+
+msgid "`head` becomes `nullptr`"
+msgstr "`head` 变为 `nullptr`"
+
+msgid "Remove the tail"
+msgstr "删除尾节点"
+
+msgid "The predecessor's `next` becomes `nullptr`"
+msgstr "前驱节点的 `next` 变为 `nullptr`"
+
+msgid "Repeated equal values"
+msgstr "有多个相等的值"
+
+msgid "Remove only the first matching node"
+msgstr "只删除第一个匹配的节点"
+
+msgid "**Time complexity.** In the worst case, *e.g.* when the target is larger than every value, we walk through all $n$ nodes, so `deleteData` is $O(n)$. In the best case, the list is empty or the target is at the head, so it is $O(1)$."
+msgstr "**时间复杂度。** 在最坏情况下，*例如*目标大于所有值时，我们会走过全部 $n$ 个节点，所以 `deleteData` 是 $O(n)$ 的。在最好情况下，链表为空或目标在头节点，所以是 $O(1)$ 的。"
+
+msgid "Copy constructor"
+msgstr "拷贝构造函数"
+
+msgid "Recall from the Objects with Pointers chapter that the default copy constructor copies each data member. For `OrderedList`, it copies the pointer `head`, and not the nodes: a **shallow copy**. Both lists would share the same nodes, so when one list is destroyed, the other list's `head` becomes a dangling pointer, and the nodes would be deleted twice when the other list is destroyed."
+msgstr "回忆“含指针的对象”一章：默认的拷贝构造函数会复制每个数据成员。对于 `OrderedList`，它复制的是指针 `head`，而不是节点：这是**浅拷贝**。两个链表会共享相同的节点，所以当一个链表被销毁时，另一个链表的 `head` 就成了悬空指针，而且当另一个链表被销毁时，这些节点会被删除第二次。"
+
+msgid "Our copy constructor makes a **deep copy**: it allocates a new node for every node of `original`, in the same order."
+msgstr "我们的拷贝构造函数进行**深拷贝**：它为 `original` 的每个节点按相同顺序分配一个新节点。"
+
+msgid "**Line 2 to 5.** `cur_orig` walks through the original list. `prev_copy` points to the last node of the new list built so far. The new list starts empty."
+msgstr "**第 2 到 5 行。** `cur_orig` 遍历原链表。`prev_copy` 指向目前已构建的新链表的最后一个节点。新链表一开始为空。"
+
+msgid "**Line 7.** We allocate a copy of the current original node. For now, it is the last node of the new list, so its `next` is `nullptr`."
+msgstr "**第 7 行。** 我们为当前的原节点分配一个副本。目前它是新链表的最后一个节点，所以它的 `next` 是 `nullptr`。"
+
+msgid "**Line 8 to 12.** If this is the first copied node, `head` points to it. Otherwise, we append it after the last copied node."
+msgstr "**第 8 到 12 行。** 如果这是第一个被复制的节点，`head` 指向它。否则，我们把它追加到最后一个已复制节点的后面。"
+
+msgid "**Line 13 and 14.** We advance to the next original node, and the node we just copied becomes the last node of the new list."
+msgstr "**第 13 和 14 行。** 我们前进到下一个原节点，刚复制的节点成为新链表的最后一个节点。"
+
+msgid "If `original` is empty, `cur_orig` starts as `nullptr`, the loop is skipped, and the new list is empty."
+msgstr "如果 `original` 为空，`cur_orig` 一开始就是 `nullptr`，循环被跳过，新链表为空。"
+
+msgid "**Time complexity.** For an original list of $n$ nodes, we visit every node and allocate one copy of each, so the copy constructor is $O(n)$ in **both** the best case and the worst case: every node must be copied."
+msgstr "**时间复杂度。** 对于有 $n$ 个节点的原链表，我们访问每个节点并为每个节点分配一个副本，所以拷贝构造函数在最好情况和最坏情况下**都**是 $O(n)$ 的：每个节点都必须被复制。"
+
+msgid "Copy assignment operator"
+msgstr "拷贝赋值运算符"
+
+msgid "The copy assignment operator replaces the nodes of an **existing** list with a deep copy of another list. One way is to free the old nodes, and then repeat the code of the copy constructor:"
+msgstr "拷贝赋值运算符用另一个链表的深拷贝替换一个**已存在的**链表的节点。一种方法是先释放旧节点，然后重复拷贝构造函数中的代码："
+
+msgid "**Line 2 to 4.** As we discussed in the Objects with Pointers chapter, we must check for self-assignment, *e.g.* `a = a;`. Otherwise, line 5 would free the nodes of `original` before we copy them."
+msgstr "**第 2 到 4 行。** 正如我们在“含指针的对象”一章中讨论的，我们必须检查自赋值，*例如* `a = a;`。否则，第 5 行会在复制之前就释放 `original` 的节点。"
+
+msgid "**Line 22.** We return the destination by reference, so that assignments can be chained, *e.g.* `a = b = c;`."
+msgstr "**第 22 行。** 我们以引用的方式返回目标对象，这样赋值就可以连写，*例如* `a = b = c;`。"
+
+msgid "Repeating code is error-prone. Instead, we can let the copy constructor do the copying:"
+msgstr "重复代码容易出错。我们可以改为让拷贝构造函数来完成复制："
+
+msgid "**Line 5.** `new_list` is a local deep copy of `original`."
+msgstr "**第 5 行。** `new_list` 是 `original` 的一个局部深拷贝。"
+
+msgid "**Line 6 and 7.** We free our old nodes, and take over the nodes of `new_list`."
+msgstr "**第 6 和 7 行。** 我们释放自己的旧节点，并接管 `new_list` 的节点。"
+
+msgid "**Line 8.** `new_list` is a local object, so its destructor is called when the function returns, and it deletes the nodes that `new_list.head` points to. By setting `new_list.head` to `nullptr`, its destructor runs `delete nullptr;`, which does nothing."
+msgstr "**第 8 行。** `new_list` 是一个局部对象，所以函数返回时会调用它的析构函数，删除 `new_list.head` 指向的节点。把 `new_list.head` 设为 `nullptr` 后，它的析构函数执行的是 `delete nullptr;`，什么也不做。"
+
+msgid "**<span style=\"color:red\">Problem: What if we forget line 8?</span>** Then `head` and `new_list.head` point to the same nodes. When the function returns, the destructor of `new_list` deletes these nodes, so `head` becomes a **dangling pointer**. Any later use of the list is undefined behavior, and the nodes are deleted a second time when the list itself is destroyed."
+msgstr "**<span style=\"color:red\">问题：如果忘了第 8 行会怎样？</span>** 那么 `head` 和 `new_list.head` 指向相同的节点。函数返回时，`new_list` 的析构函数会删除这些节点，所以 `head` 成为**悬空指针**。之后对这个链表的任何使用都是未定义行为，而且当链表本身被销毁时，这些节点会被删除第二次。"
+
+msgid "**Time complexity.** Let $n$ be the number of nodes in `original`, and $m$ the number of old nodes in the destination. In the worst case, we copy $n$ nodes and delete $m$ nodes, so the copy assignment operator is $O(n + m)$. In the best case, *i.e.* self-assignment, the function returns immediately, so it is $O(1)$."
+msgstr "**时间复杂度。** 设 $n$ 为 `original` 中的节点数，$m$ 为目标对象中旧节点的数量。在最坏情况下，我们复制 $n$ 个节点并删除 $m$ 个节点，所以拷贝赋值运算符是 $O(n + m)$ 的。在最好情况下，*即*自赋值时，函数立即返回，所以是 $O(1)$ 的。"
+
+msgid "The Rule of Three for `OrderedList`"
+msgstr "`OrderedList` 的三法则"
+
+msgid "Operation"
+msgstr "操作"
+
+msgid "Responsibility"
+msgstr "职责"
+
+msgid "Destructor"
+msgstr "析构函数"
+
+msgid "Release the nodes that the list owns"
+msgstr "释放链表拥有的节点"
+
+msgid "Build a new, independent list of nodes"
+msgstr "构建一个新的、独立的节点链"
+
+msgid "Replace the existing nodes with an independent copy"
+msgstr "用一个独立的副本替换已有的节点"
+
+msgid "Putting it all together"
+msgstr "把所有部分组合起来"
+
+msgid "The following program uses every member function of `OrderedList`. We added a member function `print` that prints the values in the list, so we can see its contents."
+msgstr "下面的程序用到了 `OrderedList` 的每个成员函数。我们添加了一个打印链表中各个值的成员函数 `print`，以便查看它的内容。"
+
+msgid "**Code** {{code_runner_header}}"
+msgstr "**代码** {{code_runner_header}}"
+
+msgid "**[Line 115 to 120]** We insert `3`, `1`, `4` and `1` in an arbitrary order, but the list always stays ordered. The second `1` is inserted before the first `1`."
+msgstr "**[第 115 到 120 行]** 我们以任意顺序插入 `3`、`1`、`4` 和 `1`，但链表始终保持有序。第二个 `1` 被插入到第一个 `1` 的前面。"
+
+msgid "**[Line 121]** `4` is in the list and `2` is not. `cout` prints `true` as `1` and `false` as `0`."
+msgstr "**[第 121 行]** `4` 在链表中，`2` 不在。`cout` 把 `true` 打印为 `1`，把 `false` 打印为 `0`。"
+
+msgid "**[Line 122 to 126]** `b` is a deep copy of `a`, so deleting the first `1` from `b` does not change `a`. Deleting `5` returns `false`, since `5` is not in `b`."
+msgstr "**[第 122 到 126 行]** `b` 是 `a` 的深拷贝，所以从 `b` 中删除第一个 `1` 不会改变 `a`。删除 `5` 返回 `false`，因为 `5` 不在 `b` 中。"
+
+msgid "**[Line 127 and 128]** `a = b;` replaces the nodes of `a` with a copy of the nodes of `b`. `a = a;` is a self-assignment, so it does nothing."
+msgstr "**[第 127 和 128 行]** `a = b;` 用 `b` 的节点的副本替换 `a` 的节点。`a = a;` 是自赋值，所以什么也不做。"
+
+msgid "**[Line 131]** When `a` and `b` go out of scope, their destructors free their own nodes. Since each list owns separate nodes, no node is deleted twice."
+msgstr "**[第 131 行]** 当 `a` 和 `b` 离开作用域时，它们的析构函数各自释放自己的节点。由于每个链表拥有各自独立的节点，没有节点会被删除两次。"
+
+msgid "**Output**"
+msgstr "**输出**"
+
+msgid "Time complexity"
+msgstr "时间复杂度"
+
+msgid "Let $n$ be the number of nodes in the list. For the copy assignment operator, the source list has $n$ nodes and the destination list has $m$ old nodes."
+msgstr "设 $n$ 为链表中的节点数。对于拷贝赋值运算符，源链表有 $n$ 个节点，目标链表有 $m$ 个旧节点。"
+
+msgid "Best case"
+msgstr "最好情况"
+
+msgid "Worst case"
+msgstr "最坏情况"
+
+msgid "Search (`dataExists`)"
+msgstr "查找（`dataExists`）"
+
+msgid "$O(1)$"
+msgstr ""
+
+msgid "$O(n)$"
+msgstr ""
+
+msgid "Insert in order (`insertData`)"
+msgstr "按序插入（`insertData`）"
+
+msgid "Delete by value (`deleteData`)"
+msgstr "按值删除（`deleteData`）"
+
+msgid "$O(n + m)$"
+msgstr ""
+
+msgid "Unlike `push`, `pop`, `enqueue` and `dequeue`, which only work at the ends of a list, searching, inserting and deleting in an ordered list may need to walk through the whole list to find the right position."
+msgstr "`push`、`pop`、`enqueue` 和 `dequeue` 只在链表的两端操作；与它们不同，在有序链表中查找、插入和删除可能需要遍历整个链表才能找到正确的位置。"
+
+msgid "Summary"
+msgstr "小结"
+
+msgid "In this chapter, we have learned:"
+msgstr "在本章中，我们学习了："
+
+msgid "a linked list is a collection of dynamically allocated nodes linked by pointers, which can grow and shrink without copying elements,"
+msgstr "链表是由指针连接起来的一组动态分配的节点，它可以增长和收缩而不需要复制元素，"
+
+msgid "the destructor of a node can delete the rest of the list, so we must detach a node before deleting it on its own,"
+msgstr "节点的析构函数可能会删除链表的其余部分，所以在单独删除一个节点之前必须先把它分离出来，"
+
+msgid "a stack inserts and removes at the head (LIFO), and a queue inserts at the tail and removes at the head (FIFO),"
+msgstr "栈在头部插入和删除（LIFO），而队列在尾部插入、在头部删除（FIFO），"
+
+msgid "an ordered linked list keeps its values sorted, and finds the position to insert or delete a node by walking through the list with a `previous` and a `current` pointer,"
+msgstr "有序链表让它的值保持有序，并通过 `previous` 和 `current` 两个指针遍历链表，找到插入或删除节点的位置，"
+
+msgid "a linked list does not support random access, so binary search does not help on a linked list,"
+msgstr "链表不支持随机访问，所以二分查找对链表没有帮助，"
+
+msgid "a class that owns the nodes of a linked list needs a destructor, a copy constructor and a copy assignment operator that make deep copies (the Rule of Three),"
+msgstr "拥有链表节点的类需要析构函数，以及进行深拷贝的拷贝构造函数和拷贝赋值运算符（三法则），"
+
+msgid "to always think of the special cases: an empty list, a list with only one node, and changes at the head or the tail of the list, and"
+msgstr "要始终考虑特殊情况：空链表、只有一个节点的链表，以及在链表头部或尾部的修改，以及"
+
+msgid "`push`, `pop`, `enqueue` and `dequeue` are $O(1)$, searching, inserting and deleting in an ordered list are $O(n)$ in the worst case, and destroying or copying a list of $n$ nodes is $O(n)$."
+msgstr "`push`、`pop`、`enqueue` 和 `dequeue` 都是 $O(1)$ 的，在有序链表中查找、插入和删除在最坏情况下是 $O(n)$ 的，而销毁或复制一个有 $n$ 个节点的链表是 $O(n)$ 的。"
+

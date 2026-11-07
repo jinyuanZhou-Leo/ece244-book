@@ -48,8 +48,8 @@ class Node {
   public:
     Node(int d, Node* n) { data = d; next = n; }
     ~Node() { delete next; }
-    int getData() { return data; }
-    Node* getNext() { return next; }
+    int getData() const { return data; }
+    Node* getNext() const { return next; }
     void setData(int d) { data = d; }
     void setNext(Node* n) { next = n; }
 };
@@ -61,11 +61,11 @@ class Node {
 
 **Line 8.** The destructor deletes the next node. As we discussed in the Dynamic Memory Allocation chapter, `delete next;` calls the destructor of the next node, which deletes the node after it, and so on. Therefore, deleting the first node deletes **every** node in the list, from the last node back to the first. The `next` of the last node is `nullptr`, and `delete nullptr;` is safe and does nothing, so the recursion stops at the last node.
 
-**Line 9 to 12.** Since `data` and `next` are private, we provide getters and setters.
+**Line 9 to 12.** Since `data` and `next` are private, we provide getters and setters. The getters do not change the node, so they are `const` member functions.
 
 ```{admonition} Be careful when deleting a single node
 :class: warning
-Since the destructor of `Node` deletes the next node, `delete p;` deletes the node that `p` points to **and all nodes after it**. To delete only one node, we must first set its `next` to `nullptr`, *e.g.* `p->setNext(nullptr);`. We will see why this matters in the next two sections.
+Since the destructor of `Node` deletes the next node, `delete p;` deletes the node that `p` points to **and all nodes after it**. To delete only one node, we must first set its `next` to `nullptr`, *e.g.* `p->setNext(nullptr);`. We will see why this matters in the next sections.
 ```
 
-There are many variants of linked lists. In the next two sections, we use `Node` to build two of them: a **stack** and a **queue**.
+There are many variants of linked lists. In the next three sections, we use `Node` to build three of them: a **stack**, a **queue** and an **ordered linked list**.

@@ -38,7 +38,7 @@ class Stack {
 
 **Line 6.** An empty stack has no nodes, so `head` is `nullptr`.
 
-**Line 7.** The destructor deletes the first node. Since the destructor of `Node` deletes the next node, this frees **all** the nodes in the stack. If the stack is empty, `delete nullptr;` does nothing.
+**Line 7.** The destructor deletes the first node. Since the destructor of `Node` deletes the next node, this frees **all** the nodes in the stack. For example, for `head --> [1] --> [2] --> nullptr`, `delete head;` calls the destructor of node `1`, which runs `delete next;` and calls the destructor of node `2`. Node `2` is freed first, and then node `1`. If the stack is empty, `delete nullptr;` does nothing.
 
 ## `push`
 
@@ -156,8 +156,8 @@ class Node {
   public:
     Node(int d, Node* n) { data = d; next = n; }
     ~Node() { delete next; }
-    int getData() { return data; }
-    Node* getNext() { return next; }
+    int getData() const { return data; }
+    Node* getNext() const { return next; }
     void setData(int d) { data = d; }
     void setNext(Node* n) { next = n; }
 };
