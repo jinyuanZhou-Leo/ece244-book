@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Python \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-22 17:54+0000\n"
+"POT-Creation-Date: 2026-11-07 22:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_CN\n"
@@ -69,15 +69,15 @@ msgstr "**第 7 行。** 构造函数初始化两个数据成员。要创建一�
 msgid "**Line 8.** The destructor deletes the next node. As we discussed in the Dynamic Memory Allocation chapter, `delete next;` calls the destructor of the next node, which deletes the node after it, and so on. Therefore, deleting the first node deletes **every** node in the list, from the last node back to the first. The `next` of the last node is `nullptr`, and `delete nullptr;` is safe and does nothing, so the recursion stops at the last node."
 msgstr "**第 8 行。** 析构函数删除下一个节点。正如我们在动态内存分配一章中讨论的，`delete next;` 会调用下一个节点的析构函数，而它又会删除再下一个节点，依此类推。因此，删除第一个节点会删除链表中的**每一个**节点，顺序是从最后一个节点回到第一个节点。最后一个节点的 `next` 是 `nullptr`，而 `delete nullptr;` 是安全的，什么也不做，所以递归在最后一个节点处停止。"
 
-msgid "**Line 9 to 12.** Since `data` and `next` are private, we provide getters and setters."
-msgstr "**第 9 到 12 行。** 由于 `data` 和 `next` 是私有的，我们提供了 getter 和 setter。"
+msgid "**Line 9 to 12.** Since `data` and `next` are private, we provide getters and setters. The getters do not change the node, so they are `const` member functions."
+msgstr "**第 9 到 12 行。** 由于 `data` 和 `next` 是私有的，我们提供了 getter 和 setter。getter 不会改变节点，所以它们是 `const` 成员函数。"
 
 msgid "Be careful when deleting a single node"
 msgstr "删除单个节点时要小心"
 
-msgid "Since the destructor of `Node` deletes the next node, `delete p;` deletes the node that `p` points to **and all nodes after it**. To delete only one node, we must first set its `next` to `nullptr`, *e.g.* `p->setNext(nullptr);`. We will see why this matters in the next two sections."
-msgstr "由于 `Node` 的析构函数会删除下一个节点，`delete p;` 会删除 `p` 指向的节点**以及它后面的所有节点**。如果只想删除一个节点，我们必须先把它的 `next` 设为 `nullptr`，*例如* `p->setNext(nullptr);`。我们会在接下来的两节中看到这一点为什么重要。"
+msgid "Since the destructor of `Node` deletes the next node, `delete p;` deletes the node that `p` points to **and all nodes after it**. To delete only one node, we must first set its `next` to `nullptr`, *e.g.* `p->setNext(nullptr);`. We will see why this matters in the next sections."
+msgstr "由于 `Node` 的析构函数会删除下一个节点，`delete p;` 会删除 `p` 指向的节点**以及它后面的所有节点**。如果只想删除一个节点，我们必须先把它的 `next` 设为 `nullptr`，*例如* `p->setNext(nullptr);`。我们会在接下来的几节中看到这一点为什么重要。"
 
-msgid "There are many variants of linked lists. In the next two sections, we use `Node` to build two of them: a **stack** and a **queue**."
-msgstr "链表有许多变体。在接下来的两节中，我们用 `Node` 构建其中的两种：**栈**和**队列**。"
+msgid "There are many variants of linked lists. In the next three sections, we use `Node` to build three of them: a **stack**, a **queue** and an **ordered linked list**."
+msgstr "链表有许多变体。在接下来的三节中，我们用 `Node` 构建其中的三种：**栈**、**队列**和**有序链表**。"
 

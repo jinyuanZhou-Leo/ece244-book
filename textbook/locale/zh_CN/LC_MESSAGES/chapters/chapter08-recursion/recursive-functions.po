@@ -1,0 +1,187 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024
+# This file is distributed under the same license as the Python package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Python \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-07 22:03+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+msgid "Recursive Functions"
+msgstr "递归函数"
+
+msgid "What is recursion?"
+msgstr "什么是递归？"
+
+msgid "A function can call itself. This is called **recursion**. Recursion solves a problem using the solution to a **smaller instance of the same problem**. A recursive function has two kinds of cases:"
+msgstr "函数可以调用它自己。这被称为**递归**（recursion）。递归利用**同一问题的一个更小实例**的解来解决问题。递归函数有两类情况："
+
+msgid "A **base case** gives the answer directly, without another recursive call."
+msgstr "**基本情况**（base case）直接给出答案，不再进行递归调用。"
+
+msgid "A **recursive case** calls the function on a smaller problem, and uses its result."
+msgstr "**递归情况**（recursive case）在一个更小的问题上调用该函数，并使用它的结果。"
+
+msgid "Each recursive call must make progress toward a base case. Otherwise, the function would keep calling itself forever."
+msgstr "每次递归调用都必须朝着基本情况推进。否则，函数会永远调用自己。"
+
+msgid "Example 1: Factorial"
+msgstr "例 1：阶乘"
+
+msgid "For a nonnegative integer $n$, the factorial of $n$ is"
+msgstr "对于非负整数 $n$，$n$ 的阶乘是"
+
+#, python-brace-format
+msgid ""
+"\n"
+"n! = n \\times (n - 1) \\times \\cdots \\times 2 \\times 1, \\quad \\text{and} \\quad 0! = 1.\n"
+msgstr ""
+
+msgid "Notice that $(n - 1)! = (n - 1) \\times \\cdots \\times 2 \\times 1$ is part of $n!$. Therefore, the factorial of $n$ can be computed from the factorial of the smaller problem $n - 1$:"
+msgstr "注意 $(n - 1)! = (n - 1) \\times \\cdots \\times 2 \\times 1$ 是 $n!$ 的一部分。因此，$n$ 的阶乘可以由更小问题 $n - 1$ 的阶乘计算得到："
+
+#, python-brace-format
+msgid ""
+"\n"
+"n! =\n"
+"\\begin{cases}\n"
+"1 & \\text{if } n = 0 \\text{ or } n = 1, \\\\\n"
+"n \\times (n - 1)! & \\text{if } n > 1.\n"
+"\\end{cases}\n"
+msgstr ""
+
+msgid "For example, $3! = 3 \\times 2! = 3 \\times 2 \\times 1! = 3 \\times 2 \\times 1 = 6$."
+msgstr "例如，$3! = 3 \\times 2! = 3 \\times 2 \\times 1! = 3 \\times 2 \\times 1 = 6$。"
+
+msgid "**Line 2 to 4.** The base case: $0! = 1! = 1$, so we return `1` without another recursive call."
+msgstr "**第 2 到 4 行。** 基本情况：$0! = 1! = 1$，所以我们直接返回 `1`，不再进行递归调用。"
+
+msgid "**Line 5.** The recursive case: we call `factorial` on the smaller problem `n - 1`, and multiply its result by `n`. Each call decreases `n` by one, so we eventually reach the base case."
+msgstr "**第 5 行。** 递归情况：我们在更小的问题 `n - 1` 上调用 `factorial`，并把它的结果乘以 `n`。每次调用都把 `n` 减一，所以最终会到达基本情况。"
+
+msgid "What happens behind `f = factorial(3)`?"
+msgstr "`f = factorial(3)` 背后发生了什么？"
+
+msgid "Recall from the Dynamic Memory Allocation chapter that local variables and parameters are stored in the **stack** region of the memory. Every time a function is called, a **stack frame** is pushed on the stack, which stores the local variables and parameters of that call. When the call returns, its stack frame is popped. This is why the stack of function calls is called the **call stack**:"
+msgstr "回忆动态内存分配一章：局部变量和参数存储在内存的**栈**区。每次调用函数时，都会有一个**栈帧**（stack frame）被压入栈中，它存储这次调用的局部变量和参数。调用返回时，它的栈帧被弹出。这就是函数调用构成的栈被称为**调用栈**（call stack）的原因："
+
+msgid "it is stored in the stack region of the memory, and"
+msgstr "它存储在内存的栈区，并且"
+
+msgid "like the stack data structure in the Linked Lists chapter, it is **Last In, First Out (LIFO)**: the function called last returns first."
+msgstr "和链表一章中的栈数据结构一样，它是**后进先出**（LIFO）的：最后被调用的函数最先返回。"
+
+msgid "Each recursive call has its own stack frame, so it has its **own** copy of the parameter `n`."
+msgstr "每次递归调用都有自己的栈帧，所以它有**自己的**参数 `n` 副本。"
+
+msgid "**First, the problem is reduced until we reach a base case.** `main` calls `factorial(3)`, which calls `factorial(2)`, which calls `factorial(1)`. Each earlier call waits for the call above it to return."
+msgstr "**首先，问题被不断缩小，直到到达基本情况。** `main` 调用 `factorial(3)`，它调用 `factorial(2)`，它又调用 `factorial(1)`。每个较早的调用都在等待它上面的调用返回。"
+
+msgid "**Second, the base case returns, and consequently the other calls return** in the reverse order in which they were called:"
+msgstr "**然后，基本情况返回，随后其他调用也依次返回**，返回顺序与调用顺序相反："
+
+msgid "**Time complexity.** `factorial(n)` makes $n$ calls in total: `factorial(n)`, `factorial(n - 1)`, ..., `factorial(1)`. Apart from its recursive call, each call does a constant amount of work: one comparison, and at most one multiplication. Therefore, `factorial(n)` is $O(n)$. We analyze more recursive functions in the Complexity Analysis chapter."
+msgstr "**时间复杂度。** `factorial(n)` 总共进行 $n$ 次调用：`factorial(n)`、`factorial(n - 1)`、……、`factorial(1)`。除了递归调用之外，每次调用只做常数量的工作：一次比较，以及最多一次乘法。因此，`factorial(n)` 是 $O(n)$ 的。我们会在复杂度分析一章中分析更多递归函数。"
+
+msgid "Example 2: Sum of an array range"
+msgstr "例 2：数组区间求和"
+
+msgid "Given an array `a`, we want to sum the elements from index `left` through index `right`, inclusive. For example, for"
+msgstr "给定数组 `a`，我们想要对从下标 `left` 到下标 `right`（包含两端）的元素求和。例如，对于"
+
+#, python-brace-format
+msgid "the sum from index `0` through index `4` is `15`. Let $S(\\text{left}, \\text{right})$ be the sum of that range. To find a smaller instance of the same problem, we take out the first element of the range:"
+msgstr "从下标 `0` 到下标 `4` 的和是 `15`。设 $S(\\text{left}, \\text{right})$ 为该区间的和。为了得到同一问题的更小实例，我们把区间的第一个元素拿出来："
+
+#, python-brace-format
+msgid "**Base case:** an empty range, *i.e.* $\\text{left} > \\text{right}$, has a sum of $0$."
+msgstr "**基本情况：** 空区间，*即* $\\text{left} > \\text{right}$，和为 $0$。"
+
+#, python-brace-format
+msgid "**Recursive case:** $S(\\text{left}, \\text{right}) = a[\\text{left}] + S(\\text{left} + 1, \\text{right})$."
+msgstr "**递归情况：** $S(\\text{left}, \\text{right}) = a[\\text{left}] + S(\\text{left} + 1, \\text{right})$。"
+
+msgid "For example, $S(0, 4) = 1 + S(1, 4) = 1 + 2 + S(2, 4) = \\cdots = 1 + 2 + 3 + 4 + 5 + S(5, 4) = 15 + 0 = 15$."
+msgstr "例如，$S(0, 4) = 1 + S(1, 4) = 1 + 2 + S(2, 4) = \\cdots = 1 + 2 + 3 + 4 + 5 + S(5, 4) = 15 + 0 = 15$。"
+
+msgid "**Line 2 to 4.** The base case: the range is empty, so its sum is `0`."
+msgstr "**第 2 到 4 行。** 基本情况：区间为空，所以它的和是 `0`。"
+
+msgid "**Line 5.** The recursive case: the range from `left + 1` through `right` has one element less, so each call makes progress toward the base case."
+msgstr "**第 5 行。** 递归情况：从 `left + 1` 到 `right` 的区间少了一个元素，所以每次调用都朝着基本情况推进。"
+
+#, python-brace-format
+msgid "**Time complexity.** Let $n = \\text{right} - \\text{left} + 1$ be the number of elements in the range. There are $n + 1$ calls, including the call with the empty range, and each call does a constant amount of work apart from its recursive call. Therefore, `sumOfArray` is $O(n)$."
+msgstr "**时间复杂度。** 设 $n = \\text{right} - \\text{left} + 1$ 为区间中的元素个数。总共有 $n + 1$ 次调用（包括区间为空的那次调用），除了递归调用之外，每次调用只做常数量的工作。因此，`sumOfArray` 是 $O(n)$ 的。"
+
+msgid "Putting it all together"
+msgstr "把所有部分组合起来"
+
+msgid "**Code** {{code_runner_header}}"
+msgstr "**代码** {{code_runner_header}}"
+
+msgid "**[Line 19 and 20]** `factorial(3)` returns `3 * 2 * 1 = 6`, as we traced above."
+msgstr "**[第 19 和 20 行]** `factorial(3)` 返回 `3 * 2 * 1 = 6`，与我们上面的追踪一致。"
+
+msgid "**[Line 21]** `factorial(0)` reaches the base case immediately, and `factorial(5)` is `5 * 4 * 3 * 2 * 1 = 120`."
+msgstr "**[第 21 行]** `factorial(0)` 立即到达基本情况，而 `factorial(5)` 是 `5 * 4 * 3 * 2 * 1 = 120`。"
+
+msgid "**[Line 23 and 24]** The sum of the whole array is `1 + 2 + 3 + 4 + 5 = 15`, and the sum from index `1` through index `3` is `2 + 3 + 4 = 9`."
+msgstr "**[第 23 和 24 行]** 整个数组的和是 `1 + 2 + 3 + 4 + 5 = 15`，从下标 `1` 到下标 `3` 的和是 `2 + 3 + 4 = 9`。"
+
+msgid "**Output**"
+msgstr "**输出**"
+
+msgid "Termination of recursive functions"
+msgstr "递归函数的终止"
+
+msgid "To make sure that a recursive function always terminates, two conditions should hold:"
+msgstr "为了确保递归函数总能终止，需要满足两个条件："
+
+msgid "**Base cases return directly.** They solve the simplest inputs without making another recursive call."
+msgstr "**基本情况直接返回。** 它们解决最简单的输入，不再进行递归调用。"
+
+msgid "**All other cases progress toward a base case.** Each recursive call reduces the remaining problem, so a base case is reached after a finite number of calls."
+msgstr "**其他所有情况都朝着基本情况推进。** 每次递归调用都会缩小剩余的问题，所以经过有限次调用后一定会到达基本情况。"
+
+msgid "**<span style=\"color:red\">Problem: What if a recursive call does not progress toward a base case?</span>** For example, `factorial(-1)` is not a base case, and it calls `factorial(-2)`, which calls `factorial(-3)`, and so on, moving away from the base cases. Similarly, if we wrote `sumOfArray(a, left, right)` in line 5 instead of `sumOfArray(a, left + 1, right)`, the range would never get smaller. In both cases, the function keeps calling itself, and every call pushes a new stack frame. The call stack eventually runs out of memory, which is called a **stack overflow**, and the program usually crashes. This is why `factorial` is defined only for nonnegative integers."
+msgstr "**<span style=\"color:red\">问题：如果递归调用没有朝着基本情况推进会怎样？</span>** 例如，`factorial(-1)` 不是基本情况，它会调用 `factorial(-2)`，后者又调用 `factorial(-3)`，依此类推，离基本情况越来越远。类似地，如果我们在第 5 行写的是 `sumOfArray(a, left, right)` 而不是 `sumOfArray(a, left + 1, right)`，区间永远不会变小。在这两种情况下，函数会不断调用自己，每次调用都会压入一个新的栈帧。调用栈最终会耗尽内存，这被称为**栈溢出**（stack overflow），程序通常会崩溃。这就是 `factorial` 只对非负整数有定义的原因。"
+
+msgid "Looking ahead: Quicksort"
+msgstr "展望：快速排序"
+
+msgid "**Sorting** rearranges the elements of an array in order, *e.g.* `7 2 9 2 5 1` becomes `1 2 2 5 7 9`. A famous sorting algorithm, **quicksort**, is recursive. It was invented by Tony Hoare, who graduated from Oxford in 1956 with a degree in classics, and developed quicksort in 1959 while studying machine translation in Moscow. A Russian-to-English dictionary was sorted alphabetically and stored on magnetic tape. Looking up the words of a sentence in their original order could require scanning the tape many times, but if the words are sorted first, then one forward scan of the tape finds all their translations. Hoare received the ACM Turing Award in 1980, and in 2000, quicksort was included in the Top Ten Algorithms of the Century, together with the Monte Carlo method, the Fortran compiler and the Fast Fourier Transform (FFT)."
+msgstr "**排序**把数组的元素按顺序重新排列，*例如* `7 2 9 2 5 1` 变为 `1 2 2 5 7 9`。一个著名的排序算法——**快速排序**（quicksort）——是递归的。它由 Tony Hoare 发明。他于 1956 年从牛津大学毕业，获得古典学学位，并于 1959 年在莫斯科研究机器翻译时发明了快速排序。当时，一本俄英词典按字母顺序排好并存储在磁带上。如果按句子中单词的原始顺序去查找，可能需要多次扫描磁带；但如果先把这些单词排好序，那么只需从前往后扫描一遍磁带，就能找到它们全部的翻译。Hoare 于 1980 年获得 ACM 图灵奖。2000 年，快速排序与蒙特卡洛方法、Fortran 编译器和快速傅里叶变换（FFT）一起入选“世纪十大算法”。"
+
+msgid "Summary"
+msgstr "小结"
+
+msgid "In this section, we have learned:"
+msgstr "在本节中，我们学习了："
+
+msgid "a recursive function solves a problem using the solution to a smaller instance of the same problem,"
+msgstr "递归函数利用同一问题的一个更小实例的解来解决问题，"
+
+msgid "a recursive function has base cases, which return directly, and recursive cases, which call the function on a smaller problem,"
+msgstr "递归函数有直接返回的基本情况，以及在更小问题上调用该函数的递归情况，"
+
+msgid "every call has its own stack frame on the call stack, which is Last In, First Out,"
+msgstr "每次调用在调用栈上都有自己的栈帧，而调用栈是后进先出的，"
+
+msgid "the time complexity of a recursive function can be found by counting the calls and the work done in each call, *e.g.* `factorial(n)` and `sumOfArray` are $O(n)$, and"
+msgstr "递归函数的时间复杂度可以通过统计调用次数和每次调用所做的工作得到，*例如* `factorial(n)` 和 `sumOfArray` 都是 $O(n)$ 的，以及"
+
+msgid "to terminate, a recursive function needs base cases, and every other case must progress toward a base case."
+msgstr "要能终止，递归函数需要有基本情况，并且其他每种情况都必须朝着基本情况推进。"
+

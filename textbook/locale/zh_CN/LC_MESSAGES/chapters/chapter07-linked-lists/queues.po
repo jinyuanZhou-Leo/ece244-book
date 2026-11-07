@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Python \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-22 17:54+0000\n"
+"POT-Creation-Date: 2026-11-07 22:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_CN\n"
@@ -186,8 +186,8 @@ msgstr "删除所有节点"
 msgid "$O(n)$"
 msgstr ""
 
-msgid "Thanks to the `tail` pointer, `enqueue` does not need to walk through the list to find the last node, so it is $O(1)$."
-msgstr "多亏了 `tail` 指针，`enqueue` 不需要遍历链表来寻找最后一个节点，所以它是 $O(1)$ 的。"
+msgid "Thanks to the `tail` pointer, `enqueue` does not need to walk through the list to find the last node, so it is $O(1)$. For each of these operations, the best case and the worst case are the same, since none of them depends on the values stored in the queue."
+msgstr "多亏了 `tail` 指针，`enqueue` 不需要遍历链表来寻找最后一个节点，所以它是 $O(1)$ 的。对于这里的每个操作，最好情况和最坏情况都相同，因为它们都不依赖于队列中存储的值。"
 
 msgid "Comparing stacks and queues"
 msgstr "比较栈和队列"
@@ -245,25 +245,4 @@ msgstr "1、2、3"
 
 msgid "Each insertion or removal changes a constant number of pointers, so it takes $O(1)$ time. Destroying a stack or a queue with $n$ nodes takes $O(n)$ time."
 msgstr "每次插入或删除都只改变常数个指针，所以耗时 $O(1)$。销毁一个有 $n$ 个节点的栈或队列耗时 $O(n)$。"
-
-msgid "Summary"
-msgstr "小结"
-
-msgid "In this chapter, we have learned:"
-msgstr "在本章中，我们学习了："
-
-msgid "a linked list is a collection of dynamically allocated nodes linked by pointers, which can grow and shrink without copying elements,"
-msgstr "链表是由指针连接起来的一组动态分配的节点，它可以增长和收缩而不需要复制元素，"
-
-msgid "the destructor of a node can delete the rest of the list, so we must detach a node before deleting it on its own,"
-msgstr "节点的析构函数可能会删除链表的其余部分，所以在单独删除一个节点之前必须先把它分离出来，"
-
-msgid "a stack inserts and removes at the head (LIFO), and a queue inserts at the tail and removes at the head (FIFO),"
-msgstr "栈在头部插入和删除（LIFO），而队列在尾部插入、在头部删除（FIFO），"
-
-msgid "to always think of the special cases: an empty list and a list with only one node, and"
-msgstr "要始终考虑特殊情况：空链表和只有一个节点的链表，以及"
-
-msgid "`push`, `pop`, `enqueue` and `dequeue` are $O(1)$, while destroying a list of $n$ nodes is $O(n)$."
-msgstr "`push`、`pop`、`enqueue` 和 `dequeue` 都是 $O(1)$ 的，而销毁一个有 $n$ 个节点的链表是 $O(n)$ 的。"
 

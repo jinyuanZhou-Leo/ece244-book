@@ -168,8 +168,8 @@ class Node {
   public:
     Node(int d, Node* n) { data = d; next = n; }
     ~Node() { delete next; }
-    int getData() { return data; }
-    Node* getNext() { return next; }
+    int getData() const { return data; }
+    Node* getNext() const { return next; }
     void setData(int d) { data = d; }
     void setNext(Node* n) { next = n; }
 };
@@ -256,7 +256,7 @@ Let $n$ be the number of nodes in the queue.
 | `dequeue()` | Detach and delete the first node | $O(1)$ |
 | Destructor | Delete all nodes | $O(n)$ |
 
-Thanks to the `tail` pointer, `enqueue` does not need to walk through the list to find the last node, so it is $O(1)$.
+Thanks to the `tail` pointer, `enqueue` does not need to walk through the list to find the last node, so it is $O(1)$. For each of these operations, the best case and the worst case are the same, since none of them depends on the values stored in the queue.
 
 ## Comparing stacks and queues
 
@@ -269,13 +269,3 @@ Thanks to the `tail` pointer, `enqueue` does not need to walk through the list t
 | Removal order after inserting 1, 2, 3 | 3, 2, 1 | 1, 2, 3 |
 
 Each insertion or removal changes a constant number of pointers, so it takes $O(1)$ time. Destroying a stack or a queue with $n$ nodes takes $O(n)$ time.
-
-## Summary
-
-In this chapter, we have learned:
-
-- a linked list is a collection of dynamically allocated nodes linked by pointers, which can grow and shrink without copying elements,
-- the destructor of a node can delete the rest of the list, so we must detach a node before deleting it on its own,
-- a stack inserts and removes at the head (LIFO), and a queue inserts at the tail and removes at the head (FIFO),
-- to always think of the special cases: an empty list and a list with only one node, and
-- `push`, `pop`, `enqueue` and `dequeue` are $O(1)$, while destroying a list of $n$ nodes is $O(n)$.
