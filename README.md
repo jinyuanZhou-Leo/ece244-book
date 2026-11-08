@@ -6,6 +6,8 @@ You will find the book at [learningcpp.org](https://learningcpp.org), or [learni
 
 ## About this repository / 关于本仓库
 
+***ALL credit to the original authors.***
+
 - **Respect and thanks:** We sincerely respect and thank Salma Emara, the original author of this textbook, and Xudong Sun, the author of the lecture notes this content is based on. All credit for the original book and the lecture notes belongs to them; this repository does not claim their work as its own.
 - **Original author:** The original textbook (*Khufu: Object-Oriented Programming using C++*) was written by [Salma Emara](https://github.com/salma-emara/ece244-book). Chapters 0–5 are her original work.
 - **LLM-written content:** Chapters 6 and later were written by a large language model (LLM) with reference to the lecture notes, and have not been reviewed by the original author. They may contain mistakes.
@@ -14,7 +16,7 @@ You will find the book at [learningcpp.org](https://learningcpp.org), or [learni
 
 ---
 
-- **尊重与致谢：** 我们衷心尊重并感谢本教材的原作者 Salma Emara，以及本仓库内容所参考讲义的作者 Xudong Sun。原书与讲义的一切成果归原作者所有，本仓库不将其据为己有。
+- **尊重与致谢：** 我们衷心尊重并感谢本教材的原作者 Salma Emara，以及本仓库内容所参考讲义的作者 Xudong Sun。原书与讲义的一切成果归原作者所有.
 - **原作者：** 本教材（*Khufu: Object-Oriented Programming using C++*）的原作者是 [Salma Emara](https://github.com/salma-emara/ece244-book)，第 0–5 章为原作者的原始内容。
 - **LLM 编写部分：** 第 6 章及之后的内容由大语言模型（LLM）参考 Lecture Note 编写，未经原作者审阅，可能存在错误。
 - **内容来源：** 内容来源于 Xudong Sun 的 ECE 244 Lecture Note。
@@ -22,7 +24,7 @@ You will find the book at [learningcpp.org](https://learningcpp.org), or [learni
 
 ## Getting Started
 
-**本地构建与预览（中文步骤说明）**：见 [docs/local-development.md](docs/local-development.md)。
+See [docs/local-development.md](docs/local-development.md)。
 
 If you are trying to build the book locally, you can follow the instructions below.
 
