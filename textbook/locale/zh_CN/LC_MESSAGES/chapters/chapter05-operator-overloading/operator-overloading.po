@@ -20,203 +20,203 @@ msgstr ""
 "Generated-By: Babel 2.18.0\n"
 
 msgid "Operator Overloading"
-msgstr ""
+msgstr "运算符重载"
 
 msgid "We have studied function overloading, where we can define multiple functions with the same name but different parameter lists. Depending on the arguments used in a function call, the appropriate function is selected."
-msgstr ""
+msgstr "我们已经学过函数重载：可以定义多个名字相同但参数列表不同的函数。根据函数调用时使用的实参，会选择合适的那个函数。"
 
 msgid "Similarly, C++ allows us to overload operators, such as `+`, `=`, `==` and `<<`. This means that we can define how operators such as `+` behave when they are used with objects of user-defined types (i.e., classes). This is known as operator overloading."
-msgstr ""
+msgstr "类似地，C++ 允许我们重载运算符，例如 `+`、`=`、`==` 和 `<<`。这意味着我们可以定义 `+` 等运算符作用于用户自定义类型（即类）的对象时的行为。这被称为运算符重载。"
 
 msgid "**Why Overload Operators?**"
-msgstr ""
+msgstr "**为什么要重载运算符？**"
 
 msgid "Operator overloading can make code more intuitive and easier to read. For example, consider a `Complex` class that represents complex numbers with real and imaginary values. By overloading the `+` operator, we can add two `Complex` objects using the familiar `+` syntax."
-msgstr ""
+msgstr "运算符重载可以让代码更直观、更易读。例如，考虑一个表示复数的 `Complex` 类，它包含实部和虚部。通过重载 `+` 运算符，我们就可以用熟悉的 `+` 语法把两个 `Complex` 对象相加。"
 
 msgid "We will explore how to overload various operators within the context of the `Complex` class defined as follows:"
-msgstr ""
+msgstr "我们将以如下定义的 `Complex` 类为例，探讨如何重载各种运算符："
 
 msgid "**Starting Point: The `Complex` Class**"
-msgstr ""
+msgstr "**起点：`Complex` 类**"
 
 msgid "Overloading the `+` Operator"
-msgstr ""
+msgstr "重载 `+` 运算符"
 
 msgid "We want to add two `Complex` objects using the `+` operator as we show in the following code snippet:"
-msgstr ""
+msgstr "我们希望像下面的代码片段那样，用 `+` 运算符把两个 `Complex` 对象相加："
 
 msgid "Currently, the `+` operator can add two integers or doubles, e.g. `2.0 + i`, where `i` is an integer. Additionally, those who implemented the `string` class in C++ implemented the `+` operator to enable two strings to be \"added\" and produce a new string object with two strings concatenated, e.g. `string s = \"Hello\" + \" world\"`."
-msgstr ""
+msgstr "目前，`+` 运算符可以把两个整数或 double 相加，例如 `2.0 + i`，其中 `i` 是一个整数。此外，实现 C++ 中 `string` 类的人也实现了 `+` 运算符，使两个字符串可以“相加”，得到一个把两个字符串拼接起来的新字符串对象，例如 `string s = \"Hello\" + \" world\"`。"
 
 msgid "Similarly, we need to implement or overload the `+` operator to add two `Complex` objects, i.e. we need to define what `x + y` means when `x` and `y` are `Complex` objects."
-msgstr ""
+msgstr "类似地，我们需要实现（或者说重载）`+` 运算符来把两个 `Complex` 对象相加，也就是说，我们需要定义当 `x` 和 `y` 是 `Complex` 对象时 `x + y` 的含义。"
 
 msgid "**Step 1: Understand the function header**"
-msgstr ""
+msgstr "**第 1 步：理解函数头**"
 
 msgid "In the expression `x + y;`, the left-hand side of the `+` operator is the object of class `Complex`. This means we can interpret the `x + y` to be equivalent to `x.operator+(y)`. The function name is `operator+`. It should be a member function of `Complex` class, since we invoke `operator+` on `x`. The object `y` is passed as an argument to this member function."
-msgstr ""
+msgstr "在表达式 `x + y;` 中，`+` 运算符的左侧是 `Complex` 类的对象。这意味着我们可以把 `x + y` 解释为等价于 `x.operator+(y)`。函数名是 `operator+`。由于我们是在 `x` 上调用 `operator+`，它应当是 `Complex` 类的成员函数。对象 `y` 作为实参传给这个成员函数。"
 
 msgid "operator-plus"
-msgstr ""
+msgstr "operator-plus"
 
 msgid "`x + y` is interpreted as `x.operator+(y)`. The left-hand side of the `+` operator is the object `x`, on which `operator+` of the `Complex` class is invoked. The right-hand side of the `+` operator is the object `y`, which is passed as an argument to the `operator+` member function."
-msgstr ""
+msgstr "`x + y` 被解释为 `x.operator+(y)`。`+` 运算符的左侧是对象 `x`，`Complex` 类的 `operator+` 在它上面被调用。`+` 运算符的右侧是对象 `y`，它作为实参传给成员函数 `operator+`。"
 
 msgid "To implement the `operator+` member function, we need to consider the following:"
-msgstr ""
+msgstr "要实现成员函数 `operator+`，我们需要考虑以下几点："
 
 msgid "**Input Argument Type:** The `operator+` **member** function should take one parameter of type `Complex`, which is the object on the right-hand side of the `+` operator. Since the left-hand side object is the one on which the member function is invoked, it does not need to be passed as a parameter."
-msgstr ""
+msgstr "**输入参数类型：** **成员**函数 `operator+` 应当接收一个 `Complex` 类型的参数，即 `+` 运算符右侧的对象。由于成员函数是在左侧对象上调用的，所以左侧对象不需要作为参数传入。"
 
 msgid "**Return Type:** The `operator+` member function should return a newly created `Complex` object that represents the sum of the two `Complex` objects."
-msgstr ""
+msgstr "**返回类型：** 成员函数 `operator+` 应当返回一个新创建的 `Complex` 对象，表示两个 `Complex` 对象的和。"
 
 msgid "**Public or Private**: The `operator+` member function should be declared as a `public` member function of the `Complex` class to allow it to be accessed from outside the class."
-msgstr ""
+msgstr "**公有还是私有**：成员函数 `operator+` 应当声明为 `Complex` 类的 `public` 成员函数，这样才能在类外访问它。"
 
 msgid "**Step 2: Implement the `operator+` Member Function**"
-msgstr ""
+msgstr "**第 2 步：实现成员函数 `operator+`**"
 
 msgid "We can implement the `operator+` member function as follows:"
-msgstr ""
+msgstr "我们可以这样实现成员函数 `operator+`："
 
 msgid "operator-plus-implement"
-msgstr ""
+msgstr "operator-plus-implement"
 
 msgid "We create a new `Complex` object `temp` to store the sum of the two `Complex` objects. We add the real and imaginary parts separately and return the `temp` object."
-msgstr ""
+msgstr "我们创建一个新的 `Complex` 对象 `temp` 来保存两个 `Complex` 对象的和。我们分别把实部和虚部相加，然后返回 `temp` 对象。"
 
 msgid "We pass the `Complex` object `y` as a parameter to the `operator+` member function and name it `rhs`, short for right-hand side."
-msgstr ""
+msgstr "我们把 `Complex` 对象 `y` 作为参数传给成员函数 `operator+`，并把它命名为 `rhs`，即 right-hand side（右侧）的缩写。"
 
 msgid "We can access the `real` and `img` data members of the left-hand side object `x` (the object on which `operator+` is invoked) directly using `real` and `img` since we are inside a member function of the `Complex` class. We access the `real` and `img` data members of the right-hand side object `rhs` using the dot operator, e.g. `rhs.real` and `rhs.img`."
-msgstr ""
+msgstr "由于我们位于 `Complex` 类的成员函数内部，可以直接用 `real` 和 `img` 访问左侧对象 `x`（即调用 `operator+` 的对象）的数据成员 `real` 和 `img`。对于右侧对象 `rhs` 的数据成员 `real` 和 `img`，我们用点运算符来访问，例如 `rhs.real` 和 `rhs.img`。"
 
 msgid "Inside the function, we create a new `Complex` object `temp` to store the sum of the two `Complex` objects. We set the real of `temp` to the sum of the `real` of `y` (`rhs.real`) and the real of the left-hand side object `x`, which is just `real` since `operator+` is invoked on `x`. We do the same for the imaginary part."
-msgstr ""
+msgstr "在函数内部，我们创建一个新的 `Complex` 对象 `temp` 来保存两个 `Complex` 对象的和。我们把 `temp` 的实部设为 `y` 的 `real`（`rhs.real`）与左侧对象 `x` 的实部之和；由于 `operator+` 是在 `x` 上调用的，`x` 的实部直接写作 `real` 即可。虚部也同样处理。"
 
 msgid "Finally, we return the `temp` object. The return type of `operator+` is `Complex`, which matches the type of the object we are returning."
-msgstr ""
+msgstr "最后，我们返回 `temp` 对象。`operator+` 的返回类型是 `Complex`，与我们返回的对象类型一致。"
 
 msgid "Return by value"
-msgstr ""
+msgstr "按值返回"
 
 msgid "`operator+` returns a `Complex` object by value. This means that a copy of the `temp` object is returned to the caller. Returning by value is important because the scope of `temp` will end by the end of the function and it will be destroyed. We want to return a newly created `Complex` object that is a copy of `temp` object at the time of return to by used in the caller function, e.g. `main` function."
-msgstr ""
+msgstr "`operator+` 按值返回一个 `Complex` 对象。这意味着返回给调用者的是 `temp` 对象的一个副本。按值返回很重要，因为 `temp` 的作用域会在函数结束时结束，它会被销毁。我们希望返回一个新创建的 `Complex` 对象，它是返回时刻 `temp` 对象的副本，供调用函数（例如 `main` 函数）使用。"
 
 msgid "**Step 3: Optimizations on the `operator+` Member Function**"
-msgstr ""
+msgstr "**第 3 步：优化成员函数 `operator+`**"
 
 msgid "We can make three main optimizations to the `operator+` member function:"
-msgstr ""
+msgstr "我们可以对成员函数 `operator+` 做三项主要优化："
 
 msgid "**Pass the parameter by reference:** Passing the `Complex` object `rhs` by value creates a copy of `rhs` just for the `operator+` function. This can be memory inefficient especially if `Complex` has many data members. Instead, we can pass it by reference to avoid making a copy of the object when the function is called. This means we change the parameter type from `Complex rhs` to `Complex& rhs`."
-msgstr ""
+msgstr "**按引用传递参数：** 按值传递 `Complex` 对象 `rhs` 会专门为 `operator+` 函数创建一个 `rhs` 的副本。这可能会浪费内存，尤其是当 `Complex` 有很多数据成员时。我们可以改为按引用传递，避免在调用函数时复制对象。也就是把参数类型从 `Complex rhs` 改为 `Complex& rhs`。"
 
 msgid "**Pass `rhs` as a `const`**: We can ensure that the function does not modify the `rhs` object. This is important because `rhs` is the right-hand side object of the `+` operator, and we do not want to change its value when performing addition. To do this, we can declare the parameter as a `const` reference, i.e. `const Complex& rhs`."
-msgstr ""
+msgstr "**把 `rhs` 作为 `const` 传递**：我们可以确保函数不会修改 `rhs` 对象。这很重要，因为 `rhs` 是 `+` 运算符右侧的对象，我们不希望在做加法时改变它的值。为此，我们可以把参数声明为 `const` 引用，即 `const Complex& rhs`。"
 
 msgid "**Make the function `const`:** We can declare the `operator+` member function as a `const` member function to indicate that it does not modify the state of the left-hand side object. This is done by adding the `const` keyword after the function parameter list, i.e. `Complex operator+(const Complex& rhs) const`."
-msgstr ""
+msgstr "**把函数声明为 `const`：** 我们可以把成员函数 `operator+` 声明为 `const` 成员函数，表示它不会修改左侧对象的状态。做法是在函数参数列表后加上 `const` 关键字，即 `Complex operator+(const Complex& rhs) const`。"
 
 msgid "optimize-operator-plus"
-msgstr ""
+msgstr "optimize-operator-plus"
 
 msgid "Overloading the `==` Operator"
-msgstr ""
+msgstr "重载 `==` 运算符"
 
 msgid "Before getting to the `operator=` or assignment operator, another common operator to overload is the equality operator `==`. We can use this operator to compare two `Complex` objects for equality. For example, we want to be able to write the following code:"
-msgstr ""
+msgstr "在讲 `operator=`（即赋值运算符）之前，另一个常被重载的运算符是相等运算符 `==`。我们可以用它来比较两个 `Complex` 对象是否相等。例如，我们希望能够写出下面的代码："
 
 msgid "We can overload the `==` operator to compare two `Complex` objects for equality. The `==` operator should return `true` if both the real and imaginary parts of the two `Complex` objects are equal, and `false` otherwise."
-msgstr ""
+msgstr "我们可以重载 `==` 运算符来比较两个 `Complex` 对象是否相等。如果两个 `Complex` 对象的实部和虚部都相等，`==` 运算符应返回 `true`，否则返回 `false`。"
 
 msgid "In line 24, we write the function header for the `operator==` member function. The left-hand side object is the one on which the member function is invoked, and the right-hand side object is passed as a `const` reference parameter. The return type of the function is `bool`, which indicates whether the two `Complex` objects are equal or not."
-msgstr ""
+msgstr "在第 24 行，我们写出成员函数 `operator==` 的函数头。成员函数在左侧对象上调用，右侧对象则作为 `const` 引用参数传入。函数的返回类型是 `bool`，表示两个 `Complex` 对象是否相等。"
 
 msgid "The function is declared as a `const` member function since it does not modify the state of the left-hand side object. It also receives the right-hand side object as a `const` reference to avoid making a copy and to ensure that it is not modified."
-msgstr ""
+msgstr "由于该函数不会修改左侧对象的状态，它被声明为 `const` 成员函数。它还以 `const` 引用的形式接收右侧对象，以避免复制并确保右侧对象不被修改。"
 
 msgid "In line 25, we compare the `real` and `img` data members of the left-hand side object and the right-hand side object `rhs.real` and `rhs.img` using the `==` operator for `double` values. If both parts are equal, we return `true`; otherwise, we return `false`."
-msgstr ""
+msgstr "在第 25 行，我们用 `double` 值的 `==` 运算符，把左侧对象的数据成员 `real` 和 `img` 与右侧对象的 `rhs.real` 和 `rhs.img` 进行比较。如果两部分都相等，就返回 `true`；否则返回 `false`。"
 
 msgid "We use the overloaded `==` operator in line 32 to compare the two `Complex` objects `x` and `y`. Since both objects have the same real and imaginary parts, the output will be `x is equal to y`."
-msgstr ""
+msgstr "在第 32 行，我们使用重载后的 `==` 运算符比较两个 `Complex` 对象 `x` 和 `y`。由于两个对象的实部和虚部都相同，输出将是 `x is equal to y`。"
 
 msgid "Overloading the `=` Operator"
-msgstr ""
+msgstr "重载 `=` 运算符"
 
 msgid "In the previous example, we used two operators: `+` and `=` in `z = x + y;`, where `z`, `x` and `y` are `Complex` objects. We successfully overloaded the `+` operator to add two `Complex` objects. This returns a a new `Complex` object (let's call it `temp`). Then, the assignment operator `=` is used to assign the value of `temp` to the object `z`."
-msgstr ""
+msgstr "在前面的例子中，我们在 `z = x + y;` 里用到了两个运算符：`+` 和 `=`，其中 `z`、`x` 和 `y` 都是 `Complex` 对象。我们已经成功重载了 `+` 运算符来把两个 `Complex` 对象相加，它会返回一个新的 `Complex` 对象（我们称之为 `temp`）。然后，赋值运算符 `=` 被用来把 `temp` 的值赋给对象 `z`。"
 
 msgid "It's time to overload the assignment operator `=`: `operator=`. **The good news is C++ provides a default assignment operator `operator=` for classes**. It performs a member-wise assignment of data members from the right-hand side object to the left-hand side object. This means the data members of `temp` are copied to the corresponding data members of `z`."
-msgstr ""
+msgstr "现在该重载赋值运算符 `=` 了，即 `operator=`。**好消息是，C++ 会为类提供一个默认的赋值运算符 `operator=`**。它把右侧对象的数据成员逐个赋值给左侧对象。也就是说，`temp` 的数据成员会被复制到 `z` 对应的数据成员中。"
 
 msgid "Let's implement the default assignment operator for the `Complex` class to understand how it works."
-msgstr ""
+msgstr "让我们为 `Complex` 类实现这个默认的赋值运算符，以理解它是如何工作的。"
 
 msgid "In the expression `z = temp;`,"
-msgstr ""
+msgstr "在表达式 `z = temp;` 中，"
 
 msgid "We can interpret the `z = temp` to be equivalent to `z.operator=(temp)`."
-msgstr ""
+msgstr "我们可以把 `z = temp` 解释为等价于 `z.operator=(temp)`。"
 
 msgid "The function name is `operator=`."
-msgstr ""
+msgstr "函数名是 `operator=`。"
 
 msgid "It should be a member function of `Complex` class, since we invoke `operator=` on `z`."
-msgstr ""
+msgstr "由于我们是在 `z` 上调用 `operator=`，它应当是 `Complex` 类的成员函数。"
 
 msgid "The object `temp` is passed as an argument to this member function of type `Complex`."
-msgstr ""
+msgstr "对象 `temp` 作为 `Complex` 类型的实参传给这个成员函数。"
 
 msgid "The function name and parameter type are written as follows:"
-msgstr ""
+msgstr "函数名和参数类型写法如下："
 
 msgid "In C/C++, the assignment operator `=` must return something that allows for chained assignments, e.g. `z = y = x;`. This statement is evaluated right to left, i.e. `y = x` `x` is assigned to `y`, then in `z = y` `y` is assigned to `z`. In C/C++ standard, we should return from `operator=` the **original** left-hand side object after the assignment. Therefore, the assignment operator `=` must return a reference to the left-hand side object to allow for this chaining, which is of `Complex` class type. We add the `&` symbol to indicate that we are returning a reference."
-msgstr ""
+msgstr "在 C/C++ 中，赋值运算符 `=` 必须返回某个值，以支持链式赋值，例如 `z = y = x;`。这条语句从右向左求值，即先在 `y = x` 中把 `x` 赋给 `y`，再在 `z = y` 中把 `y` 赋给 `z`。按照 C/C++ 标准，`operator=` 应当返回赋值之后的**原**左侧对象。因此，赋值运算符 `=` 必须返回对左侧对象的引用（其类型为 `Complex` 类）才能支持这种链式赋值。我们加上 `&` 符号，表示返回的是一个引用。"
 
 msgid "chained-operator="
-msgstr ""
+msgstr "chained-operator="
 
 msgid "In chained assignments like `z = y = x;`, the expression `y = x` is evaluated first, and the result, which is the original `y`, is then assigned to `z`. To enable this chaining, the assignment operator `=` must return a reference to the left-hand side object, or the object on which we invoked the `operator=` member function."
-msgstr ""
+msgstr "在像 `z = y = x;` 这样的链式赋值中，表达式 `y = x` 先被求值，其结果（即原来的 `y`）再被赋给 `z`。为了支持这种链式赋值，赋值运算符 `=` 必须返回对左侧对象的引用，也就是调用成员函数 `operator=` 的那个对象。"
 
 msgid "Putting it all together, the function header for the assignment operator `=` is as follows:"
-msgstr ""
+msgstr "把所有部分组合起来，赋值运算符 `=` 的函数头如下："
 
 msgid "**Step 2: Implement the `operator=` Member Function**"
-msgstr ""
+msgstr "**第 2 步：实现成员函数 `operator=`**"
 
 msgid "We can implement the `operator=` member function by setting the data members of the left-hand side object to the corresponding data members of the right-hand side object `rhs`, i.e. `real = rhs.real` and `img = rhs.img`."
-msgstr ""
+msgstr "实现成员函数 `operator=` 的方法是：把左侧对象的数据成员设为右侧对象 `rhs` 对应的数据成员，即 `real = rhs.real` 和 `img = rhs.img`。"
 
 msgid "**How can we get the reference to the left-hand side object?** One way is to use the `this` pointer. The `this` pointer points to the object on which the member function is invoked. Therefore, in `z.operator=(temp)`, `this` points to the object `z`. We can dereference the `this` pointer using `*this` to get the left-hand side object itself. `this` is of type `Complex*`, so `*this` is of type `Complex`. To return a reference to the left-hand side object, we use `return *this;`."
-msgstr ""
+msgstr "**怎样得到对左侧对象的引用？** 一种方法是使用 `this` 指针。`this` 指针指向调用该成员函数的对象。因此，在 `z.operator=(temp)` 中，`this` 指向对象 `z`。我们可以用 `*this` 对 `this` 指针解引用，得到左侧对象本身。`this` 的类型是 `Complex*`，所以 `*this` 的类型是 `Complex`。要返回对左侧对象的引用，我们使用 `return *this;`。"
 
 msgid "We can visualize each object and the `this` pointer as follows:"
-msgstr ""
+msgstr "我们可以把每个对象和 `this` 指针可视化如下："
 
 msgid "this-pointer"
-msgstr ""
+msgstr "this-pointer"
 
 msgid "The `this` pointer points to the object on which we invoke the function on, e.g. object `z`. We can dereference the `this` pointer using `*this` to get the left-hand side object itself."
-msgstr ""
+msgstr "`this` 指针指向我们调用该函数的对象，例如对象 `z`。我们可以用 `*this` 对 `this` 指针解引用，得到左侧对象本身。"
 
 msgid "Below is the complete implementation of the `operator=` member function:"
-msgstr ""
+msgstr "下面是成员函数 `operator=` 的完整实现："
 
 msgid "operator-equals-implement"
-msgstr ""
+msgstr "operator-equals-implement"
 
 msgid "We copy the `real` and `img` data members from the right-hand side object `rhs` to the left-hand side object using the dot operator. Finally, we return a reference to the left-hand side object using `*this`."
-msgstr ""
+msgstr "我们用点运算符把右侧对象 `rhs` 的数据成员 `real` 和 `img` 复制到左侧对象中。最后，我们用 `*this` 返回对左侧对象的引用。"
 
 msgid "In the image above, we optimize the `operator=` member function by passing the right-hand side object `rhs` as a `const` reference to avoid making a copy and to ensure that it is not modified."
-msgstr ""
+msgstr "在上图中，我们对成员函数 `operator=` 做了优化：以 `const` 引用的形式传递右侧对象 `rhs`，以避免复制并确保它不被修改。"
 
 msgid "We didn't make the `operator=` member function a `const` member function because it modifies the state of the left-hand side object."
-msgstr ""
+msgstr "我们没有把成员函数 `operator=` 声明为 `const` 成员函数，因为它会修改左侧对象的状态。"
 

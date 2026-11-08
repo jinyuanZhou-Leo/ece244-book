@@ -20,68 +20,68 @@ msgstr ""
 "Generated-By: Babel 2.18.0\n"
 
 msgid "Friend Functions"
-msgstr ""
+msgstr "友元函数"
 
 msgid "Operator overloading can be implemented using member functions, for example, the `+` operator when the left operand is an object of the class. However, when the left operand is not an object of the class, we cannot use member functions to overload the operator."
-msgstr ""
+msgstr "运算符重载可以用成员函数来实现，例如当左操作数是该类的对象时的 `+` 运算符。然而，当左操作数不是该类的对象时，我们就不能用成员函数来重载这个运算符。"
 
 msgid "For example, consider the following code that overloads the `<<` operator to print out `Complex` objects:"
-msgstr ""
+msgstr "例如，考虑下面这段重载 `<<` 运算符来打印 `Complex` 对象的代码："
 
 msgid "**Issue 1: Cannot have `operator<<` as member of `ostream`:** In the expression `cout << z`, the left operand is an object of the `ostream` class. **We cannot interpret this expression as `cout.operator<<(z)` because we cannot change the `ostream` class to have a member function that takes a `Complex` object as an argument.** This is because `ostream` is part of the C++ standard library, and we cannot modify it."
-msgstr ""
+msgstr "**问题 1：不能把 `operator<<` 作为 `ostream` 的成员：** 在表达式 `cout << z` 中，左操作数是 `ostream` 类的对象。**我们不能把这个表达式解释为 `cout.operator<<(z)`，因为我们无法修改 `ostream` 类，让它拥有一个以 `Complex` 对象为参数的成员函数。** 这是因为 `ostream` 是 C++ 标准库的一部分，我们不能修改它。"
 
 msgid "**Issue 2: Cannot have `operator<<` as a member of `Complex`:** Since the left-hand side is not `Complex` object, we cannot use a member function of the `Complex` class to overload the `<<` operator."
-msgstr ""
+msgstr "**问题 2：不能把 `operator<<` 作为 `Complex` 的成员：** 由于左侧不是 `Complex` 对象，我们不能用 `Complex` 类的成员函数来重载 `<<` 运算符。"
 
 msgid "**Solution:** Have `operator<<` as a **non-member** function that takes an `ostream` object and a `Complex` object as parameters. This way, we can overload the `<<` operator to work with `ostream` and `Complex` objects."
-msgstr ""
+msgstr "**解决方法：** 把 `operator<<` 定义为一个**非成员**函数，它以一个 `ostream` 对象和一个 `Complex` 对象作为参数。这样，我们就可以重载 `<<` 运算符，让它作用于 `ostream` 和 `Complex` 对象。"
 
 msgid "***Another problem!* Private members of `Complex` need to be accessed:** `operator<<` needs to access the private members of the `Complex` class to print out the real and imaginary parts. How can we allow a non-member function to access the private members of a class?"
-msgstr ""
+msgstr "***又一个问题！* 需要访问 `Complex` 的私有成员：** `operator<<` 需要访问 `Complex` 类的私有成员，才能打印出实部和虚部。我们怎样才能让一个非成员函数访问类的私有成员呢？"
 
 msgid "The **final solution** is to define `operator<<` as a **friend function** of the `Complex` class. A friend function is a **non-member** function that (i) has access to the private members of the class in which it is declared as a friend. Also, (ii) it allows the left operand to be of a different type."
-msgstr ""
+msgstr "**最终的解决方法**是把 `operator<<` 定义为 `Complex` 类的**友元函数**（friend function）。友元函数是一个**非成员**函数，它 (i) 可以访问将它声明为友元的那个类的私有成员；并且 (ii) 允许左操作数是其他类型。"
 
 msgid "For example, we can declare `operator<<` as a friend function of the `Complex` class using the **`friend`** keyword before the function prototype as follows:"
-msgstr ""
+msgstr "例如，我们可以在函数原型前加上 **`friend`** 关键字，把 `operator<<` 声明为 `Complex` 类的友元函数，如下所示："
 
 msgid "**Step 1: Understand the function prototype**"
-msgstr ""
+msgstr "**第 1 步：理解函数原型**"
 
 msgid "**Input parameter list.** The function `operator<<` should receive `cout` and `z` from `cout << z` as parameters. The left-hand side `cout` is an object of the `ostream` class and is received as the first parameter. Then, the right-hand side `z` is an object of the `Complex` class and is received as the second parameter."
-msgstr ""
+msgstr "**输入参数列表。** 函数 `operator<<` 应当把 `cout << z` 中的 `cout` 和 `z` 作为参数接收。左侧的 `cout` 是 `ostream` 类的对象，作为第一个参数接收。然后，右侧的 `z` 是 `Complex` 类的对象，作为第二个参数接收。"
 
 msgid "All streams are passed by reference to avoid making a copy of the stream object. It gives a compile error if we pass the stream by value. Hence, the parameter list should be `ostream& os, Complex rhs`."
-msgstr ""
+msgstr "所有流都按引用传递，以避免复制流对象。如果按值传递流，会产生编译错误。因此，参数列表应为 `ostream& os, Complex rhs`。"
 
 msgid "So far, we have the following function prototype in `Complex` class:"
-msgstr ""
+msgstr "到目前为止，我们在 `Complex` 类中有如下函数原型："
 
 msgid "**Return type.** In C++, we can chain multiple `<<` operators together, for example:"
-msgstr ""
+msgstr "**返回类型。** 在 C++ 中，我们可以把多个 `<<` 运算符链接在一起使用，例如："
 
 msgid ":alt: Chaining operators :width: 400px :align: center :figclass: align-center Chaining `<<` operators"
-msgstr ""
+msgstr ":alt: Chaining operators :width: 400px :align: center :figclass: align-center 链式使用 `<<` 运算符"
 
 msgid "The expression `cout << \"z is \"` returns an `ostream` object, which is then used as the left operand for the next `<<` operator. To allow this chaining, the return type of `operator<<` should be `ostream&`, which is a reference to the same stream object passed as the first parameter."
-msgstr ""
+msgstr "表达式 `cout << \"z is \"` 返回一个 `ostream` 对象，它随后被用作下一个 `<<` 运算符的左操作数。为了支持这种链式调用，`operator<<` 的返回类型应为 `ostream&`，即对作为第一个参数传入的同一个流对象的引用。"
 
 msgid "Putting it all together, we have the following function prototype in the `Complex` class:"
-msgstr ""
+msgstr "把所有部分组合起来，我们在 `Complex` 类中得到如下函数原型："
 
 msgid "Here, `z` is passed as a `const` reference because we do not want to modify the `Complex` object when printing it. **We are not making the function `const` because it is not a member function. There is no data members `real` and `img` to prevent changing them as the function itself is not a member function.**"
-msgstr ""
+msgstr "这里，`z` 以 `const` 引用的形式传递，因为我们不希望在打印时修改 `Complex` 对象。**我们没有把这个函数声明为 `const`，因为它不是成员函数。由于函数本身不是成员函数，它并没有需要防止被修改的数据成员 `real` 和 `img`。**"
 
 msgid "**Step 2: Implement the friend function**"
-msgstr ""
+msgstr "**第 2 步：实现友元函数**"
 
 msgid "A friend function is not a member of the class, so it is implemented outside the `Complex` class."
-msgstr ""
+msgstr "友元函数不是类的成员，所以它在 `Complex` 类之外实现。"
 
 msgid "In lines 20-23, the implementation of `operator<<` takes an `ostream` object and a `Complex` object as parameters. It accesses the private members `real` and `img` of the `Complex` object to print them out. Finally, it returns the same `ostream` object to allow chaining."
-msgstr ""
+msgstr "在第 20-23 行，`operator<<` 的实现以一个 `ostream` 对象和一个 `Complex` 对象作为参数。它访问 `Complex` 对象的私有成员 `real` 和 `img` 并把它们打印出来。最后，它返回同一个 `ostream` 对象，以支持链式调用。"
 
 msgid "**Important Note:** The friend function is not a member of the class, so it does not need `Complex::` before function name when defining it outside the class."
-msgstr ""
+msgstr "**重要提示：** 友元函数不是类的成员，所以在类外定义它时，函数名前不需要加 `Complex::`。"
 
