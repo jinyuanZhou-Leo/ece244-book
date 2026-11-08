@@ -15,8 +15,8 @@ msgstr ""
 "Generated-By: Babel 2.18.0\n"
 
 msgid "Operator Overloading"
-msgstr ""
+msgstr "运算符重载"
 
 msgid "In this chapter, we discuss what we can do to define the behavior of some of the operators (e.g. `+`, `-`, `=`, `==`, `<<` ) in C++ when they are used with objects of user-defined types (i.e., classes). This is called operator overloading."
-msgstr ""
+msgstr "在本章中，我们讨论如何定义 C++ 中某些运算符（例如 `+`、`-`、`=`、`==`、`<<`）作用于用户自定义类型（即类）的对象时的行为。这被称为运算符重载（operator overloading）。"
 
