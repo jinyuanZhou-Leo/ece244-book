@@ -40,6 +40,12 @@ msgstr "本书目前只包含练习题，面向多伦多大学 ECE 244：程序�
 msgid "**Authors:** The exercises in this book are either taken from past exams in ECE 244 or designed by Salma Emara. The exercises at the end of each chapter were made interactive by Nora Liu, a third-year student at the University of Toronto. This resource is maintained by Salma Emara."
 msgstr "**作者：** 本书的练习题来自 ECE 244 往年考试，或由 Salma Emara 设计。每章末尾的交互式练习由多伦多大学三年级学生 Nora Liu 制作。本资源由 Salma Emara 维护。"
 
+msgid "About this version"
+msgstr "关于本版本"
+
+msgid "This version of the book is based on the original *Khufu* textbook by Salma Emara. All credit for the original book belongs to her, and we sincerely thank her and Xudong Sun, whose lecture notes this version draws on, for their work. Chapters 6 and later were written by a large language model (LLM) with reference to Xudong Sun's ECE 244 lecture notes, and have not been reviewed by the original author. The content is provided for reference and study purposes only. If you believe any content infringes your rights, please contact us and it will be removed."
+msgstr "本版本基于 Salma Emara 编写的原版 *Khufu* 教材，原书的一切成果归原作者所有。我们衷心感谢 Salma Emara，以及本版本所参考讲义的作者 Xudong Sun 的付出。第 6 章及之后的内容由大语言模型（LLM）参考 Xudong Sun 的 ECE 244 课堂讲义（Lecture Notes）编写，未经原作者审阅。本书内容仅供参考学习。如有侵权或类似问题，请联系删除。"
+
 msgid "Why **Snefru** and **Khufu**?"
 msgstr "为什么叫 **Snefru** 和 **Khufu**？"
 
